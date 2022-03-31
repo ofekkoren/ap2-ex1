@@ -3,9 +3,9 @@ import './Logging.css';
 function Logging() {
     return (
         <div className="container">
-            <form className="text-center">
+            <form className="text-center myform">
 
-                <div className="form-group row justify-content-center">
+                <div className="form-group row justify-content-center center-user">
                     <label htmlFor="UsernameInput" className="col-auto">Username</label>
                     <div className="col-sm-4">
                         <input type="text" className="form-control form-control-sm" id="UsernameInput"
@@ -19,7 +19,7 @@ function Logging() {
 
             </form>
         </div>
-)
+);
 }
 
 export default Logging;
