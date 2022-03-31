@@ -1,24 +1,25 @@
 import './Logging.css';
 
 function Logging() {
-  return (
-    <form>
-      <div className="row g-2 align-items-center">
-        <div className="col-auto">
-          <label className="form-label">Username</label>
+    return (
+        <div className="container">
+            <form className="text-center">
+
+                <div className="form-group row justify-content-center">
+                    <label htmlFor="UsernameInput" className="col-auto">Username</label>
+                    <div className="col-sm-4">
+                        <input type="text" className="form-control form-control-sm" id="UsernameInput"
+                               placeholder="enter you username"></input>
+                    </div>
+                </div>
+
+                <div className="mb-3">
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                </div>
+
+            </form>
         </div>
-        <div className="col-md-3">
-          <input type="text" placeholder="Enter your username" className="form-control" required></input>
-        </div>
-
-      </div>
-
-      <div className="mb-3">
-        <button type="submit" className="btn btn-primary">Submit</button>
-      </div>
-
-    </form>
-  );
+)
 }
 
 export default Logging;
