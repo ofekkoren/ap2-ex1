@@ -1,0 +1,30 @@
+.leftScreen {
+    background-color: blue !important;
+}
+
+.rightScreen {
+    background-color: rgb(34, 255, 0) !important;
+}
+
+.chatScreen {
+    background-color: blueviolet !important;
+    position: absolute;
+
+    height: 75vh;
+    width: 140vh;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+}
+
+.topLine {
+    background-color: gray;
+    height: 10%;
+
+}
+
+.chatContainer {
+    /* height:80%; */
+    /* margin-top:10%;
+    margin-bottom:10%; */
+ }
+ 
