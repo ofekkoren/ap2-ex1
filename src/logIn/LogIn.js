@@ -1,6 +1,7 @@
 import './LogIn.css';
 import users from '../UsersDataBase';
 import LoggingValidation from './LogValidation';
+import '../signIn/SignIn.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter, Routes, Route, Link} from 'react-router-dom';
@@ -37,24 +38,22 @@ function LogIn() {
               placeholder="Enter your username"></input>
           </div>
         </div>
-        <div class="form-group row justify-content-center center-user">
-          <label for="inputPassword" class="col-sm-2 col-form-label col-form-label-lg">Password</label>
-          <div class="col-sm-5">
-            <input type="password" name='password' class="form-control form-control-lg" id="inputPassword" placeholder="Enter your password"></input>
+        <div className="form-group row justify-content-center center-user">
+          <label htmlFor="inputPassword" className="col-sm-2 col-form-label col-form-label-lg">Password</label>
+          <div className="col-sm-5">
+            <input type="password" name='password' className="form-control form-control-lg" id="inputPassword" placeholder="Enter your password"></input>
           </div>
         </div>
 
-        <div className="mb-3">
-           <button id="submitLogging" type="submit" className="btn btn-primary btn-lg">Submit</button>
-        </div>
+                <div className="mb-3">
+                    <button type="submit" className="btn btn-primary btn-lg">Log-in</button>
+                </div>
 
-        <div class="text">
-        Not registered? Please register <Link to='/LogValidation' class="text">here</Link>
+        <div className="text">
+        Not registered? Please register <Link to='/LogValidation' className="text">here</Link>
         </div>
       </form>
       </BrowserRouter>
     </div>
   );
 }
-
-export default LogIn;
