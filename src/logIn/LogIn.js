@@ -57,3 +57,5 @@ function LogIn() {
     </div>
   );
 }
+
+export default LogIn;
