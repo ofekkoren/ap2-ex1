@@ -8,7 +8,7 @@ function SignIn() {
         const inputParent = element.parentElement;
         element.classList.add('is-valid');
         element.classList.remove('is-invalid')
-        const validationMessgage = inputParent.getElementsByClassName("validationHelper")[0];
+        const validationMessgage = inputParent.getElementsByClassName("validation-helper")[0];
         validationMessgage.classList.add('valid-feedback');
         validationMessgage.classList.remove('invalid-feedback')
         validationMessgage.innerText = message;
@@ -18,7 +18,7 @@ function SignIn() {
         const inputParent = element.parentElement;
         element.classList.add('is-invalid');
         element.classList.remove('is-valid')
-        const validationMessgage = inputParent.getElementsByClassName("validationHelper")[0];
+        const validationMessgage = inputParent.getElementsByClassName("validation-helper")[0];
         validationMessgage.classList.add('invalid-feedback');
         validationMessgage.classList.remove('valid-feedback')
         validationMessgage.innerText = message;
@@ -96,7 +96,7 @@ function SignIn() {
     }
     return (
         <div className="container">
-            <form className="text-center register-form needs-validation" noValidate
+            <form className="text-center sign-in-form needs-validation" noValidate
                   onSubmit={handleSubmit}>
                 <div className="form-group row justify-content-center center-user">
                     <label htmlFor="username"
@@ -104,7 +104,7 @@ function SignIn() {
                     <div className="col-sm-5">
                         <input type="text" className="col form-control form-control-lg" id="username"
                                placeholder="Enter username" required></input>
-                        <span className="validationHelper"></span>
+                        <span className="validation-helper"></span>
                     </div>
 
                 </div>
@@ -114,30 +114,30 @@ function SignIn() {
                     <div className="col-sm-5">
                         <input type="text" className="form-control form-control-lg" id="nickname"
                                placeholder="Enter nickname" required></input>
-                        <span className="validationHelper"></span>
+                        <span className="validation-helper"></span>
                     </div>
                 </div>
                 <div className="form-group row justify-content-center center-user">
                     <label htmlFor="picture"
                            className="col-sm-2 col-form-label col-form-label-lg">picture</label>
                     <input className="form-control file-input-sm" type="file" id="picture"></input>
-                    <span className="validationHelper"></span>
+                    <span className="validation-helper"></span>
                 </div>
                 <div className="form-group row justify-content-center center-user ">
                     <label htmlFor="Password" className="col-sm-2 col-form-label col-form-label-lg">Password</label>
                     <div className="col-sm-5">
                         <input type="password" className="form-control form-control-lg" id="Password"
                                placeholder="Enter your password"></input>
-                        <span className="validationHelper"></span>
+                        <span className="validation-helper"></span>
                     </div>
                 </div>
                 <div className="form-group row justify-content-center center-user">
-                    <label htmlFor="validatePassword" className="col-sm-3 col-form-label col-form-label-lg">Repeat
+                    <label htmlFor="validatePassword" className="col-sm-4 col-form-label col-form-label-lg">Repeat
                         password</label>
                     <div className="col-sm-5">
                         <input type="password" className="form-control form-control-lg" id="validatePassword"
                                placeholder="Repeat your password"></input>
-                        <span className="validationHelper"></span>
+                        <span className="validation-helper"></span>
                     </div>
                 </div>
 

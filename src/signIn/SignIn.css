@@ -25,7 +25,17 @@
     border: 1px solid red;*/
 
 }
+.sign-in-form {
+    background-color: #61dafb;
+    position: absolute;
+    left: 25%;
+    right: 25%;
+    top: 5%;
+    padding: 1rem!important;
+    border-radius: 20px;
+    border: 2px solid black;
+}
 
-.validationHelper{
+.validation-helper{
     position: relative;
 }
