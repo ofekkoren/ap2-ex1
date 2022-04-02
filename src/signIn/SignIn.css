@@ -1,0 +1,31 @@
+.file-input-sm {
+    padding: 1rem !important;
+    width: 60%;
+}
+
+.invalid-feedback {
+    font-size: 16px;
+    /*    stroke: black;
+        stroke-width    : .5px;
+        stroke-linejoin : round;
+        text-shadow: #000 2px 2px 2px;*/
+    /*background: white;
+    border: 1px solid red;*/
+
+}
+
+.valid-feedback {
+    font-size: 16px;
+
+    /*    stroke: black;
+        stroke-width    : .5px;
+        stroke-linejoin : round;
+        text-shadow: #000 2px 2px 2px;*/
+    /*background: white;
+    border: 1px solid red;*/
+
+}
+
+.validationHelper{
+    position: relative;
+}
