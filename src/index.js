@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import Logging from './Logging';
+import LogIn from './logIn/LogIn';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Logging />
+    <LogIn />
   </React.StrictMode>,
   document.getElementById('root')
 );
