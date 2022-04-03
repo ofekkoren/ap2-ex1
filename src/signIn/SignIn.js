@@ -32,6 +32,15 @@ function SignIn() {
         }
         return true;
     }
+    const checkImage = (checkedImage) => {
+        let imagePath = checkedImage.value;
+        let extensionIndex = imagePath.lastIndexOf(".") + 1;
+        let extension = imagePath.substring(extensionIndex, imagePath.length).toLowerCase();
+        if (extension == "jpg" || extension == "jpeg" || extension == "png") {
+            return true
+        } else
+            return false;
+    }
 
     const checkValid = () => {
         const userName = document.getElementById('username');
@@ -53,8 +62,12 @@ function SignIn() {
             isValid = false;
         } else
             setValid(nickName, "Nice Nickname!")
-
-        setValid(picture, "");
+        if (picture.value != "" && !checkImage(picture)) {
+            setInvalid(picture, 'Input type must be: png, jpg or jpeg. You can also choose too not uploat an image');
+            picture.value = "";
+            isValid = false;
+        } else
+            setValid(picture, "");
         if (password.value.length < 6) {
             setInvalid(password, 'Password must contain at least 6 characters');
             isValid = false;
@@ -120,7 +133,8 @@ function SignIn() {
                 <div className="form-group row justify-content-center center-user">
                     <label htmlFor="picture"
                            className="col-sm-2 col-form-label col-form-label-lg">picture</label>
-                    <input className="form-control file-input-sm" type="file" id="picture"></input>
+                    <input className="form-control file-input-sm" type="file" accept=".jpg, .jpeg, .png"
+                           id="picture"></input>
                     <span className="validation-helper"></span>
                 </div>
                 <div className="form-group row justify-content-center center-user ">
