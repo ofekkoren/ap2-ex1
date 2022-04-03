@@ -1,11 +1,11 @@
 import './ChatScreen.css';
 import { useState } from "react";
 
-function ChatScreen() {
+function ChatScreen(user) {
     let [currentConversation, setCurrentConversation] = useState("");
 
     return (
-        <div class="container-fluid justify-content-center">
+        <div class="container justify-content-center">
                     <div class="row chatScreen">
                         <div class="col-4 leftScreen">
                             <div class="row topLine">
