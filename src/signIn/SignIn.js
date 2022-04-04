@@ -4,6 +4,11 @@ import users from '../db/UsersDataBase';
 
 function SignIn() {
 
+    /**
+     * Setting an invalid class and invalid feedback for element.
+     * @param element the element that will have an invalid feedback.
+     * @param message the message of the feedback.
+     */
     const setValid = (element, message) => {
         const inputParent = element.parentElement;
         element.classList.add('is-valid');
@@ -14,6 +19,11 @@ function SignIn() {
         validationMessgage.innerText = message;
     };
 
+    /**
+     * Setting an valid class and valid feedback for element.
+     * @param element the element that will have a valid feedback.
+     * @param message the message of the feedback.
+     */
     const setInvalid = (element, message) => {
         const inputParent = element.parentElement;
         element.classList.add('is-invalid');
@@ -25,6 +35,11 @@ function SignIn() {
 
     }
 
+    /**
+     * Checking if the given username already exists in the users database.
+     * @param checkedUsername.
+     * @returns false- if the username already exists. true- if the username is free to use.
+     */
     const checkUserername = (checkedUsername) => {
         for (let user of users) {
             if (user.username === checkedUsername)
@@ -32,6 +47,10 @@ function SignIn() {
         }
         return true;
     }
+
+    /**
+     * Checking if the given element represents a path to a png/jpg/jpeg file.
+     */
     const checkImage = (checkedImage) => {
         let imagePath = checkedImage.value;
         let extensionIndex = imagePath.lastIndexOf(".") + 1;
@@ -42,13 +61,19 @@ function SignIn() {
             return false;
     }
 
+    /**
+     * Checking if the data filled by the user in a form is valid.
+     * @returns true if all the data is valid. Else, false is returned.
+     */
     const checkValid = () => {
+        //getting the elements.
         const userName = document.getElementById('username');
         const nickName = document.getElementById('nickname');
         const picture = document.getElementById('picture');
         const password = document.getElementById('Password');
         const passwordRepeat = document.getElementById('validatePassword');
         let isValid = true;
+        //Checking the username. We want it to be unique and not an empty string.
         if (userName.value.trim() === "") {
             setInvalid(userName, 'Username is required');
             isValid = false;
@@ -57,17 +82,26 @@ function SignIn() {
             isValid = false;
         } else
             setValid(userName, "This username is available");
+
+        //Checking the nickname. We don't allow empty string as nickname.
         if (nickName.value.trim() === "") {
             setInvalid(nickName, 'Nickname is required');
             isValid = false;
         } else
             setValid(nickName, "Nice Nickname!")
+
+        //Checking the image uploaded by the user. It must be a jpg/png/jpeg file.
         if (picture.value != "" && !checkImage(picture)) {
             setInvalid(picture, 'Input type must be: png, jpg or jpeg. You can also choose too not uploat an image');
             picture.value = "";
             isValid = false;
         } else
             setValid(picture, "");
+
+        /*
+         * Checking the password chosen by the user. It must be longer than 6 character and contain al least one letter
+         * and one number.
+         */
         if (password.value.length < 6) {
             setInvalid(password, 'Password must contain at least 6 characters');
             isValid = false;
@@ -87,10 +121,15 @@ function SignIn() {
         return isValid
     }
 
+    /**
+     * Handling the submission of the registration form.
+     * @param event the submit event.
+     */
     const handleSubmit = (event) => {
         const regForm = event.currentTarget;
         event.preventDefault();
         event.stopPropagation()
+        //If the information filled by the user is valid he will be added to the user database.
         if (checkValid()) {
             const newUserName = document.getElementById("username").value.trim();
             const newNickName = document.getElementById('nickname').value;
@@ -108,6 +147,7 @@ function SignIn() {
         }
     }
     return (
+        //The sign-up form.
         <div className="container">
             <form className="text-center sign-in-form needs-validation" noValidate
                   onSubmit={handleSubmit}>
