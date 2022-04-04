@@ -19,6 +19,10 @@
 .topLine {
     background-color: lightgray;
     height: 10%;
+    padding: 20px;
+    align-items: center;
+    display: flex;
+
 }
  
 .container-chat-screen {
