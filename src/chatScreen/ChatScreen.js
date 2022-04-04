@@ -1,5 +1,6 @@
 import './ChatScreen.css';
 import { useState } from "react";
+import LeftScreen from './LeftScreen';
 
 function ChatScreen(user) {
     let [currentConversation, setCurrentConversation] = useState("");
@@ -7,13 +8,9 @@ function ChatScreen(user) {
     return (
         <div className="container-chat-screen justify-content-center">
             <div className="inner-chat-cube">
-                <div className="col-4 leftScreen">
-                    <div class="topLine">
-                        hhh
-                    </div>
-                </div>
-                <div class="col rightScreen">
-                    <div class="topLine">
+                <LeftScreen />
+                <div className="col rightScreen">
+                    <div className="topLine">
                         kkk
                     </div>
                     right

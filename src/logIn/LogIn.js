@@ -1,12 +1,15 @@
 import './LogIn.css';
 import users from '../db/UsersDataBase';
-import LoggingValidation from './LogValidation';
+import ChatScreen from '../chatScreen/ChatScreen';
 import '../signIn/SignIn.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route, Link, } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, useNavigate} from 'react-router-dom';
+
 
 function LogIn() {
+  // const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const username = e.target.userName.value;
@@ -16,6 +19,7 @@ function LogIn() {
       if (user.username.localeCompare(username) == 0 && user.password.localeCompare(password) == 0) {
         alert(1);
         isValidUser = 1;
+        // navigate("/ChatScreen");
       }
     })
 
@@ -41,7 +45,7 @@ function LogIn() {
     <div className="container">
       <BrowserRouter>
         <Routes>
-          <Route path='/LogValidation' element={<LoggingValidation />}></Route>
+          <Route path='/ChatScreen' element={<ChatScreen />}></Route>
         </Routes>
         <form className="text-center log-in-form" onSubmit={handleSubmit}>
           <div className="form-group row justify-content-center center-user">
