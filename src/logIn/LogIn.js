@@ -4,7 +4,7 @@ import LoggingValidation from './LogValidation';
 import '../signIn/SignIn.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, } from 'react-router-dom';
 
 function LogIn() {
   const handleSubmit = (e) => {
@@ -19,20 +19,18 @@ function LogIn() {
       }
     })
 
-    var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
-    var alertTrigger = document.getElementById('liveAlertBtn')
+    var alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+    var alertTrigger = document.getElementById('liveAlertBtn');
     var wrapper = document.createElement('div');
+    // var clicked = false;
 
-    function alert(message, type) {
-    wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
-    alertPlaceholder.append(wrapper)
-    }
-  
-    if (alertTrigger && isValidUser==0 && username!="" && password!="") {
-      alertTrigger.addEventListener('click', function () {
-        alert('Wrong username or password!', 'danger')
-      })
-      // wrapper.parentNode.removeChild(wrapper);
+    // function alert(message, type) {
+    // wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+    // alertPlaceholder.append(wrapper)
+    // }
+
+    if (alertTrigger && isValidUser == 0 && username != "" && password != "") {
+      alert('Wrong username or password!', 'danger')
     }
     // console.log("username: " + username, " password: " + password);
   }
@@ -45,7 +43,7 @@ function LogIn() {
         <Routes>
           <Route path='/LogValidation' element={<LoggingValidation />}></Route>
         </Routes>
-        <form className="text-center myform" onSubmit={handleSubmit}>
+        <form className="text-center log-in-form" onSubmit={handleSubmit}>
           <div className="form-group row justify-content-center center-user">
             <label htmlFor="usernameInput" className="col-sm-2 col-form-label col-form-label-lg">Username</label>
             <div className="col-sm-5">

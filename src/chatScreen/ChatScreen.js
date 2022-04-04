@@ -5,21 +5,20 @@ function ChatScreen(user) {
     let [currentConversation, setCurrentConversation] = useState("");
 
     return (
-        <div class="container justify-content-center">
-                    <div class="row chatScreen">
-                        <div class="col-4 leftScreen">
-                            <div class="row topLine">
-                                hhh
-                            </div>
-                            left
-                        </div>
-                        <div class="col rightScreen">
-                        <div class="row topLine">
-                            kkk
-                        </div>
-                            right
-                        </div>
+        <div className="container-chat-screen justify-content-center">
+            <div className="inner-chat-cube">
+                <div className="col-4 leftScreen">
+                    <div class="topLine">
+                        hhh
                     </div>
+                </div>
+                <div class="col rightScreen">
+                    <div class="topLine">
+                        kkk
+                    </div>
+                    right
+                </div>
+            </div>
         </div>
     );
 }
