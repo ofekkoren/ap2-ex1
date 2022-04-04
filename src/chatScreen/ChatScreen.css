@@ -17,7 +17,25 @@
 }
 
 .topLine {
-    background-color: gray;
+    background-color: lightgray;
     height: 10%;
+    padding: 20px;
+    align-items: center;
+    display: flex;
+
 }
  
+.container-chat-screen {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+}
+
+.inner-chat-cube {
+    display: flex;
+    background-color: aquamarine;
+    margin-top: -30px;
+    height: 90vh;
+    width: 85vw;
+    box-shadow: -1px 4px 20px -6px black;
+}
