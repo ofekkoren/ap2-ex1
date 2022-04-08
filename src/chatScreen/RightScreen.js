@@ -10,9 +10,9 @@ import conversations from "../db/Conversations";
  * @param props inlude the information of the user currently logged-in and the current chosen conversation.
  */
 function RightScreen(props) {
-/*
-    let [currentConversation, setCurrentConversation] = useState(props.chat);
-*/
+    /*
+        let [currentConversation, setCurrentConversation] = useState(props.chat);
+    */
 
     //If no chat was chosen by the user, no name or image will or message box will be displayed.
     if (props.chat === "") {
@@ -24,8 +24,8 @@ function RightScreen(props) {
     }
     //Checking which of the chat participants is the signed-in user. The second participant is the user we chat with.
     else {
-        console.log(conversations)
-        console.log(users)
+/*        console.log(conversations)
+        console.log(users)*/
 
         if (props.user.username === props.chat.users[0].username) {
             return (
@@ -70,7 +70,7 @@ function ChatHeader(props) {
     } else {
         return (
             <div className="topLine">
-                <img src={process.env.PUBLIC_URL + props.chatWith.Image}
+                <img src={process.env.PUBLIC_URL + props.chatWith.image}
                      className="float-start top-profile-image"></img>
                 <h5>{props.chatWith.nickname}</h5>
             </div>
@@ -102,6 +102,7 @@ function ChatTextBox(props) {
         //If the user didn't type a message we won't send an empty string, Else we add the message to the chat.
         if (message.trim() !== "") {
             let messageInfo = {
+                type: "text",
                 content: message,
                 createdAt: new Date().toISOString(),
                 sender: props.sendingUser.username
