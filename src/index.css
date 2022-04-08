@@ -5,7 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-    background-image: url("images/designImages/background-5.png");
+    /* background-image: url("images/designImages/background-5.png"); */
+    background-image: url("/public/images/designImages/background-5.png");
+
     background-size: cover;
 }
 
