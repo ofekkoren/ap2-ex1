@@ -1,9 +1,48 @@
-.top-profile-image{
-    /*max-width: 100%;
-    max-height: 100%;*/
+.top-profile-image {
     height: 250%;
     margin-right: 2%;
     position: relative;
-    border-radius: 500%;
+    border-radius: 50%;
+}
+
+.chat-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.bottom-input-line {
+    display: flex;
+    background-color: lightgray;
+
+}
+
+.bottom-btn{
+    background-color: transparent;
+    border: 0;
+    box-shadow: none !important;
+
+}
+
+.message-box{
+    border-radius: 10px;
+    border: 2px solid lightgray;
+    flex:1; /*box as big as possible*/
+    outline: none;
+    resize: none; /*hide resize option for the inputbox*/
+    -ms-overflow-style: none; /*hide scrollbar for Internet Explorer/Edge */
+    scrollbar-width: none; /*hide scrollbar for Firefox */
+    overflow-y: scroll;
+}
+
+.message-box::-webkit-scrollbar{
+    display: none; /*hide scrollbar for Chrome, Safari, and Opera */
+}
+
+.sent-message{
+
+}
+
+.received-message{
 
 }

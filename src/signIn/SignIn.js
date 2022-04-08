@@ -3,7 +3,6 @@ import users from '../db/UsersDataBase';
 
 
 function SignIn() {
-
     /**
      * Setting an invalid class and invalid feedback for element.
      * @param element the element that will have an invalid feedback.
