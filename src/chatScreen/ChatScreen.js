@@ -12,7 +12,7 @@ function ChatScreen(user) {
         <div className="container-chat-screen justify-content-center">
 
             <div className="inner-chat-cube">
-                <LeftScreen logInUsername="Moti Luhim"/>
+                <LeftScreen logInUsername="Ofek Koren"/>
                 <RightScreen chat={currentConversation} setChat={setCurrentConversation} user={user}/>
             </div>
         </div>
