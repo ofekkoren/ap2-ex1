@@ -1,0 +1,32 @@
+.left-chat-item {
+    padding: 1rem;
+    margin: 0;
+    border: 2px solid lightgray;
+    border-top: 1px solid lightgray;
+}
+
+.left-chat-item:hover {
+    cursor: pointer;
+    background-color: lavender;
+}
+
+.chat-member-name {
+    padding-left: 20%;
+}
+
+.chat-last-message {
+    /* width: 0%; */
+    /* padding-right:  45%; */
+    padding-left: 20%;
+}
+
+.last-message-time {
+    float: right;
+    margin: 1%;
+    /* width: 0%; */
+
+}
+
+.top-left-profile-image {
+    width: 50px;
+}
