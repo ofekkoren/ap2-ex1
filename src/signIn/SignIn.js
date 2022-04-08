@@ -141,7 +141,7 @@ function SignIn() {
                     username: newUserName,
                     nickname: newNickName,
                     password: newPassword,
-                    Image: newPicture
+                    image: newPicture
                 })
         }
     }
