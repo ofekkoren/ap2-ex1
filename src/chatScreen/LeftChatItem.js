@@ -5,15 +5,16 @@ import React from 'react';
 
 function LeftChatItem(conversation) {
     var lastMessagePresented= "";
+    var iconClassName = "";
     if(conversation.type == "image") {
-        // conversation.lastMessage.replace(conversation.lastMessage, "image");
         lastMessagePresented = "image";
+        iconClassName = "bi bi-image";
     } else if (conversation.type == "record") {
-        // conversation.lastMessage.replace(conversation.lastMessage, "voice recording");
         lastMessagePresented = "voice recording";
+        iconClassName = "bi bi-mic-fill";
     } else if (conversation.type == "video") {
-        // conversation.lastMessagereplace(conversation.lastMessage, "video");
         lastMessagePresented = "video";
+        iconClassName = "bi bi-camera-video-fill"
     } else {
         lastMessagePresented = conversation.lastMessage;
     }
@@ -27,7 +28,9 @@ function LeftChatItem(conversation) {
             <span className='last-message-time'>{conversation.time}</span>
             {/* <p className="chat-last-message">{ if(conversation.type == "text") {
                 conversation.lastMessage} }</p> */}
-            <p className="chat-last-message">{lastMessagePresented}</p>
+            <p className="chat-last-message">{lastMessagePresented}&nbsp;
+            <i class={iconClassName}></i>
+            </p>
 
         </div>
     );
