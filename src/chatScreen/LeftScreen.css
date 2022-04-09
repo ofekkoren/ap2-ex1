@@ -6,7 +6,10 @@
 .add-conversation {
     position:absolute;
     right: 65%;
+    margin: 7px;
     padding: 7px;
+    border: 0;
+    background-color: lightgray;
     /* float: right; */
     /* flex: 1; */
 }

@@ -1,5 +1,4 @@
 import './LeftChatItem.css';
-// import "./RightScreen.css"
 import React from 'react';
 
 
@@ -29,7 +28,7 @@ function LeftChatItem(conversation) {
             {/* <p className="chat-last-message">{ if(conversation.type == "text") {
                 conversation.lastMessage} }</p> */}
             <p className="chat-last-message">{lastMessagePresented}&nbsp;
-            <i class={iconClassName}></i>
+            <i className={iconClassName}></i>
             </p>
 
         </div>
