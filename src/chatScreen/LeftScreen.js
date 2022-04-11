@@ -6,6 +6,7 @@ import LeftChatItem from './leftChatItem/LeftChatItem';
 import conversations from '../db/Conversations';
 import { useState } from "react";
 import ChooseNewChat from './ChooseNewChat';
+import AddNewChat from './AddNewChat';
 
 
 function LeftScreen({ logInUsername }) {
@@ -41,7 +42,7 @@ function LeftScreen({ logInUsername }) {
         type = chats[i].messages[chats[i].messages.length - 1].type;
         time = chats[i].messages[chats[i].messages.length - 1].createdAt;
         image = getUsersChats(usernameInChat).image;
-        relevantInfo.push({ usernameInChat: usernameInChat, type: type, lastMessage: lastMessage, time: time, image: image });
+        relevantInfo.push({usernameInChat: usernameInChat, type: type, lastMessage: lastMessage, time: time, image: image });
     }
 
 
@@ -58,14 +59,14 @@ function LeftScreen({ logInUsername }) {
     return (
         <div className="col-4 leftScreen">
             <div className="topLine topLine-left">
-                {/* <button className="bi bi-person-plus-fill add-conversation ms-3" onClick={callChooseNewChat} data-bs-toggle="modal" data-bs-target="#add-new-contact-model"></button> */}
                 <button className="bi bi-person-plus-fill add-conversation ms-3"  data-bs-toggle="modal" data-bs-target="#add-new-contact-model"></button>
-
-                <img src={logInUserImage} className="float-start top-profile-image row"></img>
+                {/* <img src={logInUserImage} className="row float-start top-profile-image"></img> */}
+                <img src={logInUserImage} className="row float-start profile-image"></img>
                 <h5 className='top-left-username'>{logInUsername}</h5>
             </div>
             {conversationsList}
-            <ChooseNewChat logInUsername={logInUsername} conversationsList={conversationsList} />
+            <ChooseNewChat logInUsername={logInUsername} conversationsList={conversationsList} relevantInfo={relevantInfo}/>
+            <AddNewChat usernameInChat="Shir Levi" type="text" lastMessage="hry" time="" image={logInUserImage}/>
         </div>
 
     );

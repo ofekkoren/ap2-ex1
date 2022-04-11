@@ -24,8 +24,15 @@
 }
 
 .top-profile-image {
-    height: 250%;
+    /* height: 250%; */
     margin-left: 2%;
+    position: relative;
+    border-radius: 50%;
+    width: 70px;
+}
+
+.profile-image {
+    margin: 2%;
     position: relative;
     border-radius: 50%;
     width: 70px;

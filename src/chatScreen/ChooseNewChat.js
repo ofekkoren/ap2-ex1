@@ -1,16 +1,26 @@
 import conversations from '../db/Conversations';
 import users from '../db/UsersDataBase';
+import AddNewChat from './AddNewChat';
+import { useState } from "react";
 
-function ChooseNewChat({logInUsername, conversationsList}) {
-// function ChooseNewChat() {
+function ChooseNewChat({ logInUsername, conversationsList, relevantInfo }) {
+    // function ChooseNewChat() {
     // getUsername = (event)=>{
     //     const userValue = event.target.value;
     //     console.log(userValue);
     // };
-    function getUsername(event) {
-        const userValue = event.target.value;
+    function getNewContactUsername(event) {
+        var userValue = event.target.value;
         console.log(userValue);
+        return userValue;
     };
+
+    function addNewContact() {
+        var newContact = document.getElementById("floatingTextarea").value;
+        // console.log("printing: " + newContact);
+        AddNewChat(logInUsername, conversationsList, newContact, relevantInfo);
+        // <AddNewChat logInUsername={logInUsername} conversationsList={conversationsList} newContact="Shir Levi" relevantInfo={relevantInfo} />
+    }
 
     return (
         <div className="col-4 leftScreen">
@@ -25,16 +35,14 @@ function ChooseNewChat({logInUsername, conversationsList}) {
                             <form>
                                 <label htmlFor="floatingTextarea" className="col-form-label">Please enter the contact's username:</label>
                                 <div className="form-floating">
-                                    <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea" onChange={getUsername}></textarea>
+                                    <input type="text" className="form-control newContact" placeholder="Leave a comment here" id="floatingTextarea" onChange={getNewContactUsername} required></input>
                                     <label htmlFor="floatingTextarea">Contact's identifier</label>
                                 </div>
                             </form>
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            {/* <button type="button" className="btn btn-primary" onClick={ad}>Add</button> */}
-                            <button type="button" className="btn btn-primary">Add</button>
-
+                            <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={addNewContact}>Add</button>
                         </div>
                     </div>
                 </div>
