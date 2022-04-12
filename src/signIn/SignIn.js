@@ -1,7 +1,6 @@
 import '../logIn/LogIn.css';
 import users from '../db/UsersDataBase';
 
-
 function SignIn() {
     /**
      * Setting an invalid class and invalid feedback for element.
@@ -65,6 +64,8 @@ function SignIn() {
      * @returns true if all the data is valid. Else, false is returned.
      */
     const checkValid = () => {
+        console.log(document.getElementById('picture').value)
+
         //getting the elements.
         const userName = document.getElementById('username');
         const nickName = document.getElementById('nickname');
@@ -115,6 +116,7 @@ function SignIn() {
 
         if (passwordRepeat.value !== password.value) {
             setInvalid(passwordRepeat, "Password doesn't match");
+            isValid = false;
         } else
             setValid(passwordRepeat, "");
         return isValid
@@ -131,7 +133,7 @@ function SignIn() {
         //If the information filled by the user is valid he will be added to the user database.
         if (checkValid()) {
             const newUserName = document.getElementById("username").value.trim();
-            const newNickName = document.getElementById('nickname').value;
+            const newNickName = document.getElementById('nickname').value.trim();
             const newPassword = document.getElementById('Password').value;
             //TODO fix picture
             const newPicture = "/images/userImages/default-image.jpg";
@@ -143,12 +145,29 @@ function SignIn() {
                     password: newPassword,
                     image: newPicture
                 })
+
+            //Indicating the user about the successful registration
+            let formContainer= document.getElementById("signContainer");
+            let signInComplete = document.createElement('div');
+
+            signInComplete.innerHTML="<h4 class=\"text-center sign-in-form\" role=\"alert\">\n" +
+                "  You have successfully signed-up   :-)<br><br>  You can click <a href=\"#\" class=\"alert-link\">here</a>" +
+                " to log-in with your new user <br>" +
+                "</h4>"
+
+            formContainer.append(signInComplete);
+            document.getElementById("signInForm").remove();
         }
     }
+    <div className="col-sm-5" id="sd">
+        <input type="text" className="col form-control form-control-lg" id="username"
+               placeholder="Enter username" required></input>
+        <span className="validation-helper"></span>
+    </div>
     return (
         //The sign-up form.
-        <div className="container">
-            <form className="text-center sign-in-form needs-validation" noValidate
+        <div className="container" id="signContainer">
+            <form className="text-center sign-in-form needs-validation" noValidate id="signInForm"
                   onSubmit={handleSubmit}>
                 <div className="form-group row justify-content-center center-user">
                     <label htmlFor="username"
@@ -158,7 +177,6 @@ function SignIn() {
                                placeholder="Enter username" required></input>
                         <span className="validation-helper"></span>
                     </div>
-
                 </div>
                 <div className="form-group row justify-content-center center-user">
                     <label htmlFor="nickname"
@@ -199,14 +217,9 @@ function SignIn() {
                     <button type="submit" className="btn btn-primary btn-lg">Sign-in</button>
                 </div>
 
-                <div className="text invalid-feedback">
-                    Please choose a username.
-                </div>
-
                 <div className="text">
                     already registered? sign in <a href='#' className="text">here</a>
                 </div>
-
             </form>
         </div>
     )

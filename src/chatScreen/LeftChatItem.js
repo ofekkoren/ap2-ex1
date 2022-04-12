@@ -2,7 +2,7 @@ import './LeftChatItem.css';
 import React from 'react';
 
 
-function LeftChatItem(conversation) {
+function LeftChatItem(conversation,props) {
     return (
         <div className='left-chat-item'>
             {/* <img src={require('../images/userImages/boy-image.png')} className="rounded float-start top-left-profile-image"></img> */}
