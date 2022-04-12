@@ -25,7 +25,7 @@
 .topLine {
     background-color: lightgray;
     height: 10%;
-    padding: 3px;
+    padding: 0.25%;
     align-items: center;
     display: flex;
 }

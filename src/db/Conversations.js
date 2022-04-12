@@ -4,6 +4,36 @@ let conversations = [
     messages:[{type:"text", content: "Hello, how are you?", createdAt: '2018-01-01T00:00:00.000Z', sender: "Ofek Koren"},
             {type:"text", content: "I'm fine, thanks", createdAt: '2020-10-10T12:48:00.000Z', sender: "Tomer Eligayev"},
             {type:"text", content: "Have a nice day.", createdAt: '2020-10-10T12:48:00.000Z', sender: "Tomer Eligayev"}]},
+
+
+            {users: [{username: "Ofek Koren", nickname: "Ofekkoren", image: "/images/userImages/girl-image.jpg"},
+            {username: 'Tomer Eligayev', nickname: 'Tomer-77', image: "/images/userImages/boy-image.png"}],
+    messages:[{type:"text", content: "Hello, how are you?", createdAt: '2018-01-01T00:00:00.000Z', sender: "Ofek Koren"},
+            {type:"text", content: "I'm fine, thanks", createdAt: '2020-10-10T12:48:00.000Z', sender: "Tomer Eligayev"},
+            {type:"text", content: "Have a nice day.", createdAt: '2020-10-10T12:48:00.000Z', sender: "Tomer Eligayev"}]},
+
+
+            {users: [{username: "Ofek Koren", nickname: "Ofekkoren", image: "/images/userImages/girl-image.jpg"},
+            {username: 'Tomer Eligayev', nickname: 'Tomer-77', image: "/images/userImages/boy-image.png"}],
+    messages:[{type:"text", content: "Hello, how are you?", createdAt: '2018-01-01T00:00:00.000Z', sender: "Ofek Koren"},
+            {type:"text", content: "I'm fine, thanks", createdAt: '2020-10-10T12:48:00.000Z', sender: "Tomer Eligayev"},
+            {type:"text", content: "Have a nice day.", createdAt: '2020-10-10T12:48:00.000Z', sender: "Tomer Eligayev"}]},
+
+
+
+            {users: [{username: "Ofek Koren", nickname: "Ofekkoren", image: "/images/userImages/girl-image.jpg"},
+            {username: 'Tomer Eligayev', nickname: 'Tomer-77', image: "/images/userImages/boy-image.png"}],
+    messages:[{type:"text", content: "Hello, how are you?", createdAt: '2018-01-01T00:00:00.000Z', sender: "Ofek Koren"},
+            {type:"text", content: "I'm fine, thanks", createdAt: '2020-10-10T12:48:00.000Z', sender: "Tomer Eligayev"},
+            {type:"text", content: "Have a nice day.", createdAt: '2020-10-10T12:48:00.000Z', sender: "Tomer Eligayev"}]},
+            
+
+            {users: [{username: "Ofek Koren", nickname: "Ofekkoren", image: "/images/userImages/girl-image.jpg"},
+            {username: 'Tomer Eligayev', nickname: 'Tomer-77', image: "/images/userImages/boy-image.png"}],
+    messages:[{type:"text", content: "Hello, how are you?", createdAt: '2018-01-01T00:00:00.000Z', sender: "Ofek Koren"},
+            {type:"text", content: "I'm fine, thanks", createdAt: '2020-10-10T12:48:00.000Z', sender: "Tomer Eligayev"},
+            {type:"text", content: "Have a nice day.", createdAt: '2020-10-10T12:48:00.000Z', sender: "Tomer Eligayev"}]},
+            
     {users: [{username: "Ofek Koren", nickname: "Ofekkoren", image: "/images/userImages/girl-image.jpg"},
             {username: 'Avi Cohen', nickname: 'Avi', image: "/images/userImages/boy-image.png"}],
     messages:[{type:"text", content: "Heyyy, want to eat icecream?", createdAt: '2020-10-10T12:48:00.000Z', sender: "Avi Cohen"},

@@ -18,7 +18,7 @@ function ChooseNewChat({ logInUsername, conversationsList, relevantInfo }) {
     function addNewContact() {
         var newContact = document.getElementById("floatingTextarea").value;
         // console.log("printing: " + newContact);
-        AddNewChat(logInUsername, conversationsList, newContact, relevantInfo);
+        return AddNewChat(logInUsername, conversationsList, newContact, relevantInfo);
         // <AddNewChat logInUsername={logInUsername} conversationsList={conversationsList} newContact="Shir Levi" relevantInfo={relevantInfo} />
     }
 

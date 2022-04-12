@@ -65,8 +65,10 @@ function AddNewChat(logInUsername, conversationsList, newContact, relevantInfo) 
         // <LeftChatItem usernameInChat={newContact} type={type} lastMessage={lastMessage} time={time} image={image} />
     }
     return (
+        // {conversationsList}
+
         <div className="col-4 newtab">
-            <div>hello</div>
+            <div className="newtab">hello</div>
             <div>
                 {conversationsList}
             </div>

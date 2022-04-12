@@ -1,6 +1,7 @@
 .topLine-left {
     flex: 0.5;
     justify-content: space-between;
+    
 }
 
 .add-conversation {
@@ -37,3 +38,16 @@
     border-radius: 50%;
     width: 70px;
 }
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 81vh;
+    padding: 0;
+  }
+  
+.center-col {
+    flex: 1;
+    background: #aaa;
+    overflow-y: scroll;
+  }
