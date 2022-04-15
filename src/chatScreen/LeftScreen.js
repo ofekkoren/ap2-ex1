@@ -9,7 +9,7 @@ import ChooseNewChat from './ChooseNewChat';
 import AddNewChat from './AddNewChat';
 
 
-function LeftScreen({ logInUsername }) {
+function LeftScreen(props) {
     // function LeftScreen(props,{ logInUsername }) {
 
     //put list of chats for debug.
@@ -34,9 +34,9 @@ function LeftScreen({ logInUsername }) {
 
 
     // Chats holds all the conversations of the current log-in user.
-    var chats = getUsersChats(logInUsername).chats;
+    var chats = getUsersChats(props.logInUsername).chats;
     // Keeping the current log-in user's profile image.
-    logInUserImage = getUsersChats(logInUsername).image;
+    logInUserImage = getUsersChats(props.logInUsername).image;
 
 
     var relevantInfo = [];
@@ -55,7 +55,7 @@ function LeftScreen({ logInUsername }) {
     for (var i = 0; i < Object.keys(chats).length; i++) {
         // If the username in the conversation information is our log-in username, the other username is the
         // contact's username.
-        if (chats[i].users[0].username.localeCompare(logInUsername) == 0) {
+        if (chats[i].users[0].username.localeCompare(props.logInUsername) == 0) {
             usernameInChat = chats[i].users[1].username;
         } else {
             usernameInChat = chats[i].users[0].username;
@@ -70,10 +70,13 @@ function LeftScreen({ logInUsername }) {
 
     var conversationsList;
     conversationsList = currentListOfChats.map((conversation, index) => {
-        return <LeftChatItem {...relevantInfo[index]} key={index} />
+        return <LeftChatItem {...relevantInfo[index]} key={index} onClick={showChat(chats[index])}/>
     });
 
-
+    function showChat(chat) {
+        props.refer.current = chat;
+        props.setChat(chat);
+    }
     return (
         ///
         <div className="col-4 leftScreen">
@@ -82,7 +85,7 @@ function LeftScreen({ logInUsername }) {
                 <img src={logInUserImage} className="float-start top-left-profile-image"></img>
                 {/* <img src={logInUserImage} className="top-profile-image"></img> */}
 
-                    <h5 className='top-left-username'>{logInUsername}</h5>
+                    <h5 className='top-left-username'>{props.logInUsername}</h5>
                 </div>
 
                 {/* <div className="topLine">
@@ -98,7 +101,7 @@ function LeftScreen({ logInUsername }) {
                     </div>
                 </div>
 
-                <ChooseNewChat logInUsername={logInUsername} conversationsList={conversationsList} currentListOfChats={currentListOfChats} setcurrentListOfChats={setcurrentListOfChats} />
+                <ChooseNewChat logInUsername={props.logInUsername} conversationsList={conversationsList} currentListOfChats={currentListOfChats} setcurrentListOfChats={setcurrentListOfChats} />
             </div>
     );
 }

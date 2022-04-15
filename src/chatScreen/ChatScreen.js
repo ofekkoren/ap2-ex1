@@ -29,8 +29,8 @@ function ChatScreen(user) {
     return (
         <div className="container-chat-screen justify-content-center">
             <div className="inner-chat-cube">
-                <LeftScreen logInUsername="Ofek Koren"/>
-{/* //                 <LeftScreen logInUsername="Moti Luhim" setChat={setCurrentConversation} refer={conversationDBRef}/> */}
+                {/* <LeftScreen logInUsername="Ofek Koren"/> */}
+//                 <LeftScreen logInUsername="Moti Luhim" setChat={setCurrentConversation} refer={conversationDBRef}/>
                 <RightScreen chat={currentConversation} setChat={setCurrentConversation} user={user}/>
             </div>
         </div>
