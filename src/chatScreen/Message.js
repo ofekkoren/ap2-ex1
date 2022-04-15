@@ -9,7 +9,7 @@ import {getFormattedDateString} from "./Utils";
 function Message(props) {
 
     const createMessageContent = (message) => {
-        console.log(message)
+        // console.log(message)
         if (message.type === "text")
             return (<h6 className="text-message" key={props.index}>{props.message.content}</h6>)
         if (message.type === "image")
