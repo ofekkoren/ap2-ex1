@@ -37,6 +37,7 @@ function LeftChatItem(conversation) {
             <p className="chat-last-message">{lastMessagePresented}&nbsp;
             <i className={iconClassName}></i>
             </p>
+
         </div>
     );
 }

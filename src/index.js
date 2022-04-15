@@ -14,7 +14,7 @@ ReactDOM.render(
   //   </Routes>
     
     <React.StrictMode>
-      <ChatScreen />
+      <ChatScreen/>
     </React.StrictMode>,
     
     document.getElementById('root')

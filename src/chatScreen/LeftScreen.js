@@ -10,6 +10,7 @@ import AddNewChat from './AddNewChat';
 
 
 function LeftScreen({ logInUsername }) {
+// function LeftScreen(props,{ logInUsername }) {
 
     //put list of chats for debug.
     let [currentListOfChats, setcurrentListOfChats] = useState(users[0].chats);
@@ -31,10 +32,12 @@ function LeftScreen({ logInUsername }) {
         }
     }
 
+
     // Chats holds all the conversations of the current log-in user.
     var chats = getUsersChats(logInUsername).chats;
     // Keeping the current log-in user's profile image.
     logInUserImage = getUsersChats(logInUsername).image;
+
 
     var relevantInfo = [];
     var usernameInChat = "";
@@ -70,13 +73,20 @@ function LeftScreen({ logInUsername }) {
         return <LeftChatItem {...relevantInfo[index]} key={index} />
     });
 
+
     return (
+        ///
         <div className="col-4 leftScreen">
             <div className="topLine">
                 <button className="bi bi-person-plus-fill add-conversation ms-3" data-bs-toggle="modal" data-bs-target="#add-new-contact"></button>
                 <img src={logInUserImage} className="float-start top-left-profile-image"></img>
                 {/* <img src={logInUserImage} className="top-profile-image"></img> */}
-                <h5 className='top-left-username'>{logInUsername}</h5>
+//         {/*<div className="col-4 leftScreen">*/}
+//             <div className="topLine topLine-left">
+//                 <span className="bi bi-person-plus-fill add-conversation ms-3"></span>
+//                 {/* <img src={require('../images/userImages/boy-image.png')} className="rounded float-start top-profile-image top-left-profile-image"></img> */}
+
+  <h5 className='top-left-username'>{logInUsername}</h5>
             </div>
 
             {/* <div className="topLine">

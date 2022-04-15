@@ -4,6 +4,7 @@
     /* padding: 20px; */
     margin: 0;
     background-color: rgb(231, 242, 243);
+/*     padding: 1rem; */
     border: 2px solid lightgray;
     border-top: 1px solid lightgray;
 }
@@ -57,4 +58,23 @@
     border-radius: 50%;
     width: 70px;
     vertical-align: center;
+/*       padding-left: 20%;
+ */
+}
+
+/* .chat-last-message {
+    /* width: 0%; */
+    /* padding-right:  45%; */
+    padding-left: 20%;
+}
+
+.last-message-time {
+    float: right;
+    margin: 1%;
+    /* width: 0%; */
+
+}
+
+.top-left-profile-image {
+    width: 50px; */
 }
