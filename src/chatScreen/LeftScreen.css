@@ -5,13 +5,13 @@
 }
 
 .add-conversation {
-    position:absolute;
-    right: 65%;
+    /* position:absolute; */
+    /* right: 65%; */
     margin: 7px;
     padding: 7px;
     border: 0;
     background-color: lightgray;
-    /* float: right; */
+    float: right;
     /* flex: 1; */
 }
 .add-conversation:hover {
@@ -25,11 +25,12 @@
 }
 
 .top-left-profile-image {
-    /* height: 250%; */
+    height: 100%;
     margin-left: 2%;
     position: relative;
-    border-radius: 50%;
-    width: 70px;
+    border-radius: 100%;
+    margin-right: 2%;
+    /* width: 70px; */
 }
 
 .profile-image {

@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import './ChatScreen.css';
-import {useState, useRef} from "react";
+import { useState, useRef } from "react";
 import LeftScreen from './LeftScreen';
 import RightScreen from "./RightScreen";
 
@@ -20,18 +20,18 @@ function ChatScreen(user) {
             }
             //Scrolling down to the last message when sending a new message or selecting an other chat.
             let bottom = document.getElementById("lastMessage");
-            bottom.scrollIntoView({block:"end"});
+            bottom.scrollIntoView({ block: "end" });
         }
     }, [currentConversation])
 
-    user = users[2]; // TODO Used for debug,will be deleted in the future
+    user = users[0]; // TODO Used for debug,will be deleted in the future
 
     return (
         <div className="container-chat-screen justify-content-center">
             <div className="inner-chat-cube">
                 {/* <LeftScreen logInUsername="Ofek Koren"/> */}
-//                 <LeftScreen logInUsername="Moti Luhim" setChat={setCurrentConversation} refer={conversationDBRef}/>
-                <RightScreen chat={currentConversation} setChat={setCurrentConversation} user={user}/>
+                 <LeftScreen logInUsername={user.username} setChat={setCurrentConversation} refer={conversationDBRef} />
+                <RightScreen chat={currentConversation} setChat={setCurrentConversation} user={user} />
             </div>
         </div>
     );

@@ -67,42 +67,45 @@ function LeftScreen(props) {
         relevantInfo.push({ usernameInChat: usernameInChat, type: type, lastMessage: lastMessage, time: time, image: image });
     }
 
+    function showChat(chat) {
+        console.log("hellooe")
+        // props.refer.current = chat;
+        // props.setChat(chat);
+    }
 
     var conversationsList;
     conversationsList = currentListOfChats.map((conversation, index) => {
-        return <LeftChatItem {...relevantInfo[index]} key={index} onClick={showChat(chats[index])}/>
+        return <LeftChatItem conversation={relevantInfo[index]} key={index} chat={chats[index]} refer={props.refer} setChat={props.setChat} />
+
     });
 
-    function showChat(chat) {
-        props.refer.current = chat;
-        props.setChat(chat);
-    }
+
     return (
         ///
         <div className="col-4 leftScreen">
             <div className="topLine">
-                <button className="bi bi-person-plus-fill add-conversation ms-3" data-bs-toggle="modal" data-bs-target="#add-new-contact"></button>
                 <img src={logInUserImage} className="float-start top-left-profile-image"></img>
                 {/* <img src={logInUserImage} className="top-profile-image"></img> */}
+                <h5 className='top-left-username'>{props.logInUsername}</h5>
+                <button className="bi bi-person-plus-fill add-conversation ms-3" data-bs-toggle="modal" data-bs-target="#add-new-contact"></button>
 
-                    <h5 className='top-left-username'>{props.logInUsername}</h5>
-                </div>
+            </div>
 
-                {/* <div className="topLine">
+            {/* <div className="topLine">
                 <img src={process.env.PUBLIC_URL + props.chatWith.image}
                      className=" top-profile-image"></img>
                 <h5>{props.chatWith.nickname}</h5>
             </div> */}
 
 
-                <div className="container">
-                    <div className="center-col" id="present-left-chat-items">
-                        {conversationsList}
-                    </div>
+            <div className="container">
+                <div className="center-col" id="present-left-chat-items">
+                    {conversationsList}
                 </div>
-
-                <ChooseNewChat logInUsername={props.logInUsername} conversationsList={conversationsList} currentListOfChats={currentListOfChats} setcurrentListOfChats={setcurrentListOfChats} />
             </div>
+
+            <ChooseNewChat logInUsername={props.logInUsername} conversationsList={conversationsList} currentListOfChats={currentListOfChats} setcurrentListOfChats={setcurrentListOfChats} />
+        </div>
     );
 }
 
