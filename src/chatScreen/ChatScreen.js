@@ -23,7 +23,7 @@ function ChatScreen(user) {
         }
     }, [currentConversation])
 
-    user = users[1]; // TODO Used for debug,will be deleted in the future
+    user = users[2]; // TODO Used for debug,will be deleted in the future
 
     return (
         <div className="container-chat-screen justify-content-center">

@@ -8,10 +8,11 @@ import "./RightScreen.css"
 function ChatHeader(props) {
     if (props.chatWith === "") {
         return (<div className="topLine"></div>)
-    } else {
+    }
+else {
         return (
             <div className="topLine">
-                <img src={process.env.PUBLIC_URL + props.chatWith.image}
+                <img src={props.chatWith.image}
                      className=" top-profile-image"></img>
                 <h5>{props.chatWith.nickname}</h5>
             </div>

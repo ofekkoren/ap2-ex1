@@ -8,8 +8,8 @@ import LeftChatItem from './LeftChatItem'; import conversations from '../db/Conv
 function LeftScreen(props,{ logInUsername }) {
     //TODO delete
     const helper = () => {
-        props.refer.current=users[1].chats[0];
-        props.setChat(users[1].chats[0]);
+        props.refer.current=users[2].chats[1];
+        props.setChat(users[2].chats[1]);
 
     }
     ///////

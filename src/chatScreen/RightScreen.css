@@ -28,14 +28,13 @@
     background-color: lightgray;
 }
 
-.chat-body-bottom{
-  margin-top: 1%;
+.chat-body-bottom {
+    margin-top: 1%;
 }
 
 .bottom-input-line {
     display: flex;
     background-color: lightgray;
-
 }
 
 .bottom-btn {
@@ -45,6 +44,21 @@
 
 }
 
+.attach-dropup {
+    display: flex;
+    float: left;
+    background-color: silver;
+}
+
+.attach-btn{
+    border: thin solid black;
+
+}
+.attach-ul {
+    padding:0;
+    border: 0;
+    background-color: transparent;
+}
 .message-box {
     border-radius: 10px;
     border: 2px solid lightgray;
@@ -86,7 +100,12 @@
     word-break: break-all; /*starts new line if the text is too long*/
 }
 
-.text-date{
+.text-date {
     float: right;
     font-size: small;
+}
+
+.image-message{
+    width: 40vh;
+    padding: 2%;
 }

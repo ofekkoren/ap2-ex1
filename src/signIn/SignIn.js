@@ -1,5 +1,6 @@
 import '../logIn/LogIn.css';
 import users from '../db/UsersDataBase';
+import {convertToBase64Image} from "../chatScreen/Utils";
 
 function SignIn() {
     /**
@@ -64,8 +65,6 @@ function SignIn() {
      * @returns true if all the data is valid. Else, false is returned.
      */
     const checkValid = () => {
-        console.log(document.getElementById('picture').value)
-
         //getting the elements.
         const userName = document.getElementById('username');
         const nickName = document.getElementById('nickname');
@@ -135,9 +134,7 @@ function SignIn() {
             const newUserName = document.getElementById("username").value.trim();
             const newNickName = document.getElementById('nickname').value.trim();
             const newPassword = document.getElementById('Password').value;
-            //TODO fix picture
-            const newPicture = "/images/userImages/default-image.jpg";
-
+            let newPicture = process.env.PUBLIC_URL + "/images/userImages/default-image.jpg";
             users.push(
                 {
                     username: newUserName,
@@ -145,12 +142,19 @@ function SignIn() {
                     password: newPassword,
                     image: newPicture
                 })
-
+            //If the user chose to upload an image we will change it's image from the deafult user image.
+            if (document.getElementById('picture').value != "") {
+                var imagePromise = convertToBase64Image(document.getElementById('picture').files[0]);
+                imagePromise.then(function (result) {
+                    newPicture = result;
+                    users[users.length - 1].image = newPicture;
+                });
+            }
             //Indicating the user about the successful registration
-            let formContainer= document.getElementById("signContainer");
+            let formContainer = document.getElementById("signContainer");
             let signInComplete = document.createElement('div');
 
-            signInComplete.innerHTML="<h4 class=\"text-center sign-in-form\" role=\"alert\">\n" +
+            signInComplete.innerHTML = "<h4 class=\"text-center sign-in-form\" role=\"alert\">\n" +
                 "  You have successfully signed-up   :-)<br><br>  You can click <a href=\"#\" class=\"alert-link\">here</a>" +
                 " to log-in with your new user <br>" +
                 "</h4>"
