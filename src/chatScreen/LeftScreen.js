@@ -1,9 +1,13 @@
 import './ChatScreen.css';
 import './LeftScreen.css';
+import './leftChatItem/LeftChatItem.css';
 import users from '../db/UsersDataBase';
-import { useState } from "react";
-import LeftChatItem from './LeftChatItem'; import conversations from '../db/Conversations';
-;
+import LeftChatItem from './leftChatItem/LeftChatItem';
+import conversations from '../db/Conversations';
+import { useState, useRef } from "react";
+import ChooseNewChat from './ChooseNewChat';
+import AddNewChat from './AddNewChat';
+
 
 function LeftScreen(props,{ logInUsername }) {
     var numOfConversations = 0;
