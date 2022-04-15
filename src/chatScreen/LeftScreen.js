@@ -42,6 +42,7 @@ function LeftScreen({ logInUsername }) {
     var time = "";
     var image;
     var type = "";
+    
 
     /*
      * For each conversation the current log-in user is having, we create the information
