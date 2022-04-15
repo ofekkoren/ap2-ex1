@@ -1,12 +1,16 @@
 .topLine-left {
     flex: 0.5;
     justify-content: space-between;
+    
 }
 
 .add-conversation {
     position:absolute;
     right: 65%;
+    margin: 7px;
     padding: 7px;
+    border: 0;
+    background-color: lightgray;
     /* float: right; */
     /* flex: 1; */
 }
@@ -19,3 +23,31 @@
 .top-left-username {
     flex: 1;
 }
+
+.top-left-profile-image {
+    /* height: 250%; */
+    margin-left: 2%;
+    position: relative;
+    border-radius: 50%;
+    width: 70px;
+}
+
+.profile-image {
+    margin: 2%;
+    position: relative;
+    border-radius: 50%;
+    width: 70px;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    height: 81vh;
+    padding: 0;
+  }
+  
+.center-col {
+    flex: 1;
+    background: #aaa;
+    overflow-y: scroll;
+  }

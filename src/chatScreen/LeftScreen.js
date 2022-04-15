@@ -9,67 +9,100 @@ import ChooseNewChat from './ChooseNewChat';
 import AddNewChat from './AddNewChat';
 
 
-function LeftScreen(props,{ logInUsername }) {
-    var numOfConversations = 0;
-    var jsonObj = {
-        '0' : {'title': 'pakainfo.com', 'description': 'pakainfo.com'},
-        '1' : {'title': 'infinityknow.com', 'description': 'infinityknow.com'}
-      };
-      var countKey = Object.keys(jsonObj).length;
-      /*console.log(countKey);
+function LeftScreen({ logInUsername }) {
+// function LeftScreen(props,{ logInUsername }) {
 
+    //put list of chats for debug.
+    let [currentListOfChats, setcurrentListOfChats] = useState(users[0].chats);
+    // console.log(users[0].chats)
+    // let newChatDBRef = useRef("");
 
-    console.log(logInUsername)*/
+    var logInUserImage;
+
+    /*
+     * The function returns the conversations of the current log-in user, according
+     * to the username (his id). 
+    */
     function getUsersChats(logInUsername) {
         for (var i = 0; i < Object.keys(users).length; i++) {
             if (users[i].username.localeCompare(logInUsername) === 0) {
-                numOfConversations = Object.keys(users[i].chats).length;
-                return users[i]
+                // numOfConversations = Object.keys(users[i].chats).length;
+                return users[i];
             }
         }
     }
 
-    var chats = getUsersChats(props.logInUsername).chats;
+
+    // Chats holds all the conversations of the current log-in user.
+    var chats = getUsersChats(logInUsername).chats;
+    // Keeping the current log-in user's profile image.
+    logInUserImage = getUsersChats(logInUsername).image;
+
 
     var relevantInfo = [];
     var usernameInChat = "";
     var lastMessage = "";
     var time = "";
     var image;
+    var type = "";
+    
 
-    for(var i = 0; i < Object.keys(chats).length; i++) {
-        if(chats[i].users[0].username.localeCompare(logInUsername)==0){
+    /*
+     * For each conversation the current log-in user is having, we create the information
+     * needed to be presented on the left side bar, including the contact's name, his profile picture,
+     * the last message has been sent in the conversation and the time it was delivered.
+    */
+    for (var i = 0; i < Object.keys(chats).length; i++) {
+        // If the username in the conversation information is our log-in username, the other username is the
+        // contact's username.
+        if (chats[i].users[0].username.localeCompare(logInUsername) == 0) {
             usernameInChat = chats[i].users[1].username;
         } else {
             usernameInChat = chats[i].users[0].username;
         }
-        lastMessage = chats[i].messages[chats[i].messages.length-1].content;
-        time = chats[i].messages[chats[i].messages.length-1].createdAt;
+        lastMessage = chats[i].messages[chats[i].messages.length - 1].content;
+        type = chats[i].messages[chats[i].messages.length - 1].type;
+        time = chats[i].messages[chats[i].messages.length - 1].createdAt;
         image = getUsersChats(usernameInChat).image;
-        relevantInfo.push({usernameInChat: {usernameInChat}, lastMessage: {lastMessage}, time: {time}, image: {}});
+        relevantInfo.push({ usernameInChat: usernameInChat, type: type, lastMessage: lastMessage, time: time, image: image });
     }
 
-    // console.log(relevantInfo);
-    var conversationsList;
-    conversationsList = relevantInfo.map((conversation,key)=> {
-        return <LeftChatItem {...conversation} key={key}/>
-        // return <LeftChatItem usernameInChat={conversation.usernameInChat} lastMessage={conversation.lastMessage} time={conversation.time} key={key}/>
 
+    var conversationsList;
+    conversationsList = currentListOfChats.map((conversation, index) => {
+        return <LeftChatItem {...relevantInfo[index]} key={index} />
     });
 
-    //console.log(conversationsList);
 
-    // const conversations = [{chatUsername: "", lastMessage: "", time: ""},{chatUsername: "", lastMessage: "", time: ""}];
     return (
         ///
         <div className="col-4 leftScreen">
-        {/*<div className="col-4 leftScreen">*/}
-            <div className="topLine topLine-left">
-                <span className="bi bi-person-plus-fill add-conversation ms-3"></span>
-                {/* <img src={require('../images/userImages/boy-image.png')} className="rounded float-start top-profile-image top-left-profile-image"></img> */}
-                <h5 className='top-left-username'>{logInUsername}</h5>
+            <div className="topLine">
+                <button className="bi bi-person-plus-fill add-conversation ms-3" data-bs-toggle="modal" data-bs-target="#add-new-contact"></button>
+                <img src={logInUserImage} className="float-start top-left-profile-image"></img>
+                {/* <img src={logInUserImage} className="top-profile-image"></img> */}
+//         {/*<div className="col-4 leftScreen">*/}
+//             <div className="topLine topLine-left">
+//                 <span className="bi bi-person-plus-fill add-conversation ms-3"></span>
+//                 {/* <img src={require('../images/userImages/boy-image.png')} className="rounded float-start top-profile-image top-left-profile-image"></img> */}
+
+  <h5 className='top-left-username'>{logInUsername}</h5>
             </div>
-            {conversationsList}
+
+            {/* <div className="topLine">
+                <img src={process.env.PUBLIC_URL + props.chatWith.image}
+                     className=" top-profile-image"></img>
+                <h5>{props.chatWith.nickname}</h5>
+            </div> */}
+
+
+            <div className="container">
+                <div className="center-col" id="present-left-chat-items">
+                    {conversationsList}
+                </div>
+            </div>
+
+            <ChooseNewChat logInUsername={logInUsername} conversationsList={conversationsList} currentListOfChats={currentListOfChats} setcurrentListOfChats={setcurrentListOfChats}/>
         </div>
 
     );

@@ -3,6 +3,7 @@ import './ChatScreen.css';
 import {useState, useRef} from "react";
 import LeftScreen from './LeftScreen';
 import RightScreen from "./RightScreen";
+
 import users from "../db/UsersDataBase";
 
 function ChatScreen(user) {
@@ -28,7 +29,8 @@ function ChatScreen(user) {
     return (
         <div className="container-chat-screen justify-content-center">
             <div className="inner-chat-cube">
-                <LeftScreen logInUsername="Moti Luhim" setChat={setCurrentConversation} refer={conversationDBRef}/>
+                <LeftScreen logInUsername="Ofek Koren"/>
+//                 <LeftScreen logInUsername="Moti Luhim" setChat={setCurrentConversation} refer={conversationDBRef}/>
                 <RightScreen chat={currentConversation} setChat={setCurrentConversation} user={user}/>
             </div>
         </div>
