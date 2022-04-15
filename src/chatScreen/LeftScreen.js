@@ -10,7 +10,7 @@ import AddNewChat from './AddNewChat';
 
 
 function LeftScreen({ logInUsername }) {
-// function LeftScreen(props,{ logInUsername }) {
+    // function LeftScreen(props,{ logInUsername }) {
 
     //put list of chats for debug.
     let [currentListOfChats, setcurrentListOfChats] = useState(users[0].chats);
@@ -45,7 +45,7 @@ function LeftScreen({ logInUsername }) {
     var time = "";
     var image;
     var type = "";
-    
+
 
     /*
      * For each conversation the current log-in user is having, we create the information
@@ -81,30 +81,25 @@ function LeftScreen({ logInUsername }) {
                 <button className="bi bi-person-plus-fill add-conversation ms-3" data-bs-toggle="modal" data-bs-target="#add-new-contact"></button>
                 <img src={logInUserImage} className="float-start top-left-profile-image"></img>
                 {/* <img src={logInUserImage} className="top-profile-image"></img> */}
-//         {/*<div className="col-4 leftScreen">*/}
-//             <div className="topLine topLine-left">
-//                 <span className="bi bi-person-plus-fill add-conversation ms-3"></span>
-//                 {/* <img src={require('../images/userImages/boy-image.png')} className="rounded float-start top-profile-image top-left-profile-image"></img> */}
 
-  <h5 className='top-left-username'>{logInUsername}</h5>
-            </div>
+                    <h5 className='top-left-username'>{logInUsername}</h5>
+                </div>
 
-            {/* <div className="topLine">
+                {/* <div className="topLine">
                 <img src={process.env.PUBLIC_URL + props.chatWith.image}
                      className=" top-profile-image"></img>
                 <h5>{props.chatWith.nickname}</h5>
             </div> */}
 
 
-            <div className="container">
-                <div className="center-col" id="present-left-chat-items">
-                    {conversationsList}
+                <div className="container">
+                    <div className="center-col" id="present-left-chat-items">
+                        {conversationsList}
+                    </div>
                 </div>
+
+                <ChooseNewChat logInUsername={logInUsername} conversationsList={conversationsList} currentListOfChats={currentListOfChats} setcurrentListOfChats={setcurrentListOfChats} />
             </div>
-
-            <ChooseNewChat logInUsername={logInUsername} conversationsList={conversationsList} currentListOfChats={currentListOfChats} setcurrentListOfChats={setcurrentListOfChats}/>
-        </div>
-
     );
 }
 

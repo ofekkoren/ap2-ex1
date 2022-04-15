@@ -60,12 +60,11 @@
     vertical-align: center;
 /*       padding-left: 20%;
  */
-}
 
 /* .chat-last-message {
     /* width: 0%; */
     /* padding-right:  45%; */
-    padding-left: 20%;
+    /* padding-left: 20%; */
 }
 
 .last-message-time {
@@ -76,5 +75,5 @@
 }
 
 .top-left-profile-image {
-    width: 50px; */
+    width: 50px; 
 }
