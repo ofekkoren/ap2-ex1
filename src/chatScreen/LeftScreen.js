@@ -6,14 +6,6 @@ import LeftChatItem from './LeftChatItem'; import conversations from '../db/Conv
 ;
 
 function LeftScreen(props,{ logInUsername }) {
-    //TODO delete
-    const helper = () => {
-        props.refer.current=users[2].chats[1];
-        props.setChat(users[2].chats[1]);
-
-    }
-    ///////
-
     var numOfConversations = 0;
     var jsonObj = {
         '0' : {'title': 'pakainfo.com', 'description': 'pakainfo.com'},
@@ -66,7 +58,7 @@ function LeftScreen(props,{ logInUsername }) {
     // const conversations = [{chatUsername: "", lastMessage: "", time: ""},{chatUsername: "", lastMessage: "", time: ""}];
     return (
         ///
-        <div className="col-4 leftScreen" onClick={helper}>
+        <div className="col-4 leftScreen">
         {/*<div className="col-4 leftScreen">*/}
             <div className="topLine topLine-left">
                 <span className="bi bi-person-plus-fill add-conversation ms-3"></span>
