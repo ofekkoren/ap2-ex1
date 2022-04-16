@@ -6,7 +6,7 @@ import LeftChatItem from './leftChatItem/LeftChatItem';
 import conversations from '../db/Conversations';
 import { useState, useRef } from "react";
 import ChooseNewChat from './ChooseNewChat';
-import AddNewChat from './AddNewChat';
+import {getFormattedDateString} from "./Utils";
 
 
 function LeftScreen(props) {
@@ -48,8 +48,9 @@ function LeftScreen(props) {
 
     var relevantInfo = [];
     var usernameInChat = "";
+    var nicknameInChat = ""
     var lastMessage = "";
-    var time = "";
+    var message = "";
     var image;
     var type = "";
 
@@ -64,14 +65,16 @@ function LeftScreen(props) {
         // contact's username.
         if (chats[i].users[0].username.localeCompare(props.user.username) == 0) {
             usernameInChat = chats[i].users[1].username;
+            nicknameInChat = chats[i].users[1].nickname;
         } else {
             usernameInChat = chats[i].users[0].username;
+            nicknameInChat = chats[i].users[0].nickname;
         }
         lastMessage = chats[i].messages[chats[i].messages.length - 1].content;
         type = chats[i].messages[chats[i].messages.length - 1].type;
-        time = chats[i].messages[chats[i].messages.length - 1].createdAt;
+        message = chats[i].messages[chats[i].messages.length - 1];
         image = getUsersChats(usernameInChat).image;
-        relevantInfo.push({ usernameInChat: usernameInChat, type: type, lastMessage: lastMessage, time: time, image: image });
+        relevantInfo.push({ nicknameInChat: nicknameInChat, type: type, lastMessage: lastMessage, time:getFormattedDateString(message), image: image });
     }
 
     // function showChat(chat) {

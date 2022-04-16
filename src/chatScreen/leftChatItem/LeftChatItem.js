@@ -42,7 +42,7 @@ function LeftChatItem(props) {
                     {/* <div className='left-chat-item'> */}
 
             <img src={props.conversation.image} className="chat-profile-image top-profile-image float-start"></img>
-            <span className="chat-member-name">{props.conversation.usernameInChat}</span>
+            <span className="chat-member-name">{props.conversation.nicknameInChat}</span>
             <span className='last-message-time'>{props.conversation.time}</span>
             <p className="chat-last-message">{lastMessagePresented}&nbsp;
             <i className={iconClassName}></i>
