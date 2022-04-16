@@ -10,10 +10,11 @@ import AddNewChat from './AddNewChat';
 
 
 function LeftScreen(props) {
-    // function LeftScreen(props,{ logInUsername }) {
+    // console.log(props)
 
+    // function LeftScreen(props,{ logInUsername }) {
     //put list of chats for debug.
-    let [currentListOfChats, setcurrentListOfChats] = useState(users[0].chats);
+    let [currentListOfChats, setcurrentListOfChats] = useState(props.user.chats);
     // console.log(users[0].chats)
     // let newChatDBRef = useRef("");
 
@@ -23,6 +24,7 @@ function LeftScreen(props) {
      * The function returns the conversations of the current log-in user, according
      * to the username (his id). 
     */
+   //TODO - take the function to chatScreen
     function getUsersChats(logInUsername) {
         for (var i = 0; i < Object.keys(users).length; i++) {
             if (users[i].username.localeCompare(logInUsername) === 0) {
@@ -34,9 +36,14 @@ function LeftScreen(props) {
 
 
     // Chats holds all the conversations of the current log-in user.
-    var chats = getUsersChats(props.logInUsername).chats;
+    //TODO
+    // var chats = getUsersChats(props.user.logInUsername).chats;
+    var chats = props.user.chats;
+
     // Keeping the current log-in user's profile image.
-    logInUserImage = getUsersChats(props.logInUsername).image;
+    //TODO
+    //logInUserImage = getUsersChats(props.user.logInUsername).image;
+    logInUserImage = props.user.image;
 
 
     var relevantInfo = [];
@@ -55,7 +62,7 @@ function LeftScreen(props) {
     for (var i = 0; i < Object.keys(chats).length; i++) {
         // If the username in the conversation information is our log-in username, the other username is the
         // contact's username.
-        if (chats[i].users[0].username.localeCompare(props.logInUsername) == 0) {
+        if (chats[i].users[0].username.localeCompare(props.user.username) == 0) {
             usernameInChat = chats[i].users[1].username;
         } else {
             usernameInChat = chats[i].users[0].username;
@@ -67,11 +74,11 @@ function LeftScreen(props) {
         relevantInfo.push({ usernameInChat: usernameInChat, type: type, lastMessage: lastMessage, time: time, image: image });
     }
 
-    function showChat(chat) {
-        console.log("hellooe")
-        // props.refer.current = chat;
-        // props.setChat(chat);
-    }
+    // function showChat(chat) {
+    //     console.log("hellooe")
+    //     // props.refer.current = chat;
+    //     // props.setChat(chat);
+    // }
 
     var conversationsList;
     conversationsList = currentListOfChats.map((conversation, index) => {
@@ -79,14 +86,13 @@ function LeftScreen(props) {
 
     });
 
-
     return (
         ///
         <div className="col-4 leftScreen">
             <div className="topLine">
                 <img src={logInUserImage} className="float-start top-left-profile-image"></img>
                 {/* <img src={logInUserImage} className="top-profile-image"></img> */}
-                <h5 className='top-left-username'>{props.logInUsername}</h5>
+                <h5 className='top-left-username'>{props.user.username}</h5>
                 <button className="bi bi-person-plus-fill add-conversation ms-3" data-bs-toggle="modal" data-bs-target="#add-new-contact"></button>
 
             </div>
@@ -104,7 +110,8 @@ function LeftScreen(props) {
                 </div>
             </div>
 
-            <ChooseNewChat logInUsername={props.logInUsername} conversationsList={conversationsList} currentListOfChats={currentListOfChats} setcurrentListOfChats={setcurrentListOfChats} />
+            <ChooseNewChat logInUsername={props.user.username} conversationsList={conversationsList} currentListOfChats={currentListOfChats} setcurrentListOfChats={setcurrentListOfChats} />
+        
         </div>
     );
 }

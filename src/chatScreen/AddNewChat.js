@@ -16,9 +16,9 @@ function AddNewChat(props) {
 
     for (var i = 0; i < Object.keys(props.conversationsList).length; i++) {
         // If the user already have a conversation with this contact, do nothing.
-        if (props.conversationsList[i].props.usernameInChat == props.newContact) {
+        if (props.conversationsList[i].props.conversation.usernameInChat === props.newContact) {
             var invalidUser = "this user is already talking with you!"
-            document.getElementById("validation").innerHTML = invalidUser;    
+            document.getElementById("validation").innerHTML = invalidUser;
             return;
         }
     }

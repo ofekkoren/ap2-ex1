@@ -24,13 +24,13 @@ function ChatScreen(user) {
         }
     }, [currentConversation])
 
-    user = users[0]; // TODO Used for debug,will be deleted in the future
-
+    user = users[3]; // TODO Used for debug,will be deleted in the future
+    console.log(user.username)
     return (
         <div className="container-chat-screen justify-content-center">
             <div className="inner-chat-cube">
                 {/* <LeftScreen logInUsername="Ofek Koren"/> */}
-                 <LeftScreen logInUsername={user.username} setChat={setCurrentConversation} refer={conversationDBRef} />
+                <LeftScreen user={user} setChat={setCurrentConversation} refer={conversationDBRef} />
                 <RightScreen chat={currentConversation} setChat={setCurrentConversation} user={user} />
             </div>
         </div>
