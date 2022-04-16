@@ -50,6 +50,9 @@ import { useState } from "react";
         // presentItems.append(addingNewChat);
     }
 
+    function deleteInput() {
+        document.getElementById("floatingTextarea").value = "";
+    }
     return (
         <div className="col-4 leftScreen">
             <div className="modal fade" id="add-new-contact" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -57,7 +60,7 @@ import { useState } from "react";
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLabel">Add new contact</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={deleteInput}></button>
                         </div>
                         <div className="modal-body">
                             <form>
@@ -70,7 +73,7 @@ import { useState } from "react";
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={deleteInput}>Close</button>
                             {/* <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={addNewContact}>Add</button> */}
                             <button type="button" className="btn btn-primary" onClick={addNewContact}>Add</button>
 
