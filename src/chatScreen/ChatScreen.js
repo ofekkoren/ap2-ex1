@@ -3,11 +3,10 @@ import './ChatScreen.css';
 import { useState, useRef } from "react";
 import LeftScreen from './LeftScreen';
 import RightScreen from "./RightScreen";
-
 import users from "../db/UsersDataBase";
+import isUserLoggedIn from '..';
 
 function ChatScreen(user) {
-
     let [currentConversation, setCurrentConversation] = useState("");
     let conversationDBRef = useRef(""); //Reference to the original location of the conversation in the DB.
 
@@ -25,16 +24,22 @@ function ChatScreen(user) {
     }, [currentConversation])
 
     user = users[0]; // TODO Used for debug,will be deleted in the future
-    console.log(user.username)
-    return (
-        <div className="container-chat-screen justify-content-center">
-            <div className="inner-chat-cube">
-                {/* <LeftScreen logInUsername="Ofek Koren"/> */}
-                <LeftScreen user={user} setChat={setCurrentConversation} refer={conversationDBRef} />
-                <RightScreen chat={currentConversation} setChat={setCurrentConversation} user={user} />
+    console.log(user.username);
+
+    if (isUserLoggedIn === 0) {
+        alert("bad!")
+    }
+    else {
+        return (
+            <div className="container-chat-screen justify-content-center">
+                <div className="inner-chat-cube">
+                    {/* <LeftScreen logInUsername="Ofek Koren"/> */}
+                    <LeftScreen user={user} setChat={setCurrentConversation} refer={conversationDBRef} />
+                    <RightScreen chat={currentConversation} setChat={setCurrentConversation} user={user} />
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
 export default ChatScreen;

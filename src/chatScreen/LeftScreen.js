@@ -74,7 +74,7 @@ function LeftScreen(props) {
         type = chats[i].messages[chats[i].messages.length - 1].type;
         message = chats[i].messages[chats[i].messages.length - 1];
         image = getUsersChats(usernameInChat).image;
-        relevantInfo.push({ nicknameInChat: nicknameInChat, type: type, lastMessage: lastMessage, time:getFormattedDateString(message), image: image });
+        relevantInfo.push({ nicknameInChat: nicknameInChat, usernameInChat:usernameInChat, type: type, lastMessage: lastMessage, time:getFormattedDateString(message), image: image });
     }
 
     // function showChat(chat) {
