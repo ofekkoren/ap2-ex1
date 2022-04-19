@@ -100,6 +100,12 @@
     word-break: break-all; /*starts new line if the text is too long*/
 }
 
+.video-message{
+    max-width: 100%;
+    height: auto;
+
+}
+
 .text-date {
     float: right;
     font-size: small;
@@ -109,3 +115,17 @@
     width: 40vh;
     padding: 2%;
 }
+
+.audio-message{
+}
+
+.record-modal{
+    justify-content: center;
+}
+
+.record-modal-dialog{
+    width: fit-content;
+}
+
+/* Styling modal */
+

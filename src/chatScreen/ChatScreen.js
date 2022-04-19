@@ -24,8 +24,7 @@ function ChatScreen(user) {
         }
     }, [currentConversation])
 
-    user = users[3]; // TODO Used for debug,will be deleted in the future
-    console.log(user.username)
+    user = users[1]; // TODO Used for debug,will be deleted in the future
     return (
         <div className="container-chat-screen justify-content-center">
             <div className="inner-chat-cube">
