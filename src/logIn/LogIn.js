@@ -4,12 +4,13 @@ import ChatScreen from '../chatScreen/ChatScreen';
 import '../signIn/SignIn.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import { BrowserRouter, Routes, Route, Link, useNavigate} from 'react-router-dom';
-import { Link, useNavigate } from "react-router-dom";
-import isUserLoggedIn from '..';
-import { setIsUserLoggedIn } from '..';
+import { Link, useNavigate, useParams } from "react-router-dom";
+
+export var isUserLoggedIn = 0;
+export var user="";
 
 function LogIn() {
+
   const navigate = useNavigate();
   // const navigate = useNavigate();
 
@@ -40,8 +41,20 @@ function LogIn() {
       return;
     }
     // console.log("username: " + username, " password: " + password);
-    setIsUserLoggedIn(1);
-    // isUserLoggedIn = 1;
+    // setIsUserLoggedIn(1);
+    isUserLoggedIn = 1;
+
+    function getUsersChats(logInUsername) {
+      for (var i = 0; i < Object.keys(users).length; i++) {
+          if (users[i].username.localeCompare(logInUsername) === 0) {
+              return users[i];
+          }
+      }
+  }
+
+  user = getUsersChats(username);
+  // console.log(getUsersChats(username))
+    // navigate("chatScreen", { state: { user: getUsersChats(username) } });
     navigate("chatScreen");
   }
 

@@ -3,23 +3,23 @@ import React from 'react';
 
 
 function LeftChatItem(props) {
-    // console.log(props.refer);
+    // console.log(props)
 
     var lastMessagePresented= "";
     var iconClassName = "";
 
     // If the type of the message is image, we present the string "image" and an image icon next to it as the last message.
-    if(props.conversation.type == "image") {
+    if(props.conversation.type === "image") {
         lastMessagePresented = "image";
         iconClassName = "bi bi-image";
     } 
     // If the type of the message is record, we present the string "voice recording" and a mic icon next to it as the last message.
-    else if (props.conversation.type == "record") {
+    else if (props.conversation.type === "audio") {
         lastMessagePresented = "voice recording";
         iconClassName = "bi bi-mic-fill";
     }
     // If the type of the message is video, we present the string "video" and a camera-video icon next to it as the last message.
-    else if (props.conversation.type == "video") {
+    else if (props.conversation.type === "video") {
         lastMessagePresented = "video";
         iconClassName = "bi bi-camera-video-fill"
     } 
@@ -30,13 +30,10 @@ function LeftChatItem(props) {
     }
 
     function showChat(chat) {
-        // console.log(props.refer)
         props.refer.current = chat;
         props.setChat(chat);
     }
 
-    //DOTO - ERASE
-    // console.log(conversation.lastMessage);
     return (
         <div className='left-chat-item' onClick={()=> showChat(props.chat)}>
                     {/* <div className='left-chat-item'> */}
