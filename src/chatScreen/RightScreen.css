@@ -100,16 +100,20 @@
     word-break: break-all; /*starts new line if the text is too long*/
 }
 
-.video-message{
-    max-width: 100%;
-    height: auto;
-
+.video-message-div {
+    width: 40vh;
 }
 
 .text-date {
     float: right;
     font-size: small;
 }
+
+video {
+    width: 100%;
+    height: auto;
+}
+
 
 .image-message{
     width: 40vh;

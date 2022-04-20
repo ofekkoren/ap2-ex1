@@ -29,7 +29,11 @@ function RightScreen(props) {
                     {props.chat.messages.map((message, index) => (
                         <Message key={index} user={props.user} message={message}></Message>
                     ))}
-                    <div className="chat-body-bottom" id="lastMessage"></div>
+                    <div className="chat-body-bottom" id="lastMessage" onLoad={() => {
+                        let bottom = document.getElementById("lastMessage");
+                        bottom.scrollIntoView({block: "end"});
+                    }}></div>
+
                 </div>
                 <ChatTextBox chat={props.chat} setChat={props.setChat}
                              sendingUser={props.user}></ChatTextBox>

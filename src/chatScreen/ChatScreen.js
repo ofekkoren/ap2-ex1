@@ -11,6 +11,11 @@ function ChatScreen(user) {
     let [currentConversation, setCurrentConversation] = useState("");
     let conversationDBRef = useRef(""); //Reference to the original location of the conversation in the DB.
 
+    window.onload = function() {
+            let bottom = document.getElementById("lastMessage");
+            bottom.scrollIntoView({ block: "end" });
+
+    }
     useEffect(() => {
         //Applying the function only if a chat was chosen by the user.
         if (currentConversation !== "") {
@@ -21,6 +26,10 @@ function ChatScreen(user) {
             //Scrolling down to the last message when sending a new message or selecting an other chat.
             let bottom = document.getElementById("lastMessage");
             bottom.scrollIntoView({ block: "end" });
+            /*setTimeout(() => {
+                let bottom = document.getElementById("lastMessage");
+                bottom.scrollIntoView({ block: "end" });
+            }, 1000);*/
         }
     }, [currentConversation])
 

@@ -25,10 +25,10 @@ function Message(props) {
             </div>
         }
         if (message.type === "video")
-            return <div>
-                <video src={message.content} className="video-message" controls="controls"></video>
+            return <div className="video-message-div "><div className="embed-responsive embed-responsive-16by9">
+                <video src={message.content} className="video-message" preload="auto"  controls="controls"></video>
 
-            </div>
+            </div></div>
     }
 
     return (
