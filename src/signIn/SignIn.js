@@ -1,13 +1,16 @@
 import '../logIn/LogIn.css';
 import users from '../db/UsersDataBase';
 import {convertToBase64Image} from "../chatScreen/Utils";
+import { Link } from "react-router-dom";
 
 function SignIn() {
+
     /**
      * Setting an invalid class and invalid feedback for element.
      * @param element the element that will have an invalid feedback.
      * @param message the message of the feedback.
      */
+    
     const setValid = (element, message) => {
         const inputParent = element.parentElement;
         element.classList.add('is-valid');
@@ -222,7 +225,8 @@ function SignIn() {
                 </div>
 
                 <div className="text">
-                    already registered? sign in <a href='#' className="text">here</a>
+                    already registered? sign in <Link to='/' className="text">here</Link>
+
                 </div>
             </form>
         </div>

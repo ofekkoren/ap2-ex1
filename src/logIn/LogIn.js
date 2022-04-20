@@ -4,10 +4,14 @@ import ChatScreen from '../chatScreen/ChatScreen';
 import '../signIn/SignIn.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Routes, Route, Link, useNavigate} from 'react-router-dom';
+import { Link, useNavigate, useParams } from "react-router-dom";
 
+export var isUserLoggedIn = 0;
+export var user="";
 
 function LogIn() {
+
+  const navigate = useNavigate();
   // const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -17,7 +21,6 @@ function LogIn() {
     let isValidUser = 0;
     users.forEach(user => {
       if (user.username.localeCompare(username) == 0 && user.password.localeCompare(password) == 0) {
-        alert(1);
         isValidUser = 1;
         // navigate("/ChatScreen");
       }
@@ -35,18 +38,34 @@ function LogIn() {
 
     if (alertTrigger && isValidUser == 0 && username != "" && password != "") {
       alert('Wrong username or password!', 'danger')
+      return;
     }
     // console.log("username: " + username, " password: " + password);
+    // setIsUserLoggedIn(1);
+    isUserLoggedIn = 1;
+
+    function getUsersChats(logInUsername) {
+      for (var i = 0; i < Object.keys(users).length; i++) {
+          if (users[i].username.localeCompare(logInUsername) === 0) {
+              return users[i];
+          }
+      }
+  }
+
+  user = getUsersChats(username);
+  // console.log(getUsersChats(username))
+    // navigate("chatScreen", { state: { user: getUsersChats(username) } });
+    navigate("chatScreen");
   }
 
 
 
   return (
     <div className="container">
-      <BrowserRouter>
+      {/* <BrowserRouter>
         <Routes>
           <Route path='/ChatScreen' element={<ChatScreen />}></Route>
-        </Routes>
+        </Routes> */}
         <form className="text-center log-in-form" onSubmit={handleSubmit}>
           <div className="form-group row justify-content-center center-user">
             <label htmlFor="usernameInput" className="col-sm-2 col-form-label col-form-label-lg">Username</label>
@@ -68,10 +87,10 @@ function LogIn() {
           </div>
 
           <div className="text">
-            Not registered? Please register <Link to='/LogValidation' className="text">here</Link>
+            Not registered? Please register <Link to='/signUp' className="text">here</Link>
           </div>
         </form>
-      </BrowserRouter>
+      {/* </BrowserRouter> */}
     </div>
   );
 }

@@ -3,14 +3,8 @@ import users from '../db/UsersDataBase';
 import AddNewChat from './AddNewChat';
 import { useState } from "react";
 
-// function ChooseNewChat({ logInUsername, conversationsList, currentListOfChats, setcurrentListOfChats, newChatDBRef}) {
-    function ChooseNewChat(props) {
+function ChooseNewChat(props) {
 
-    // function ChooseNewChat() {
-    // getUsername = (event)=>{
-    //     const userValue = event.target.value;
-    //     console.log(userValue);
-    // };
     function getNewContactUsername(event) {
         var userValue = event.target.value;
         // console.log(userValue);
@@ -23,22 +17,22 @@ import { useState } from "react";
         var newContact = document.getElementById("floatingTextarea").value;
         // console.log(props);
         // console.log("printing: " + newContact);
-        var newConversation = AddNewChat({logInUsername:props.logInUsername, conversationsList:props.conversationsList, newContact:newContact, relevantInfo:props.relevantInfo, currentListOfChats:props.currentListOfChats});
-        // newChatDBRef.current.push(newConversation);
-        if(!newConversation){
+        var newConversation = AddNewChat({ logInUsername: props.logInUsername, conversationsList: props.conversationsList, newContact: newContact, relevantInfo: props.relevantInfo, currentListOfChats: props.currentListOfChats });
+        if (!newConversation) {
             return
         }
         let chatsArr = [...props.currentListOfChats, newConversation];
 
         conversations.unshift(newConversation);
         for (var i = 0; i < Object.keys(users).length; i++) {
-            if(newConversation.users[0].username==users[i].username) {
+            if (newConversation.users[0].username == users[i].username) {
                 users[i].chats.unshift(conversations[0]);
             }
-            if(newConversation.users[1].username==users[i].username) {
+            if (newConversation.users[1].username == users[i].username) {
                 users[i].chats.unshift(conversations[0]);
             }
         }
+        // console.log(props.setcurrentListOfChats)
         props.setcurrentListOfChats(chatsArr);
 
         // console.log(users)
@@ -50,6 +44,9 @@ import { useState } from "react";
         // presentItems.append(addingNewChat);
     }
 
+    function deleteInput() {
+        document.getElementById("floatingTextarea").value = "";
+    }
     return (
         <div className="col-4 leftScreen">
             <div className="modal fade" id="add-new-contact" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -57,7 +54,7 @@ import { useState } from "react";
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLabel">Add new contact</h5>
-                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={deleteInput}></button>
                         </div>
                         <div className="modal-body">
                             <form>
@@ -70,7 +67,7 @@ import { useState } from "react";
                             </form>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={deleteInput}>Close</button>
                             {/* <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={addNewContact}>Add</button> */}
                             <button type="button" className="btn btn-primary" onClick={addNewContact}>Add</button>
 

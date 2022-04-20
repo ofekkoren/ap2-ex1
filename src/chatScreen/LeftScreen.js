@@ -6,29 +6,22 @@ import LeftChatItem from './leftChatItem/LeftChatItem';
 import conversations from '../db/Conversations';
 import { useState, useRef } from "react";
 import ChooseNewChat from './ChooseNewChat';
-import AddNewChat from './AddNewChat';
+import { getFormattedDateString } from "./Utils";
 
 
 function LeftScreen(props) {
-    // console.log(props)
-
-    // function LeftScreen(props,{ logInUsername }) {
-    //put list of chats for debug.
+    // console.log(props.user.chats)
     let [currentListOfChats, setcurrentListOfChats] = useState(props.user.chats);
-    // console.log(users[0].chats)
-    // let newChatDBRef = useRef("");
-
     var logInUserImage;
 
     /*
      * The function returns the conversations of the current log-in user, according
      * to the username (his id). 
     */
-   //TODO - take the function to chatScreen
+    //TODO - take the function to chatScreen
     function getUsersChats(logInUsername) {
         for (var i = 0; i < Object.keys(users).length; i++) {
             if (users[i].username.localeCompare(logInUsername) === 0) {
-                // numOfConversations = Object.keys(users[i].chats).length;
                 return users[i];
             }
         }
@@ -39,6 +32,7 @@ function LeftScreen(props) {
     //TODO
     // var chats = getUsersChats(props.user.logInUsername).chats;
     var chats = props.user.chats;
+    // console.log(props.user.chats)
 
     // Keeping the current log-in user's profile image.
     //TODO
@@ -48,11 +42,11 @@ function LeftScreen(props) {
 
     var relevantInfo = [];
     var usernameInChat = "";
+    var nicknameInChat = ""
     var lastMessage = "";
-    var time = "";
+    var message = "";
     var image;
     var type = "";
-
 
     /*
      * For each conversation the current log-in user is having, we create the information
@@ -64,30 +58,29 @@ function LeftScreen(props) {
         // contact's username.
         if (chats[i].users[0].username.localeCompare(props.user.username) == 0) {
             usernameInChat = chats[i].users[1].username;
+            nicknameInChat = chats[i].users[1].nickname;
+            image = chats[i].users[1].image;
         } else {
             usernameInChat = chats[i].users[0].username;
+            nicknameInChat = chats[i].users[0].nickname;
+            image = chats[i].users[0].image;
         }
         lastMessage = chats[i].messages[chats[i].messages.length - 1].content;
         type = chats[i].messages[chats[i].messages.length - 1].type;
-        time = chats[i].messages[chats[i].messages.length - 1].createdAt;
-        image = getUsersChats(usernameInChat).image;
-        relevantInfo.push({ usernameInChat: usernameInChat, type: type, lastMessage: lastMessage, time: time, image: image });
+        message = chats[i].messages[chats[i].messages.length - 1];
+        relevantInfo.push({ nicknameInChat: nicknameInChat, usernameInChat: usernameInChat, type: type, lastMessage: lastMessage, time: getFormattedDateString(message), image: image });
     }
 
-    // function showChat(chat) {
-    //     console.log("hellooe")
-    //     // props.refer.current = chat;
-    //     // props.setChat(chat);
+    var conversationsList;
+    // console.log(!Object.keys(chats).length === 0)
+    // if (Object.keys(chats).length !== 0) {
+        conversationsList = currentListOfChats.map((conversation, index) => {
+            // console.log(relevantInfo[index])
+            return <LeftChatItem conversation={relevantInfo[index]} key={index} chat={chats[index]} refer={props.refer} setChat={props.setChat} />
+        });
     // }
 
-    var conversationsList;
-    conversationsList = currentListOfChats.map((conversation, index) => {
-        return <LeftChatItem conversation={relevantInfo[index]} key={index} chat={chats[index]} refer={props.refer} setChat={props.setChat} />
-
-    });
-
     return (
-        ///
         <div className="col-4 leftScreen">
             <div className="topLine">
                 <img src={logInUserImage} className="float-start top-left-profile-image"></img>
@@ -111,7 +104,7 @@ function LeftScreen(props) {
             </div>
 
             <ChooseNewChat logInUsername={props.user.username} conversationsList={conversationsList} currentListOfChats={currentListOfChats} setcurrentListOfChats={setcurrentListOfChats} />
-        
+
         </div>
     );
 }

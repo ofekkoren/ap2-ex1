@@ -10,7 +10,7 @@ function AddNewChat(props) {
     var isRegisteredUser = false;
     
     // If the user entered his contact's identifier username, do nothing. 
-    if (props.logInUsername == props.newContact) {
+    if (props.logInUsername === props.newContact) {
         return;
     }
 
@@ -30,11 +30,10 @@ function AddNewChat(props) {
         }
     }
 
-
     var newConversation;
     for (var i = 0; i < Object.keys(users).length; i++) {
         // If the user already have a conversation with this contact, do nothing.
-        if (props.newContact == users[i].username) {
+        if (props.newContact === users[i].username) {
             isRegisteredUser = true;
             //add its username, nickname, image
             newConversation = {
@@ -44,6 +43,7 @@ function AddNewChat(props) {
             }
         }
     }
+
 
     //If the user is not registered, do nothing.
     if (!isRegisteredUser) {
