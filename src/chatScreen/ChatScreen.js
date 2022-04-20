@@ -4,9 +4,15 @@ import { useState, useRef } from "react";
 import LeftScreen from './LeftScreen';
 import RightScreen from "./RightScreen";
 import users from "../db/UsersDataBase";
-import isUserLoggedIn from '..';
+import { isUserLoggedIn } from '../logIn/LogIn';
+import { useLocation } from "react-router-dom";
+import { user } from '../logIn/LogIn';
 
-function ChatScreen(user) {
+function ChatScreen() {
+    // location.state.name
+    const location = useLocation();
+    // console.log(location.state.user);
+
     let [currentConversation, setCurrentConversation] = useState("");
     let conversationDBRef = useRef(""); //Reference to the original location of the conversation in the DB.
 
@@ -23,12 +29,12 @@ function ChatScreen(user) {
         }
     }, [currentConversation])
 
-    user = users[0]; // TODO Used for debug,will be deleted in the future
-    console.log(user.username);
+    // props.username = users[0]; // TODO Used for debug,will be deleted in the future
 
     if (isUserLoggedIn === 0) {
         alert("bad!")
     }
+
     else {
         return (
             <div className="container-chat-screen justify-content-center">
