@@ -14,6 +14,7 @@ function LeftChatItem(props) {
         iconClassName = "bi bi-image";
     } 
     // If the type of the message is record, we present the string "voice recording" and a mic icon next to it as the last message.
+
     else if (props.conversation.type === "audio") {
         lastMessagePresented = "voice recording";
         iconClassName = "bi bi-mic-fill";

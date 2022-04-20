@@ -5,7 +5,8 @@ import ChatHeader from "./ChatHeader";
 import Message from "./Message";
 
 /**
- * The body of the chat
+ * The body of the chat. It consists of: A header which contain the image and nickname of the user we chat with, A chat body
+ * which displays the messages sent in the current chosen chat , A text box to send new messages.
  * @param props include the information of the user currently logged-in and the current chosen conversation.
  */
 function RightScreen(props) {
@@ -28,7 +29,11 @@ function RightScreen(props) {
                     {props.chat.messages.map((message, index) => (
                         <Message key={index} user={props.user} message={message}></Message>
                     ))}
-                    <div className="chat-body-bottom" id="lastMessage"></div>
+                    <div className="chat-body-bottom" id="lastMessage" onLoad={() => {
+                        let bottom = document.getElementById("lastMessage");
+                        bottom.scrollIntoView({block: "end"});
+                    }}></div>
+
                 </div>
                 <ChatTextBox chat={props.chat} setChat={props.setChat}
                              sendingUser={props.user}></ChatTextBox>
