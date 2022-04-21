@@ -19,8 +19,12 @@ let conversations = [
             {username: 'Tomer Eligayev', nickname: 'Tomer-77', image: "/images/userImages/boy-image.png"}],
         messages:[{type:"text", content: "Have you ever seen a picture of my cat?", createdAt: '2020-10-10T12:48:00.000Z', sender: "Avi Cohen"},
             {type:"text", content: "no...", createdAt: '2020-10-10T12:48:00.000Z', sender: "Tomer Eligayev"},
-            {type:"image", content: "/mediaMessages/mediaImages/avisCatImage.jpg", createdAt: '2020-10-10T12:48:00.000Z', sender: "Avi Cohen"},
+            {type:"image", content: "/mediaMessages/avisCatImage.jpg", createdAt: '2020-10-10T12:48:00.000Z', sender: "Avi Cohen"},
+            {type:"text", content: "Have you ever heard my cat?", createdAt: '2020-10-10T12:48:00.000Z', sender: "Avi Cohen"},
+            {type:"text", content: "no.....", createdAt: '2020-10-10T12:48:00.000Z', sender: "Tomer Eligayev"},
+            {type:"audio", content: "/mediaMessages/avisCatSound.mp3", createdAt: '2020-10-10T12:48:00.000Z', sender: "Avi Cohen"},
             {type:"text", content: "Excuse me but who are you??", createdAt: '2020-10-10T12:48:00.000Z', sender: "Tomer Eligayev"}
+
         ]}
 
 ]

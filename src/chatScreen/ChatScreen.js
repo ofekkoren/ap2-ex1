@@ -16,19 +16,26 @@ function ChatScreen() {
     let [currentConversation, setCurrentConversation] = useState("");
     let conversationDBRef = useRef(""); //Reference to the original location of the conversation in the DB.
 
-    function updateListOfConversations(setConversations, currentListOfChats) {
-        // console.log(currentListOfChats)
-        var getInfo = {setConversations:setConversations, currentListOfChats:currentListOfChats}
-        // console.log(getInfo)
-        // currentListOfChats.pop();
-        // currentListOfChats.unshift(currentConversation);
-        // let chatsArr = [...currentListOfChats, currentConversation];
-        // setConversations(chatsArr);
-        return getInfo;
+//     function updateListOfConversations(setConversations, currentListOfChats) {
+//         // console.log(currentListOfChats)
+//         var getInfo = {setConversations:setConversations, currentListOfChats:currentListOfChats}
+//         // console.log(getInfo)
+//         // currentListOfChats.pop();
+//         // currentListOfChats.unshift(currentConversation);
+//         // let chatsArr = [...currentListOfChats, currentConversation];
+//         // setConversations(chatsArr);
+//         return getInfo;
+
+//     }
+
+
+ //     window.onload = function() {
+//             let bottom = document.getElementById("lastMessage");
+//             bottom.scrollIntoView({ block: "end" });
 
     }
 
-    useEffect(() => {
+useEffect(() => {
         //Applying the function only if a chat was chosen by the user.
         if (currentConversation !== "") {
             //If a new message was sent in the current chat we add this message to the corresponding array in our DB.
@@ -39,15 +46,21 @@ function ChatScreen() {
             let bottom = document.getElementById("lastMessage");
             bottom.scrollIntoView({ block: "end" });
             
-            if(updateListOfConversations().setConversations !== undefined && updateListOfConversations().currentListOfChats !== undefined) {
-                // console.log(updateListOfConversations());
-            }
+//             if(updateListOfConversations().setConversations !== undefined && updateListOfConversations().currentListOfChats !== undefined) {
+//                 // console.log(updateListOfConversations());
+//             }
             // let chatsArr = [...updateListOfConversations().currentListOfChats, currentConversation];
             // updateListOfConversations.setConversations(chatsArr);
 
+
+            /*setTimeout(() => {
+                let bottom = document.getElementById("lastMessage");
+                bottom.scrollIntoView({ block: "end" });
+            }, 1000);*/
         }
     }, [currentConversation])
 
+   
     // props.username = users[0]; // TODO Used for debug,will be deleted in the future
 
     if (isUserLoggedIn === 0) {
