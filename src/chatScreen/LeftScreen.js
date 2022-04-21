@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 import './ChatScreen.css';
 import './LeftScreen.css';
 import './leftChatItem/LeftChatItem.css';
@@ -10,7 +11,6 @@ import { getFormattedDateString } from "./Utils";
 
 
 function LeftScreen(props) {
-    // console.log(props.user.chats)
     let [currentListOfChats, setcurrentListOfChats] = useState(props.user.chats);
     var logInUserImage;
 
@@ -32,7 +32,6 @@ function LeftScreen(props) {
     //TODO
     // var chats = getUsersChats(props.user.logInUsername).chats;
     var chats = props.user.chats;
-    // console.log(props.user.chats)
 
     // Keeping the current log-in user's profile image.
     //TODO
@@ -71,14 +70,26 @@ function LeftScreen(props) {
         relevantInfo.push({ nicknameInChat: nicknameInChat, usernameInChat: usernameInChat, type: type, lastMessage: lastMessage, time: getFormattedDateString(message), image: image });
     }
 
+
     var conversationsList;
-    // console.log(!Object.keys(chats).length === 0)
     // if (Object.keys(chats).length !== 0) {
-        conversationsList = currentListOfChats.map((conversation, index) => {
-            // console.log(relevantInfo[index])
-            return <LeftChatItem conversation={relevantInfo[index]} key={index} chat={chats[index]} refer={props.refer} setChat={props.setChat} />
-        });
+    conversationsList = currentListOfChats.map((conversation, index) => {
+        return <LeftChatItem conversation={relevantInfo[index]} key={index} chat={chats[index]} refer={props.refer} setChat={props.setChat} />
+    });
     // }
+
+    function sendInfoToFather() {
+        props.updateListOfConversations(setcurrentListOfChats, currentListOfChats);
+    }
+
+    sendInfoToFather();
+
+    useEffect(() => {
+        //Applying the function only if a chat was chosen by the user.
+        if (props.currentConversation !== "") {
+
+        }
+    }, [props.currentConversation])
 
     return (
         <div className="col-4 leftScreen">
