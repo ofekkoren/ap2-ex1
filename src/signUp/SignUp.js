@@ -1,16 +1,16 @@
 import '../logIn/LogIn.css';
 import users from '../db/UsersDataBase';
 import {convertToBase64Image} from "../chatScreen/Utils";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
-function SignIn() {
+function SignUp() {
+    const navigate = useNavigate();
 
     /**
      * Setting an invalid class and invalid feedback for element.
      * @param element the element that will have an invalid feedback.
      * @param message the message of the feedback.
      */
-    
     const setValid = (element, message) => {
         const inputParent = element.parentElement;
         element.classList.add('is-valid');
@@ -153,28 +153,36 @@ function SignIn() {
                     users[users.length - 1].image = newPicture;
                 });
             }
-            //Indicating the user about the successful registration
-            let formContainer = document.getElementById("signContainer");
-            let signInComplete = document.createElement('div');
 
-            signInComplete.innerHTML = "<h4 class=\"text-center sign-in-form\" role=\"alert\">\n" +
+
+            //Indicating the user about the successful registration
+            navigate("SuccessfulSignUp");
+
+            /*let formContainer = document.getElementById("signContainer");
+            let signUpComplete = document.createElement('div');
+
+            signUpComplete.innerHTML = "<h4 class=\"text-center role=\"alert\">\n" +
                 "  You have successfully signed-up   :-)<br><br>  You can click <a href=\"#\" class=\"alert-link\">here</a>" +
                 " to log-in with your new user <br>" +
                 "</h4>"
 
-            formContainer.append(signInComplete);
-            document.getElementById("signInForm").remove();
+            formContainer.append(signUpComplete);
+            document.getElementById("signUpForm").remove();*/
         }
     }
-    <div className="col-sm-5" id="sd">
-        <input type="text" className="col form-control form-control-lg" id="username"
-               placeholder="Enter username" required></input>
-        <span className="validation-helper"></span>
-    </div>
+
+    //TODO CHECK AND DELETE
+
+    /*    <div className="col-sm-5" id="sd">
+            <input type="text" className="col form-control form-control-lg" id="username"
+                   placeholder="Enter username" required></input>
+            <span className="validation-helper"></span>
+        </div>*/
+
     return (
         //The sign-up form.
         <div className="container" id="signContainer">
-            <form className="text-center sign-in-form needs-validation" noValidate id="signInForm"
+            <form className="text-center sign-up-form needs-validation" noValidate id="signUpForm"
                   onSubmit={handleSubmit}>
                 <div className="form-group row justify-content-center center-user">
                     <label htmlFor="username"
@@ -225,7 +233,7 @@ function SignIn() {
                 </div>
 
                 <div className="text">
-                    already registered? sign in <Link to='/' className="text">here</Link>
+                    already registered? log in <Link to='/' className="text">here</Link>
 
                 </div>
             </form>
@@ -234,4 +242,4 @@ function SignIn() {
         ;
 }
 
-export default SignIn;
+export default SignUp;

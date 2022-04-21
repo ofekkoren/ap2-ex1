@@ -5,27 +5,13 @@
 
 .invalid-feedback {
     font-size: 16px;
-    /*    stroke: black;
-        stroke-width    : .5px;
-        stroke-linejoin : round;
-        text-shadow: #000 2px 2px 2px;*/
-    /*background: white;
-    border: 1px solid red;*/
-
 }
 
 .valid-feedback {
     font-size: 16px;
 
-    /*    stroke: black;
-        stroke-width    : .5px;
-        stroke-linejoin : round;
-        text-shadow: #000 2px 2px 2px;*/
-    /*background: white;
-    border: 1px solid red;*/
-
 }
-.sign-in-form {
+.sign-up-form {
     background-color: #61dafb;
     position: absolute;
     left: 25%;
@@ -35,9 +21,6 @@
     border-radius: 20px;
     border: 2px solid black;
     box-shadow: -1px 4px 20px -6px black; /*TODO CHECK*/
-    /*
-    white-space: pre-wrap;
-    */
 }
 
 .validation-helper{
