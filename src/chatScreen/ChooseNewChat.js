@@ -7,7 +7,6 @@ function ChooseNewChat(props) {
 
     function getNewContactUsername(event) {
         var userValue = event.target.value;
-        // console.log(userValue);
         return userValue;
     };
 
@@ -21,6 +20,7 @@ function ChooseNewChat(props) {
         if (!newConversation) {
             return
         }
+        // let chatsArr = props.currentListOfChats.unshift(newConversation);
         let chatsArr = [...props.currentListOfChats, newConversation];
 
         conversations.unshift(newConversation);
@@ -32,16 +32,7 @@ function ChooseNewChat(props) {
                 users[i].chats.unshift(conversations[0]);
             }
         }
-        // console.log(props.setcurrentListOfChats)
         props.setcurrentListOfChats(chatsArr);
-
-        // console.log(users)
-        // console.log(conversations)
-        // newConversation.users[0].chats.push(newChatDBRef.current[newChatDBRef.current.length-1])
-        // newConversation.users[1].chats.push(newChatDBRef.current[newChatDBRef.current.length-1])
-
-        // console.log(addingNewChat);
-        // presentItems.append(addingNewChat);
     }
 
     function deleteInput() {

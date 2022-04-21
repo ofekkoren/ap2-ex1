@@ -52,3 +52,7 @@
  .center-user {
   padding: 1rem!important;
 }
+
+#validUser {
+ color: red; 
+}

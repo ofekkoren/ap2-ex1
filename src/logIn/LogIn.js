@@ -12,7 +12,6 @@ export var user="";
 function LogIn() {
 
   const navigate = useNavigate();
-  // const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +21,6 @@ function LogIn() {
     users.forEach(user => {
       if (user.username.localeCompare(username) == 0 && user.password.localeCompare(password) == 0) {
         isValidUser = 1;
-        // navigate("/ChatScreen");
       }
     })
 
@@ -37,11 +35,19 @@ function LogIn() {
     // }
 
     if (alertTrigger && isValidUser == 0 && username != "" && password != "") {
-      alert('Wrong username or password!', 'danger')
+      var invalidUser = "Wrong username or password!"
+      document.getElementById("validUser").innerHTML = invalidUser;
+
+      // alert('Wrong username or password!', 'danger')
       return;
     }
-    // console.log("username: " + username, " password: " + password);
-    // setIsUserLoggedIn(1);
+
+    if (username == "" || password == "") {
+      var invalidUser = "All fields must be filled!"
+      document.getElementById("validUser").innerHTML = invalidUser;
+      return;
+    }
+
     isUserLoggedIn = 1;
 
     function getUsersChats(logInUsername) {
@@ -53,7 +59,6 @@ function LogIn() {
   }
 
   user = getUsersChats(username);
-  // console.log(getUsersChats(username))
     // navigate("chatScreen", { state: { user: getUsersChats(username) } });
     navigate("chatScreen");
   }
@@ -79,6 +84,7 @@ function LogIn() {
             <div className="col-sm-5">
               <input type="password" name='password' className="form-control form-control-lg" id="inputPassword" placeholder="Enter your password"></input>
             </div>
+            <div id="validUser"></div>
           </div>
 
           <div id="liveAlertPlaceholder"></div>
