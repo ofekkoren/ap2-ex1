@@ -1,13 +1,13 @@
 import './LogIn.css';
 import users from '../db/UsersDataBase';
 import ChatScreen from '../chatScreen/ChatScreen';
-import '../signIn/SignIn.css'
+import '../signUp/SignUp.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 
 export var isUserLoggedIn = 0;
-export var user="";
+export var user = "";
 
 function LogIn() {
 
@@ -24,15 +24,15 @@ function LogIn() {
       }
     })
 
-    var alertPlaceholder = document.getElementById('liveAlertPlaceholder');
-    var alertTrigger = document.getElementById('liveAlertBtn');
-    var wrapper = document.createElement('div');
-    // var clicked = false;
+        var alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+        var alertTrigger = document.getElementById('liveAlertBtn');
+        var wrapper = document.createElement('div');
+        // var clicked = false;
 
-    // function alert(message, type) {
-    // wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
-    // alertPlaceholder.append(wrapper)
-    // }
+        // function alert(message, type) {
+        // wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
+        // alertPlaceholder.append(wrapper)
+        // }
 
     if (alertTrigger && isValidUser == 0 && username != "" && password != "") {
       var invalidUser = "Wrong username or password!"
@@ -63,11 +63,16 @@ function LogIn() {
     navigate("chatScreen");
   }
 
+        user = getUsersChats(username);
+        // console.log(getUsersChats(username))
+        // navigate("chatScreen", { state: { user: getUsersChats(username) } });
+        navigate("chatScreen");
+    }
 
 
-  return (
-    <div className="container">
-      {/* <BrowserRouter>
+    return (
+        <div className="container">
+            {/* <BrowserRouter>
         <Routes>
           <Route path='/ChatScreen' element={<ChatScreen />}></Route>
         </Routes> */}
@@ -87,18 +92,18 @@ function LogIn() {
             <div id="validUser"></div>
           </div>
 
-          <div id="liveAlertPlaceholder"></div>
-          <div className="mb-3">
-            <button type="submit" className="btn btn-primary btn-lg" id="liveAlertBtn">Log-in</button>
-          </div>
+                <div id="liveAlertPlaceholder"></div>
+                <div className="mb-3">
+                    <button type="submit" className="btn btn-primary btn-lg" id="liveAlertBtn">Log-in</button>
+                </div>
 
-          <div className="text">
-            Not registered? Please register <Link to='/signUp' className="text">here</Link>
-          </div>
-        </form>
-      {/* </BrowserRouter> */}
-    </div>
-  );
+                <div className="text">
+                    Not registered? Please register <Link to='/signUp' className="text">here</Link>
+                </div>
+            </form>
+            {/* </BrowserRouter> */}
+        </div>
+    );
 }
 
 export default LogIn;
