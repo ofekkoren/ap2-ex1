@@ -16,6 +16,18 @@ function ChatScreen() {
     let [currentConversation, setCurrentConversation] = useState("");
     let conversationDBRef = useRef(""); //Reference to the original location of the conversation in the DB.
 
+    function updateListOfConversations(setConversations, currentListOfChats) {
+        // console.log(currentListOfChats)
+        var getInfo = {setConversations:setConversations, currentListOfChats:currentListOfChats}
+        // console.log(getInfo)
+        // currentListOfChats.pop();
+        // currentListOfChats.unshift(currentConversation);
+        // let chatsArr = [...currentListOfChats, currentConversation];
+        // setConversations(chatsArr);
+        return getInfo;
+
+    }
+
     useEffect(() => {
         //Applying the function only if a chat was chosen by the user.
         if (currentConversation !== "") {
@@ -26,6 +38,13 @@ function ChatScreen() {
             //Scrolling down to the last message when sending a new message or selecting an other chat.
             let bottom = document.getElementById("lastMessage");
             bottom.scrollIntoView({ block: "end" });
+            
+            if(updateListOfConversations().setConversations !== undefined && updateListOfConversations().currentListOfChats !== undefined) {
+                // console.log(updateListOfConversations());
+            }
+            // let chatsArr = [...updateListOfConversations().currentListOfChats, currentConversation];
+            // updateListOfConversations.setConversations(chatsArr);
+
         }
     }, [currentConversation])
 
@@ -40,7 +59,7 @@ function ChatScreen() {
             <div className="container-chat-screen justify-content-center">
                 <div className="inner-chat-cube">
                     {/* <LeftScreen logInUsername="Ofek Koren"/> */}
-                    <LeftScreen user={user} setChat={setCurrentConversation} refer={conversationDBRef} />
+                    <LeftScreen currentConversation={currentConversation} user={user} setChat={setCurrentConversation} refer={conversationDBRef} updateListOfConversations={updateListOfConversations} />
                     <RightScreen chat={currentConversation} setChat={setCurrentConversation} user={user} />
                 </div>
             </div>
