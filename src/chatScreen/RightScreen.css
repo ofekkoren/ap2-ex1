@@ -92,6 +92,7 @@
     border-width: 1.5px;
     border-radius: 7px;
     margin: 0.5% 2%;
+    padding: 1%;
     position: relative;
 }
 
@@ -100,27 +101,20 @@
     word-break: break-all; /*starts new line if the text is too long*/
 }
 
-.video-message-div {
-    width: 40vh;
-}
-
 .text-date {
     float: right;
     font-size: small;
 }
 
 video {
-    width: 100%;
-    height: auto;
-}
+    width: auto;
+    max-height: 45vh;
+    border-radius: 2%;
 
+}
 
 .image-message{
-    width: 40vh;
-    padding: 2%;
-}
-
-.audio-message{
+    max-width: 40vh;
 }
 
 .record-modal{
@@ -130,6 +124,3 @@ video {
 .record-modal-dialog{
     width: fit-content;
 }
-
-/* Styling modal */
-

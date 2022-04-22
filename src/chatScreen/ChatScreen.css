@@ -38,7 +38,7 @@
 
 .inner-chat-cube {
     display: flex;
-    background-color: aquamarine;
+    background-color: transparent;
     margin-top: -30px;
     height: 90vh;
     width: 85vw;

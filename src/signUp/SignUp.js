@@ -3,6 +3,9 @@ import users from '../db/UsersDataBase';
 import {convertToBase64Image} from "../chatScreen/Utils";
 import {Link, useNavigate} from "react-router-dom";
 
+/**
+ * A sign-up form for the chat app.
+ */
 function SignUp() {
     const navigate = useNavigate();
 
@@ -92,6 +95,7 @@ function SignUp() {
         } else
             setValid(nickName, "Nice Nickname!")
 
+
         //Checking the image uploaded by the user. It must be a jpg/png/jpeg file.
         if (picture.value != "" && !checkImage(picture)) {
             setInvalid(picture, 'Input type must be: png, jpg or jpeg. You can also choose too not uploat an image');
@@ -143,7 +147,8 @@ function SignUp() {
                     username: newUserName,
                     nickname: newNickName,
                     password: newPassword,
-                    image: newPicture
+                    image: newPicture,
+                    chats:[]
                 })
             //If the user chose to upload an image we will change it's image from the deafult user image.
             if (document.getElementById('picture').value != "") {
@@ -153,31 +158,10 @@ function SignUp() {
                     users[users.length - 1].image = newPicture;
                 });
             }
-
-
             //Indicating the user about the successful registration
             navigate("SuccessfulSignUp");
-
-            /*let formContainer = document.getElementById("signContainer");
-            let signUpComplete = document.createElement('div');
-
-            signUpComplete.innerHTML = "<h4 class=\"text-center role=\"alert\">\n" +
-                "  You have successfully signed-up   :-)<br><br>  You can click <a href=\"#\" class=\"alert-link\">here</a>" +
-                " to log-in with your new user <br>" +
-                "</h4>"
-
-            formContainer.append(signUpComplete);
-            document.getElementById("signUpForm").remove();*/
         }
     }
-
-    //TODO CHECK AND DELETE
-
-    /*    <div className="col-sm-5" id="sd">
-            <input type="text" className="col form-control form-control-lg" id="username"
-                   placeholder="Enter username" required></input>
-            <span className="validation-helper"></span>
-        </div>*/
 
     return (
         //The sign-up form.
