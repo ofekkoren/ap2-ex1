@@ -18,15 +18,17 @@ export function convertToBase64Image(file, onLoadCallback) {
  * @return a formatted "day.month.year, hour:minutes" date string.
  */
 export function getFormattedDateString(message) {
-    let messageDate = new Date(message.createdAt);
-    let day = messageDate.getDate();
-    let month = messageDate.getMonth() + 1;
-    let year = messageDate.getFullYear();
-    let hour = messageDate.getHours();
-    if (hour < 10)
-        hour = "0" + hour;
-    let minutes = messageDate.getMinutes();
-    if (minutes < 10)
-        minutes = "0" + minutes;
-    return day + '.' + month + '.' + year + ", " + hour + ':' + minutes;
+    if (message != "") {
+        let messageDate = new Date(message.createdAt);
+        let day = messageDate.getDate();
+        let month = messageDate.getMonth() + 1;
+        let year = messageDate.getFullYear();
+        let hour = messageDate.getHours();
+        if (hour < 10)
+            hour = "0" + hour;
+        let minutes = messageDate.getMinutes();
+        if (minutes < 10)
+            minutes = "0" + minutes;
+        return day + '.' + month + '.' + year + ", " + hour + ':' + minutes;
+    }
 }

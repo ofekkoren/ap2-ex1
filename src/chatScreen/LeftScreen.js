@@ -11,7 +11,7 @@ import { getFormattedDateString } from "./Utils";
 
 
 function LeftScreen(props) {
-    let [currentListOfChats, setcurrentListOfChats] = useState(props.user.chats);
+    // let [currentListOfChats, setcurrentListOfChats] = useState(props.user.chats);
     var logInUserImage;
 
     /*
@@ -64,33 +64,31 @@ function LeftScreen(props) {
             nicknameInChat = chats[i].users[0].nickname;
             image = chats[i].users[0].image;
         }
-        lastMessage = chats[i].messages[chats[i].messages.length - 1].content;
-        type = chats[i].messages[chats[i].messages.length - 1].type;
-        message = chats[i].messages[chats[i].messages.length - 1];
+        // console.log("alla")
+        // console.log(chats)
+        // console.log(chats[i].messages)
+        if ((chats[i].messages.length)) {
+            lastMessage = chats[i].messages[chats[i].messages.length - 1].content;
+            type = chats[i].messages[chats[i].messages.length - 1].type;
+            message = chats[i].messages[chats[i].messages.length - 1];
+        }
+        else {
+            lastMessage= ""
+            type=""
+            message=""
+        }
+        // console.log(lastMessage)
         relevantInfo.push({ nicknameInChat: nicknameInChat, usernameInChat: usernameInChat, type: type, lastMessage: lastMessage, time: getFormattedDateString(message), image: image });
     }
 
 
     var conversationsList;
     // if (Object.keys(chats).length !== 0) {
-    conversationsList = currentListOfChats.map((conversation, index) => {
+    conversationsList = props.currentListOfChats.map((conversation, index) => {
         return <LeftChatItem conversation={relevantInfo[index]} key={index} chat={chats[index]} refer={props.refer} setChat={props.setChat} />
     });
-    // }
 
-    function sendInfoToFather() {
-        props.updateListOfConversations(setcurrentListOfChats, currentListOfChats);
-    }
-
-    sendInfoToFather();
-
-    useEffect(() => {
-        //Applying the function only if a chat was chosen by the user.
-        if (props.currentConversation !== "") {
-
-        }
-    }, [props.currentConversation])
-
+    // console.log(conversationsList)
     return (
         <div className="col-4 leftScreen">
             <div className="topLine">
@@ -108,13 +106,13 @@ function LeftScreen(props) {
             </div> */}
 
 
-            <div className="container">
+            <div className="container" id="left-chats-container">
                 <div className="center-col" id="present-left-chat-items">
                     {conversationsList}
                 </div>
             </div>
 
-            <ChooseNewChat logInUsername={props.user.username} conversationsList={conversationsList} currentListOfChats={currentListOfChats} setcurrentListOfChats={setcurrentListOfChats} />
+            <ChooseNewChat logInUsername={props.user.username} conversationsList={conversationsList} currentListOfChats={props.currentListOfChats} setCurrentListOfChats={props.setCurrentListOfChats} user={props.user} />
 
         </div>
     );

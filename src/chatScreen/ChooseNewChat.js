@@ -17,12 +17,14 @@ function ChooseNewChat(props) {
         // console.log(props);
         // console.log("printing: " + newContact);
         var newConversation = AddNewChat({ logInUsername: props.logInUsername, conversationsList: props.conversationsList, newContact: newContact, relevantInfo: props.relevantInfo, currentListOfChats: props.currentListOfChats });
+
         if (!newConversation) {
             return
         }
         // let chatsArr = props.currentListOfChats.unshift(newConversation);
-        let chatsArr = [...props.currentListOfChats, newConversation];
-
+        let chatsArr = [...props.currentListOfChats];
+        chatsArr.unshift(newConversation)   
+        // let chatsArr = [...props.currentListOfChats, newConversation];        
         conversations.unshift(newConversation);
         for (var i = 0; i < Object.keys(users).length; i++) {
             if (newConversation.users[0].username == users[i].username) {
@@ -32,12 +34,20 @@ function ChooseNewChat(props) {
                 users[i].chats.unshift(conversations[0]);
             }
         }
-        props.setcurrentListOfChats(chatsArr);
+
+        // console.log(props.user.chats)
+        // props.user.chats=chatsArr;
+        // console.log("after")
+        // console.log(props.user.chats)
+        props.setCurrentListOfChats(chatsArr);
     }
 
     function deleteInput() {
         document.getElementById("floatingTextarea").value = "";
+        // var deleteMessage = ""
+        document.getElementById("validation").innerHTML = "";
     }
+
     return (
         <div className="col-4 leftScreen">
             <div className="modal fade" id="add-new-contact" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -48,14 +58,14 @@ function ChooseNewChat(props) {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={deleteInput}></button>
                         </div>
                         <div className="modal-body">
-                            <form>
+                            {/* <form> */}
                                 <label htmlFor="floatingTextarea" className="col-form-label">Please enter the contact's username:</label>
                                 <div className="form-floating">
-                                    <input type="text" className="form-control newContact" placeholder="Leave a comment here" id="floatingTextarea" onChange={getNewContactUsername} required></input>
+                                    <input type="text" className="form-control newContact" placeholder="Leave a comment here" id="floatingTextarea" onChange={getNewContactUsername}></input>
                                     <label htmlFor="floatingTextarea">Contact's identifier</label>
                                 </div>
                                 <div id="validation"></div>
-                            </form>
+                            {/* </form> */}
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={deleteInput}>Close</button>

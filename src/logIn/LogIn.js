@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 export var isUserLoggedIn = 0;
-export var user="";
+export var user = "";
 
 function LogIn() {
 
@@ -52,13 +52,13 @@ function LogIn() {
 
     function getUsersChats(logInUsername) {
       for (var i = 0; i < Object.keys(users).length; i++) {
-          if (users[i].username.localeCompare(logInUsername) === 0) {
-              return users[i];
-          }
+        if (users[i].username.localeCompare(logInUsername) === 0) {
+          return users[i];
+        }
       }
-  }
+    }
 
-  user = getUsersChats(username);
+    user = getUsersChats(username);
     // navigate("chatScreen", { state: { user: getUsersChats(username) } });
     navigate("chatScreen");
   }
@@ -71,31 +71,31 @@ function LogIn() {
         <Routes>
           <Route path='/ChatScreen' element={<ChatScreen />}></Route>
         </Routes> */}
-        <form className="text-center log-in-form" onSubmit={handleSubmit}>
-          <div className="form-group row justify-content-center center-user">
-            <label htmlFor="usernameInput" className="col-sm-2 col-form-label col-form-label-lg">Username</label>
-            <div className="col-sm-5">
-              <input type="text" name='userName' className="form-control form-control-lg" id="usernameInput"
-                placeholder="Enter your username"></input>
-            </div>
+      <form className="text-center log-in-form" onSubmit={handleSubmit}>
+        <div className="form-group row justify-content-center center-user">
+          <label htmlFor="usernameInput" className="col-sm-2 col-form-label col-form-label-lg">Username</label>
+          <div className="col-sm-5">
+            <input type="text" name='userName' className="form-control form-control-lg" id="usernameInput"
+              placeholder="Enter your username"></input>
           </div>
-          <div className="form-group row justify-content-center center-user">
-            <label htmlFor="inputPassword" className="col-sm-2 col-form-label col-form-label-lg">Password</label>
-            <div className="col-sm-5">
-              <input type="password" name='password' className="form-control form-control-lg" id="inputPassword" placeholder="Enter your password"></input>
-            </div>
-            <div id="validUser"></div>
+        </div>
+        <div className="form-group row justify-content-center center-user">
+          <label htmlFor="inputPassword" className="col-sm-2 col-form-label col-form-label-lg">Password</label>
+          <div className="col-sm-5">
+            <input type="password" name='password' className="form-control form-control-lg" id="inputPassword" placeholder="Enter your password"></input>
           </div>
+          <div id="validUser"></div>
+        </div>
 
-          <div id="liveAlertPlaceholder"></div>
-          <div className="mb-3">
-            <button type="submit" className="btn btn-primary btn-lg" id="liveAlertBtn">Log-in</button>
-          </div>
+        <div id="liveAlertPlaceholder"></div>
+        <div className="mb-3">
+          <button type="submit" className="btn btn-primary btn-lg" id="liveAlertBtn">Log-in</button>
+        </div>
 
-          <div className="text">
-            Not registered? Please register <Link to='/signUp' className="text">here</Link>
-          </div>
-        </form>
+        <div className="text">
+          Not registered? Please register <Link to='/signUp' className="text">here</Link>
+        </div>
+      </form>
       {/* </BrowserRouter> */}
     </div>
   );

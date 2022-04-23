@@ -39,7 +39,7 @@ function AddNewChat(props) {
             newConversation = {
                 users: [{ username: user.username, nickname: user.nickname, image: user.image },
                 { username: users[i].username, nickname: users[i].nickname, image: users[i].image }],
-                messages: [{ type: "", content: "", createdAt: "",sender: ""}]
+                messages: []
             }
         }
     }
@@ -56,18 +56,6 @@ function AddNewChat(props) {
         var invalidUser = "user added successfully!"
         document.getElementById("validation").innerHTML = invalidUser;
         return newConversation;
-
-
-
-        
-
-        // return {newChat, newConversation};
-
-        // let chatsArr = [...props.relevantInfo, newChat]
-
-        // var conversation = { usernameInChat: newContact, type: type, lastMessage: lastMessage, time: time, image: image }
-        // <LeftChatItem usernameInChat={newContact} type={type} lastMessage={lastMessage} time={time} image={image} />
-
     }
     // return (
     //     // {conversationsList}
