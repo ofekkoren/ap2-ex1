@@ -1,4 +1,4 @@
-import "./RightScreen.css"
+import "./AudioRecorderModal.css";
 
 /**
  * A pop-up modal component which lets the user record and send audio messages.

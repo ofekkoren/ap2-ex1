@@ -1,5 +1,5 @@
 import './ChatScreen.css';
-import "./RightScreen.css"
+import "./Message.css"
 import {getFormattedDateString} from "./Utils";
 import React from "react";
 
