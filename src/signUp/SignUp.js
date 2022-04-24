@@ -1,8 +1,13 @@
 import '../logIn/LogIn.css';
+import './SignUp.css'
 import users from '../db/UsersDataBase';
 import {convertToBase64Image} from "../chatScreen/Utils";
 import {Link, useNavigate} from "react-router-dom";
+import React from "react";
 
+/**
+ * A sign-up form for the chat app.
+ */
 function SignUp() {
     const navigate = useNavigate();
 
@@ -74,6 +79,9 @@ function SignUp() {
         const picture = document.getElementById('picture');
         const password = document.getElementById('Password');
         const passwordRepeat = document.getElementById('validatePassword');
+
+        console.log(users)
+
         let isValid = true;
         //Checking the username. We want it to be unique and not an empty string.
         if (userName.value.trim() === "") {
@@ -92,9 +100,10 @@ function SignUp() {
         } else
             setValid(nickName, "Nice Nickname!")
 
+
         //Checking the image uploaded by the user. It must be a jpg/png/jpeg file.
         if (picture.value != "" && !checkImage(picture)) {
-            setInvalid(picture, 'Input type must be: png, jpg or jpeg. You can also choose too not uploat an image');
+            setInvalid(picture, 'Input type must be: png, jpg or jpeg. You can also choose too not upload an image');
             picture.value = "";
             isValid = false;
         } else
@@ -116,7 +125,10 @@ function SignUp() {
         } else
             setValid(password, "Good password");
 
-        if (passwordRepeat.value !== password.value) {
+        if (passwordRepeat.value === "") {
+            setInvalid(passwordRepeat, "You are required to repeat your password");
+            isValid = false;
+        } else if (passwordRepeat.value !== password.value) {
             setInvalid(passwordRepeat, "Password doesn't match");
             isValid = false;
         } else
@@ -143,7 +155,8 @@ function SignUp() {
                     username: newUserName,
                     nickname: newNickName,
                     password: newPassword,
-                    image: newPicture
+                    image: newPicture,
+                    chats: []
                 })
             //If the user chose to upload an image we will change it's image from the deafult user image.
             if (document.getElementById('picture').value != "") {
@@ -153,78 +166,52 @@ function SignUp() {
                     users[users.length - 1].image = newPicture;
                 });
             }
-
-
             //Indicating the user about the successful registration
             navigate("SuccessfulSignUp");
-
-            /*let formContainer = document.getElementById("signContainer");
-            let signUpComplete = document.createElement('div');
-
-            signUpComplete.innerHTML = "<h4 class=\"text-center role=\"alert\">\n" +
-                "  You have successfully signed-up   :-)<br><br>  You can click <a href=\"#\" class=\"alert-link\">here</a>" +
-                " to log-in with your new user <br>" +
-                "</h4>"
-
-            formContainer.append(signUpComplete);
-            document.getElementById("signUpForm").remove();*/
         }
     }
-
-    //TODO CHECK AND DELETE
-
-    /*    <div className="col-sm-5" id="sd">
-            <input type="text" className="col form-control form-control-lg" id="username"
-                   placeholder="Enter username" required></input>
-            <span className="validation-helper"></span>
-        </div>*/
 
     return (
         //The sign-up form.
         <div className="container" id="signContainer">
+
             <form className="text-center sign-up-form needs-validation" noValidate id="signUpForm"
                   onSubmit={handleSubmit}>
-                <div className="form-group row justify-content-center center-user">
-                    <label htmlFor="username"
-                           className="col-sm-2 col-form-label col-form-label-lg">Username</label>
-                    <div className="col-sm-5">
-                        <input type="text" className="col form-control form-control-lg" id="username"
-                               placeholder="Enter username" required></input>
-                        <span className="validation-helper"></span>
-                    </div>
-                </div>
-                <div className="form-group row justify-content-center center-user">
-                    <label htmlFor="nickname"
-                           className="col-sm-2 col-form-label col-form-label-lg">Nickname</label>
-                    <div className="col-sm-5">
-                        <input type="text" className="form-control form-control-lg" id="nickname"
-                               placeholder="Enter nickname" required></input>
-                        <span className="validation-helper"></span>
-                    </div>
-                </div>
-                <div className="form-group row justify-content-center center-user">
-                    <label htmlFor="picture"
-                           className="col-sm-2 col-form-label col-form-label-lg">picture</label>
-                    <input className="form-control file-input-sm" type="file" accept=".jpg, .jpeg, .png"
-                           id="picture"></input>
+                <h3 className="log-in-header">We need more friends, please join us ...</h3>
+
+                <div className="form-floating mb-3 input-style ">
+                    <input type="text" name='userName' className="form-control input-box-size" id="username"
+                           placeholder="Username"></input>
+                    <label className="form-label" htmlFor="username">Username</label>
                     <span className="validation-helper"></span>
                 </div>
-                <div className="form-group row justify-content-center center-user ">
-                    <label htmlFor="Password" className="col-sm-2 col-form-label col-form-label-lg">Password</label>
-                    <div className="col-sm-5">
-                        <input type="password" className="form-control form-control-lg" id="Password"
-                               placeholder="Enter your password"></input>
-                        <span className="validation-helper"></span>
-                    </div>
+
+                <div className="form-floating mb-3 input-style ">
+                    <input type="text" name='userName' className="form-control " id="nickname"
+                           placeholder="nickname"></input>
+                    <label className="form-label" htmlFor="nickname">nickname</label>
+                    <span className="validation-helper"></span>
                 </div>
-                <div className="form-group row justify-content-center center-user">
-                    <label htmlFor="validatePassword" className="col-sm-4 col-form-label col-form-label-lg">Repeat
-                        password</label>
-                    <div className="col-sm-5">
-                        <input type="password" className="form-control form-control-lg" id="validatePassword"
-                               placeholder="Repeat your password"></input>
-                        <span className="validation-helper"></span>
-                    </div>
+
+                <div className="form-floating mb-3 input-style ">
+                    <input type="file" accept=".jpg, .jpeg, .png" name='userName' className="form-control " id="picture"
+                           placeholder="Profile picture"></input>
+                    <label className="form-label" htmlFor="picture" id="userImageInput">Profile picture</label>
+                    <span className="validation-helper"></span>
+                </div>
+
+                <div className="form-floating mb-3 input-style ">
+                    <input type="password" name='Password' className="form-control " id="Password"
+                           placeholder="Password"></input>
+                    <label className="form-label" htmlFor="Password">Password</label>
+                    <span className="validation-helper"></span>
+                </div>
+
+                <div className="form-floating mb-3 input-style ">
+                    <input type="password" name='validatePassword' className="form-control " id="validatePassword"
+                           placeholder="Repeat password"></input>
+                    <label className="form-label" htmlFor="validatePassword">Repeat password</label>
+                    <span className="validation-helper"></span>
                 </div>
 
 

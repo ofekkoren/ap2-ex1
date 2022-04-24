@@ -38,7 +38,6 @@ function LeftScreen(props) {
     //logInUserImage = getUsersChats(props.user.logInUsername).image;
     logInUserImage = props.user.image;
 
-
     var relevantInfo = [];
     var usernameInChat = "";
     var nicknameInChat = ""
@@ -46,6 +45,7 @@ function LeftScreen(props) {
     var message = "";
     var image;
     var type = "";
+
 
     /*
      * For each conversation the current log-in user is having, we create the information
@@ -77,12 +77,12 @@ function LeftScreen(props) {
         return <LeftChatItem conversation={relevantInfo[index]} key={index} chat={chats[index]} refer={props.refer} setChat={props.setChat} />
     });
     // }
-
+/*
     function sendInfoToFather() {
         props.updateListOfConversations(setcurrentListOfChats, currentListOfChats);
     }
 
-    sendInfoToFather();
+    sendInfoToFather();*/
 
     useEffect(() => {
         //Applying the function only if a chat was chosen by the user.

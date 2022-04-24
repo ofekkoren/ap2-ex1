@@ -4,8 +4,7 @@ import {convertToBase64Image} from "./Utils";
 import AudioRecorderModal from "./AudioRecorderModal";
 
 /**
- * The body of the chat which will contain the messages.
- * @param props includes the current chat of the user and a setter method.
+ * The bottom part of the right part of chat screen from which the user can send messages.
  */
 function ChatTextBox(props) {
 
@@ -28,29 +27,14 @@ function ChatTextBox(props) {
         }
     }
 
-    /*const handleSendImageAndAudio = () => {
-        let image = document.getElementById("imageInput").files[0];
-        //Convert the image to base64 string and creating the message info.
-        var imagePromise = convertToBase64Image(image);
-        imagePromise.then(function (result) {
-            let messageInfo = {
-                type: "image",
-                content: result,
-                createdAt: new Date().toISOString(),
-                sender: props.sendingUser.username
-            }
-            //Appending the message to the end of the messages array.
-            let messagesArr = [...props.chat.messages, messageInfo]
-            props.setChat({users: props.chat.users, messages: messagesArr})
-        })
-    }*/
-
     const handleSendImageAndAudio = (mediaType) => {
+        let input;
         let file = ""
         if (mediaType === "image")
-            file = document.getElementById("imageInput").files[0];
+            input = document.getElementById("imageInput");
         if (mediaType === "video")
-            file = document.getElementById("videoInput").files[0];
+            input = document.getElementById("videoInput");
+        file = input.files[0]
         //Convert the image to base64 string and creating the message info.
         var convertPromise = convertToBase64Image(file);
         convertPromise.then(function (result) {
@@ -64,12 +48,9 @@ function ChatTextBox(props) {
             let messagesArr = [...props.chat.messages, messageInfo]
             props.setChat({users: props.chat.users, messages: messagesArr})
         })
+        input.value = ""
     }
 
-    /*const handleSendAudio = () => {
-        let image = document.getElementById("videoInput").files[0];
-        //Convert the video to base64 string and creating the message info.
-    }*/
 
     return (
         <div className="bottom-input-line">
@@ -91,7 +72,7 @@ function ChatTextBox(props) {
                                 <i className="bi bi-image"></i>
                             </button>
                             <input style={{display: "none"}} type="file" accept="image/*"
-                                   id="imageInput" onChange={ () => handleSendImageAndAudio("image")}></input>
+                                   id="imageInput" onChange={() => handleSendImageAndAudio("image")}></input>
 
                         </li>
                         {/*send video button*/}
@@ -124,7 +105,7 @@ function ChatTextBox(props) {
             <textarea id="textBox" className="form-control-lg message-box" rows="1"
                       placeholder="Type a message"></textarea>
 
-            {/*send button*/}
+            {/*send text button*/}
             <button type="button" className="btn-lg btn-outline-secondary float-end bottom-btn"
                     onClick={handleSendTextClick}>
                 <i className="bi bi-send"></i>

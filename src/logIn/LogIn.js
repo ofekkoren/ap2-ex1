@@ -11,18 +11,18 @@ export var user = "";
 
 function LogIn() {
 
-  const navigate = useNavigate();
+    const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const username = e.target.userName.value;
-    const password = e.target.password.value;
-    let isValidUser = 0;
-    users.forEach(user => {
-      if (user.username.localeCompare(username) == 0 && user.password.localeCompare(password) == 0) {
-        isValidUser = 1;
-      }
-    })
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const username = e.target.userName.value;
+        const password = e.target.password.value;
+        let isValidUser = 0;
+        users.forEach(user => {
+            if (user.username.localeCompare(username) == 0 && user.password.localeCompare(password) == 0) {
+                isValidUser = 1;
+            }
+        })
 
         var alertPlaceholder = document.getElementById('liveAlertPlaceholder');
         var alertTrigger = document.getElementById('liveAlertBtn');
@@ -34,63 +34,79 @@ function LogIn() {
         // alertPlaceholder.append(wrapper)
         // }
 
-    if (alertTrigger && isValidUser == 0 && username != "" && password != "") {
-      var invalidUser = "Wrong username or password!"
-      document.getElementById("validUser").innerHTML = invalidUser;
+        if (alertTrigger && isValidUser == 0 && username != "" && password != "") {
+            var invalidUser = "Wrong username or password!"
+            console.log(invalidUser)
 
-      // alert('Wrong username or password!', 'danger')
-      return;
-    }
+            document.getElementById("validUser").innerHTML = invalidUser;
 
-    if (username == "" || password == "") {
-      var invalidUser = "All fields must be filled!"
-      document.getElementById("validUser").innerHTML = invalidUser;
-      return;
-    }
+            // alert('Wrong username or password!', 'danger')
+            return;
+        }
 
-    isUserLoggedIn = 1;
+        if (username == "" || password == "") {
+            var invalidUser = "All fields must be filled!"
+            document.getElementById("validUser").innerHTML = invalidUser;
+            return;
+        }
 
-    function getUsersChats(logInUsername) {
-      for (var i = 0; i < Object.keys(users).length; i++) {
-          if (users[i].username.localeCompare(logInUsername) === 0) {
-              return users[i];
-          }
-      }
-  }
+        isUserLoggedIn = 1;
 
-  user = getUsersChats(username);
-    // navigate("chatScreen", { state: { user: getUsersChats(username) } });
-    navigate("chatScreen");
-  }
+        function getUsersChats(logInUsername) {
+            for (var i = 0; i < Object.keys(users).length; i++) {
+                if (users[i].username.localeCompare(logInUsername) === 0) {
+                    return users[i];
+                }
+            }
+        }
 
         user = getUsersChats(username);
-        // console.log(getUsersChats(username))
         // navigate("chatScreen", { state: { user: getUsersChats(username) } });
         navigate("chatScreen");
     }
 
 
     return (
-        <div className="container">
+        <div className="container" >
+
             {/* <BrowserRouter>
         <Routes>
           <Route path='/ChatScreen' element={<ChatScreen />}></Route>
         </Routes> */}
-        <form className="text-center log-in-form" onSubmit={handleSubmit}>
-          <div className="form-group row justify-content-center center-user">
-            <label htmlFor="usernameInput" className="col-sm-2 col-form-label col-form-label-lg">Username</label>
-            <div className="col-sm-5">
-              <input type="text" name='userName' className="form-control form-control-lg" id="usernameInput"
-                placeholder="Enter your username"></input>
-            </div>
-          </div>
-          <div className="form-group row justify-content-center center-user">
-            <label htmlFor="inputPassword" className="col-sm-2 col-form-label col-form-label-lg">Password</label>
-            <div className="col-sm-5">
-              <input type="password" name='password' className="form-control form-control-lg" id="inputPassword" placeholder="Enter your password"></input>
-            </div>
-            <div id="validUser"></div>
-          </div>
+            <form className="text-center log-in-form" onSubmit={handleSubmit} >
+                <h3 className="log-in-header">Welcome friend, please log in :-)</h3>
+
+                <div className="form-floating mb-3 input-style ">
+                    <input type="text" name='userName' className="form-control " id="usernameInput"
+                           placeholder="Username"></input>
+                    <label className="form-label" htmlFor="floatingInput">Username</label>
+                </div>
+
+                {/*<div className="form-group row justify-content-center center-user">
+                    <label htmlFor="usernameInput"
+                           className="col-sm-2 col-form-label col-form-label-lg">Username</label>
+                    <div className="col-sm-5">
+                        <input type="text" name='userName' className="form-control form-control-lg" id="usernameInput"
+                               placeholder="Enter your username"></input>
+                    </div>
+                </div>*/}
+                {/*<div className="form-group row justify-content-center center-user">
+                    <label htmlFor="inputPassword"
+                           className="col-sm-2 col-form-label col-form-label-lg">Password</label>
+                    <div className="col-sm-5">
+                        <input type="password" name='password' className="form-control form-control-lg"
+                               id="inputPassword" placeholder="Enter your password"></input>
+                    </div>
+                    <div id="validUser"></div>
+                </div>*/}
+
+                <div className="form-floating input-style ">
+                    <input type="password" name='password' className="form-control " id="inputPassword"
+                           placeholder="Password"></input>
+                    <label className="form-label" id="passwordLabel" htmlFor="floatingPassword">Password</label>
+                    <div id="validUser"></div>
+                </div>
+
 
                 <div id="liveAlertPlaceholder"></div>
                 <div className="mb-3">

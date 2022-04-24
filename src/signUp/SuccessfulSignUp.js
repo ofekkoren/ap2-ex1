@@ -1,6 +1,10 @@
 import React from 'react';
 import {Link} from "react-router-dom";
 
+/**
+ * A page which indicates the user about his successful registration to the chat app and provides a
+ * link to the log-in page.
+ */
 function SuccessfulSignUp() {
     return (
         <div className="sign-up-form">

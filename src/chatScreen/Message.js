@@ -1,5 +1,5 @@
 import './ChatScreen.css';
-import "./RightScreen.css"
+import "./Message.css"
 import {getFormattedDateString} from "./Utils";
 import React from "react";
 
@@ -10,7 +10,6 @@ import React from "react";
 function Message(props) {
 
     const createMessageContent = (message) => {
-        // console.log(message)
         if (message.type === "text")
             return (<h6 className="text-message" key={props.index}>{props.message.content}</h6>)
         if (message.type === "image")
@@ -21,14 +20,14 @@ function Message(props) {
                     <source src={message.content} className="audio-message" key={props.index}></source>
                     Your browser does not support the audio tag.
                 </audio>
-
             </div>
         }
         if (message.type === "video")
-            return <div className="video-message-div "><div className="embed-responsive embed-responsive-16by9">
-                <video src={message.content} className="video-message" preload="auto"  controls="controls"></video>
-
-            </div></div>
+            return <div className="video-message-div ">
+                <div className="embed-responsive embed-responsive-16by9">
+                    <video src={message.content} className="video-message" preload="auto" controls="controls"></video>
+                </div>
+            </div>
     }
 
     return (

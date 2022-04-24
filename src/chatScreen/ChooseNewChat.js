@@ -48,17 +48,17 @@ function ChooseNewChat(props) {
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={deleteInput}></button>
                         </div>
                         <div className="modal-body">
-                            <form>
+                            {/*<form>*/}
                                 <label htmlFor="floatingTextarea" className="col-form-label">Please enter the contact's username:</label>
                                 <div className="form-floating">
                                     <input type="text" className="form-control newContact" placeholder="Leave a comment here" id="floatingTextarea" onChange={getNewContactUsername} required></input>
                                     <label htmlFor="floatingTextarea">Contact's identifier</label>
                                 </div>
                                 <div id="validation"></div>
-                            </form>
+                            {/*</form>*/}
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={deleteInput}>Close</button>
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={deleteInput}>Close </button>
                             {/* <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={addNewContact}>Add</button> */}
                             <button type="button" className="btn btn-primary" onClick={addNewContact}>Add</button>
 
