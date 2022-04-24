@@ -11,61 +11,57 @@ export var user = "";
 
 function LogIn() {
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const username = e.target.userName.value;
-        const password = e.target.password.value;
-        let isValidUser = 0;
-        users.forEach(user => {
-            if (user.username.localeCompare(username) == 0 && user.password.localeCompare(password) == 0) {
-                isValidUser = 1;
-            }
-        })
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const username = e.target.userName.value;
+    const password = e.target.password.value;
+    let isValidUser = 0;
+    users.forEach(user => {
+      if (user.username.localeCompare(username) == 0 && user.password.localeCompare(password) == 0) {
+        isValidUser = 1;
+      }
+    })
 
-        var alertPlaceholder = document.getElementById('liveAlertPlaceholder');
-        var alertTrigger = document.getElementById('liveAlertBtn');
-        var wrapper = document.createElement('div');
-        // var clicked = false;
+    var alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+    var alertTrigger = document.getElementById('liveAlertBtn');
+    var wrapper = document.createElement('div');
 
-        // function alert(message, type) {
-        // wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
-        // alertPlaceholder.append(wrapper)
-        // }
+    if (alertTrigger && isValidUser == 0 && username != "" && password != "") {
+      var invalidUser = "Wrong username or password!"
+      document.getElementById("validUser").innerHTML = invalidUser;
 
-        if (alertTrigger && isValidUser == 0 && username != "" && password != "") {
-            var invalidUser = "Wrong username or password!"
-            console.log(invalidUser)
-
-            document.getElementById("validUser").innerHTML = invalidUser;
-
-            // alert('Wrong username or password!', 'danger')
-            return;
-        }
-
-        if (username == "" || password == "") {
-            var invalidUser = "All fields must be filled!"
-            document.getElementById("validUser").innerHTML = invalidUser;
-            return;
-        }
-
-        isUserLoggedIn = 1;
-
-        function getUsersChats(logInUsername) {
-            for (var i = 0; i < Object.keys(users).length; i++) {
-                if (users[i].username.localeCompare(logInUsername) === 0) {
-                    return users[i];
-                }
-            }
-        }
-
-        user = getUsersChats(username);
-        // navigate("chatScreen", { state: { user: getUsersChats(username) } });
-        navigate("chatScreen");
+      // alert('Wrong username or password!', 'danger')
+      return;
     }
 
+    if (username == "" || password == "") {
+      var invalidUser = "All fields must be filled!"
+      document.getElementById("validUser").innerHTML = invalidUser;
+      return;
+    }
 
+    isUserLoggedIn = 1;
+
+    /**
+     * The function returns the conversations of the current log-in user, according
+     * to the username (his id).
+     * @param logInUsername is the username of the logged-in user.
+     */
+    function getUsersChats(logInUsername) {
+      for (var i = 0; i < Object.keys(users).length; i++) {
+        if (users[i].username.localeCompare(logInUsername) === 0) {
+          return users[i];
+        }
+      }
+    }
+
+    user = getUsersChats(username);
+    // navigate("chatScreen", { state: { user: getUsersChats(username) } });
+    navigate("chatScreen");
+  }
+  
     return (
         <div className="container" >
 
@@ -121,5 +117,4 @@ function LogIn() {
         </div>
     );
 }
-
 export default LogIn;

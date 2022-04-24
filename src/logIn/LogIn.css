@@ -38,8 +38,8 @@
 }
 
 .log-in-form {
-    background-color: #C0D9FF;
-    position: absolute;
+  background-color: #C0D9FF;
+  position: absolute;
     left: 25%;
     right: 25%;
     top: 17%;
@@ -47,17 +47,18 @@
     border-radius: 20px;
     border: 2px solid #21549f;
     box-shadow: -1px 4px 20px -6px black;
-    font-size: 2.5vh;
-
 }
 
-.center-user {
-    padding: 1rem !important;
-
+ .center-user {
+  padding: 1rem!important;
 }
 
 #validUser {
-    color: red;
+ color: red; 
+}
+
+#inputPassword {
+    font-size: 2.5vh;
 }
 
 .input-style {
@@ -72,6 +73,7 @@
 
 }
 
+//TODO
 #liveAlertBtn {
     margin: 10px;
     margin-top: 20px;

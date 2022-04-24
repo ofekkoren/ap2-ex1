@@ -14,6 +14,8 @@ function ChatScreen() {
 
     let [currentConversation, setCurrentConversation] = useState("");
     let conversationDBRef = useRef(""); //Reference to the original location of the conversation in the DB.
+    let [currentListOfChats, setCurrentListOfChats] = useState(user.chats);
+
 
     /**
      * Scrolls to the bottom element after a timeout of 600 ms.
@@ -32,7 +34,7 @@ function ChatScreen() {
             //If a new message was sent in the current chat we add this message to the corresponding array in our DB.
             if (currentConversation.messages.length !== conversationDBRef.current.messages.length) {
                 conversationDBRef.current.messages.push(currentConversation.messages[currentConversation.messages.length - 1])
-                //Scrolling down to the last message if the user sent a new message.
+                              //Scrolling down to the last message if the user sent a new message.
                 if (currentConversation.messages[currentConversation.messages.length - 1].sender === user.username) {
                     bottom.scrollIntoView({block: "end"});
                     //If the last message sent was a video, a timeout is set to let the video players to open up.
@@ -44,6 +46,40 @@ function ChatScreen() {
             else {
                 bottom.scrollIntoView({block: "end"});
                 scrollWithDelay(bottom)
+            }
+
+                // Finding the index of the current conversation in the array of conversations the user is having.
+
+                var index = -1;
+                for (var i = 0; i < Object.keys(currentListOfChats).length; i++) {
+                    if (currentListOfChats[i].users === currentConversation.users) {
+                        index = i;
+                    }
+                }
+
+                // If the current conversaion is in the array, add it to the front of the array.
+                if (index !== -1) {
+                    // var chatsArr = [...currentListOfChats];
+                    // var chatsArr = currentListOfChats.slice();
+                    let chatsArr = [...currentListOfChats];
+                    // console.log(chatsArr)
+                    chatsArr.splice(index, 1);
+                    chatsArr.unshift(currentConversation);
+                    // var chatsArr = [...currentListOfChats, currentConversation];
+                    // chatsArr.splice(index, 1);
+                    // chatsArr.unshift(currentConversation);
+
+                    // console.log(chatsArr);
+                    user.chats=chatsArr;
+                    // console.log(chatsArr);
+                    setCurrentListOfChats(chatsArr);
+                    // console.log(currentListOfChats);
+                }
+                // console.log(currentConversationIndex);
+                // console.log(currentListOfChats);
+                // currentListOfChats.unshift(props.currentConversation);
+                // let chatsArr = [...currentListOfChats, currentConversation];
+                // setConversations(chatsArr);
             }
         }
     }, [currentConversation])
@@ -66,9 +102,9 @@ function ChatScreen() {
             <div className="container-chat-screen justify-content-center">
                 <div className="inner-chat-cube">
                     {/* <LeftScreen logInUsername="Ofek Koren"/> */}
-                    <LeftScreen currentConversation={currentConversation} user={user} setChat={setCurrentConversation}
-                                refer={conversationDBRef}/>
-                    <RightScreen chat={currentConversation} setChat={setCurrentConversation} user={user}/>
+                    <LeftScreen currentConversation={currentConversation} user={user} setChat={setCurrentConversation} refer={conversationDBRef} currentListOfChats={currentListOfChats} setCurrentListOfChats={setCurrentListOfChats} />
+                    {/* <LeftScreen currentConversation={currentConversation} user={user} setChat={setCurrentConversation} refer={conversationDBRef} updateListOfConversations={updateListOfConversations} /> */}
+                    <RightScreen chat={currentConversation} setChat={setCurrentConversation} user={user} />
                 </div>
             </div>
         );

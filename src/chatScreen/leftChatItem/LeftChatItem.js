@@ -3,7 +3,6 @@ import React from 'react';
 
 
 function LeftChatItem(props) {
-    // console.log(props)
 
     var lastMessagePresented = "";
     var iconClassName = "";
@@ -30,6 +29,11 @@ function LeftChatItem(props) {
         lastMessagePresented = props.conversation.lastMessage;
     }
 
+
+    // if (lastMessagePresented.length > 20) {
+    //     lastMessagePresented = lastMessagePresented.substring(0, 20) + `...`
+    // }
+
     function showChat(chat) {
         if (chat !== props.refer.current) {
             props.refer.current = chat;
@@ -39,17 +43,19 @@ function LeftChatItem(props) {
 
     return (
         <div className='left-chat-item' onClick={() => showChat(props.chat)}>
-            {/* <div className='left-chat-item'> */}
-
-            <img src={props.conversation.image} className="chat-profile-image top-profile-image float-start"></img>
-            <span className="chat-member-name">{props.conversation.nicknameInChat}</span>
-            <span className='last-message-time'>{props.conversation.time}</span>
-            <p className="chat-last-message">{lastMessagePresented}&nbsp;
-                <i className={iconClassName}></i>
-            </p>
-
+            <div className='left-image'>
+                <img src={props.conversation.image} className="chat-profile-image float-start"></img>
+            </div>
+            <div className='mid-item'>
+                <div>
+                    <span className="chat-member-name">{props.conversation.nicknameInChat}</span>
+                    <div className='last-message-time'>{props.conversation.time}</div>
+                </div>
+                <div className="chat-last-message">{lastMessagePresented}&nbsp;
+                    <i className={iconClassName}></i>
+                </div>
+            </div>
         </div>
     );
 }
-
 export default LeftChatItem;
