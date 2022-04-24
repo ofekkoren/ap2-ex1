@@ -19,9 +19,8 @@ function LeftScreen(props) {
     var chats = props.user.chats;
     // Keeping the current log-in user's profile image.
     var logInUserImage = props.user.image;
-
-    // Keeps an array of all the relevant information needs to be presented in a left screen item.
     var relevantInfo = [];
+
 
     /*
      * For each conversation the current log-in user is having, we create the information
@@ -65,7 +64,6 @@ function LeftScreen(props) {
     conversationsList = props.currentListOfChats.map((conversation, index) => {
         return <LeftChatItem conversation={relevantInfo[index]} key={index} chat={chats[index]} refer={props.refer} setChat={props.setChat} />
     });
-
     return (
         <div className="col-4 leftScreen">
             <div className="topLine">

@@ -1,10 +1,10 @@
 import './LogIn.css';
 import users from '../db/UsersDataBase';
 import ChatScreen from '../chatScreen/ChatScreen';
-import '../signUp/SignIn.css'
+import '../signUp/SignUp.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Link, useNavigate, useParams } from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 
 export var isUserLoggedIn = 0;
 export var user = "";
@@ -61,41 +61,60 @@ function LogIn() {
     // navigate("chatScreen", { state: { user: getUsersChats(username) } });
     navigate("chatScreen");
   }
+  
+    return (
+        <div className="container" >
 
-  return (
-    <div className="container">
-      {/* <BrowserRouter>
+            {/* <BrowserRouter>
         <Routes>
           <Route path='/ChatScreen' element={<ChatScreen />}></Route>
         </Routes> */}
-      <form className="text-center log-in-form" onSubmit={handleSubmit}>
-        <div className="form-group row center-user">
-          <label htmlFor="usernameInput" className="justify-content-start offset-lg-1 col-sm-4 col-lg-4  col-form-label col-form-label-lg">Username</label>
-          <div className="col-sm-8 col-lg-6 justify-content-start">
-            <input type="text" name='userName' className="form-control form-control-lg" id="usernameInput"
-              placeholder="Enter your username"></input>
-          </div>
-        </div>
-        <div className="form-group row justify-content-center center-user">
-          <label htmlFor="inputPassword" className="col-sm-4 col-form-label col-form-label-lg">Password</label>
-          <div className="col-sm-7">
-            <input type="password" name='password' className="form-control form-control-lg" id="inputPassword" placeholder="Enter your password"></input>
-          </div>
-          <div id="validUser"></div>
-        </div>
+            <form className="text-center log-in-form" onSubmit={handleSubmit} >
+                <h3 className="log-in-header">Welcome friend, please log in :-)</h3>
 
-        <div id="liveAlertPlaceholder"></div>
-        <div className="mb-3">
-          <button type="submit" className="btn btn-primary btn-lg" id="liveAlertBtn">Log-in</button>
-        </div>
+                <div className="form-floating mb-3 input-style ">
+                    <input type="text" name='userName' className="form-control " id="usernameInput"
+                           placeholder="Username"></input>
+                    <label className="form-label" htmlFor="floatingInput">Username</label>
+                </div>
 
-        <div className="text">
-          Not registered? Please register <Link to='/signUp' className="text">here</Link>
+                {/*<div className="form-group row justify-content-center center-user">
+                    <label htmlFor="usernameInput"
+                           className="col-sm-2 col-form-label col-form-label-lg">Username</label>
+                    <div className="col-sm-5">
+                        <input type="text" name='userName' className="form-control form-control-lg" id="usernameInput"
+                               placeholder="Enter your username"></input>
+                    </div>
+                </div>*/}
+                {/*<div className="form-group row justify-content-center center-user">
+                    <label htmlFor="inputPassword"
+                           className="col-sm-2 col-form-label col-form-label-lg">Password</label>
+                    <div className="col-sm-5">
+                        <input type="password" name='password' className="form-control form-control-lg"
+                               id="inputPassword" placeholder="Enter your password"></input>
+                    </div>
+                    <div id="validUser"></div>
+                </div>*/}
+
+                <div className="form-floating input-style ">
+                    <input type="password" name='password' className="form-control " id="inputPassword"
+                           placeholder="Password"></input>
+                    <label className="form-label" id="passwordLabel" htmlFor="floatingPassword">Password</label>
+                    <div id="validUser"></div>
+                </div>
+
+
+                <div id="liveAlertPlaceholder"></div>
+                <div className="mb-3">
+                    <button type="submit" className="btn btn-primary btn-lg" id="liveAlertBtn">Log-in</button>
+                </div>
+
+                <div className="text">
+                    Not registered? Please register <Link to='/signUp' className="text">here</Link>
+                </div>
+            </form>
+            {/* </BrowserRouter> */}
         </div>
-      </form>
-      {/* </BrowserRouter> */}
-    </div>
-  );
+    );
 }
-
 export default LogIn;

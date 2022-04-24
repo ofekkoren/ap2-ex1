@@ -13,6 +13,7 @@ function LeftChatItem(props) {
         iconClassName = "bi bi-image";
     }
     // If the type of the message is record, we present the string "voice recording" and a mic icon next to it as the last message.
+
     else if (props.conversation.type === "audio") {
         lastMessagePresented = "voice recording";
         iconClassName = "bi bi-mic-fill";
@@ -34,13 +35,14 @@ function LeftChatItem(props) {
     // }
 
     function showChat(chat) {
-        props.refer.current = chat;
-        props.setChat(chat);
+        if (chat !== props.refer.current) {
+            props.refer.current = chat;
+            props.setChat(chat);
+        }
     }
 
     return (
         <div className='left-chat-item' onClick={() => showChat(props.chat)}>
-            {/* <div className='left-container'></div> */}
             <div className='left-image'>
                 <img src={props.conversation.image} className="chat-profile-image float-start"></img>
             </div>
@@ -54,25 +56,6 @@ function LeftChatItem(props) {
                 </div>
             </div>
         </div>
-
-        // <div className='left-chat-item' onClick={() => showChat(props.chat)}>
-
-        //     <div className='left-side-of-item col-xl col-lg col-md'>
-        //         <img src={props.conversation.image} className="chat-profile-image top-profile-image float-start"></img>
-        //     </div>
-        //     <div className='right-side-of-item col-xl col-lg col-md-7 col-sm'>
-        //         <span className='last-message-time'>{props.conversation.time}</span>
-        //     </div>
-        //     <div className='mid-side-of-item col-xl col-lg col-md col-sm'>
-        //         <div className="chat-member-name">{props.conversation.nicknameInChat}</div>
-        //         <div className="chat-last-message">{lastMessagePresented}&nbsp;
-        //             <i className={iconClassName}></i>
-        //         </div>
-        //     </div>
-
-        // </div>
-
-
     );
 }
 export default LeftChatItem;

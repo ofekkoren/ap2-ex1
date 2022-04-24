@@ -64,6 +64,7 @@ function ChooseNewChat(props) {
                             {/* <form> */}
                             <label htmlFor="floatingTextarea" className="col-form-label">Please enter the contact's username:</label>
                             <div className="form-floating">
+                              //TODO required
                                 <input type="text" className="form-control newContact" placeholder="Leave a comment here" id="floatingTextarea" onChange={getNewContactUsername}></input>
                                 <label htmlFor="floatingTextarea">Contact's identifier</label>
                             </div>
@@ -73,7 +74,6 @@ function ChooseNewChat(props) {
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={deleteInput}>Close</button>
                             <button type="button" className="btn btn-primary" onClick={addNewContact}>Add</button>
-
                         </div>
                     </div>
                 </div>

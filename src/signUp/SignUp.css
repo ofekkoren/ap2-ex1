@@ -5,41 +5,35 @@
 
 .invalid-feedback {
     font-size: 16px;
-    /*    stroke: black;
-        stroke-width    : .5px;
-        stroke-linejoin : round;
-        text-shadow: #000 2px 2px 2px;*/
-    /*background: white;
-    border: 1px solid red;*/
-
 }
 
 .valid-feedback {
     font-size: 16px;
-
-    /*    stroke: black;
-        stroke-width    : .5px;
-        stroke-linejoin : round;
-        text-shadow: #000 2px 2px 2px;*/
-    /*background: white;
-    border: 1px solid red;*/
-
 }
-.sign-in-form {
-    background-color: #61dafb;
+
+
+.sign-up-form {
+    background-color: #C0D9FF;
     position: absolute;
     left: 25%;
     right: 25%;
     top: 5%;
     padding: 1rem!important;
     border-radius: 20px;
-    border: 2px solid black;
-    box-shadow: -1px 4px 20px -6px black; /*TODO CHECK*/
-    /*
-    white-space: pre-wrap;
-    */
+    border: 2px solid #21549f;
+    box-shadow: -1px 4px 20px -6px black;
+    font-size: 2.5vh;
 }
 
 .validation-helper{
     position: relative;
+}
+
+#userImageInput{
+    padding-top: 2.5%;
+    /*padding-left: 3.5%;*/
+}
+
+.input-box-size{
+    height: 1%!important;
 }

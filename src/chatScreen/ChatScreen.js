@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import './ChatScreen.css';
-import { useState, useRef } from "react";
+import {useState, useRef} from "react";
 import LeftScreen from './LeftScreen';
 import RightScreen from "./RightScreen";
 import users from "../db/UsersDataBase";
-import { isUserLoggedIn } from '../logIn/LogIn';
-import { useLocation } from "react-router-dom";
-import { user } from '../logIn/LogIn';
+import {Link, useLocation} from "react-router-dom";
+import {user} from '../logIn/LogIn';
 
 function ChatScreen() {
     // location.state.name
@@ -17,28 +16,39 @@ function ChatScreen() {
     let conversationDBRef = useRef(""); //Reference to the original location of the conversation in the DB.
     let [currentListOfChats, setCurrentListOfChats] = useState(user.chats);
 
-    // function updateListOfConversations(setConversations, currentListOfChats) {
-    //     // console.log(currentListOfChats)
-    //     var getInfo = {setConversations:setConversations, currentListOfChats:currentListOfChats}
-    //     // console.log(getInfo)
-    //     // currentListOfChats.pop();
-    //     // currentListOfChats.unshift(currentConversation);
-    //     // let chatsArr = [...currentListOfChats, currentConversation];
-    //     // setConversations(chatsArr);
-    //     return getInfo;
 
-    // }
+    /**
+     * Scrolls to the bottom element after a timeout of 600 ms.
+     * @param bottom an element that the page will scroll to.
+     */
+    const scrollWithDelay = (bottom) => {
+        setTimeout(() => {
+            bottom.scrollIntoView({block: "end"});
+        }, 600);
+    }
 
     useEffect(() => {
         //Applying the function only if a chat was chosen by the user.
         if (currentConversation !== "") {
+            let bottom = document.getElementById("lastMessage");
             //If a new message was sent in the current chat we add this message to the corresponding array in our DB.
             if (currentConversation.messages.length !== conversationDBRef.current.messages.length) {
                 conversationDBRef.current.messages.push(currentConversation.messages[currentConversation.messages.length - 1])
+                              //Scrolling down to the last message if the user sent a new message.
+                if (currentConversation.messages[currentConversation.messages.length - 1].sender === user.username) {
+                    bottom.scrollIntoView({block: "end"});
+                    //If the last message sent was a video, a timeout is set to let the video players to open up.
+                    if (currentConversation.messages[currentConversation.messages.length - 1].type === "video")
+                        scrollWithDelay(bottom)
+                }
+            }
+            //If we changed the chat conversation a timeout is set to let the video players to open up.
+            else {
+                bottom.scrollIntoView({block: "end"});
+                scrollWithDelay(bottom)
+            }
 
                 // Finding the index of the current conversation in the array of conversations the user is having.
-
-                // var currentConversationIndex = currentListOfChats.indexOf(conversationDBRef);
 
                 var index = -1;
                 for (var i = 0; i < Object.keys(currentListOfChats).length; i++) {
@@ -71,28 +81,23 @@ function ChatScreen() {
                 // let chatsArr = [...currentListOfChats, currentConversation];
                 // setConversations(chatsArr);
             }
-            //Scrolling down to the last message when sending a new message or selecting an other chat.
-            let bottom = document.getElementById("lastMessage");
-            bottom.scrollIntoView({ block: "end" });
-
-            // if(updateListOfConversations().setConversations !== undefined && updateListOfConversations().currentListOfChats !== undefined) {
-            //     // console.log(updateListOfConversations());
-            // }
-            // let chatsArr = [...updateListOfConversations().currentListOfChats, currentConversation];
-            // updateListOfConversations.setConversations(chatsArr);
-
-
         }
     }, [currentConversation])
 
 
     // props.username = users[0]; // TODO Used for debug,will be deleted in the future
 
-    if (isUserLoggedIn === 0) {
-        alert("bad!")
-    }
+    //If there is no user connected the chat screen won't be displayed.
+    if (user === "") {
+        return (
+            <div className="sign-up-form">
+                <h4 className="text-center" role="alert">You have to log-in in order to see the chat screen.<br/><br/>
+                    You can click <Link to='/' className="text">here</Link> to log-in.<br/>
+                </h4>
+            </div>
+        )
 
-    else {
+    } else {
         return (
             <div className="container-chat-screen justify-content-center">
                 <div className="inner-chat-cube">
