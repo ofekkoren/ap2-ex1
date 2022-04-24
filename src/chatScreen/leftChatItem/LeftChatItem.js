@@ -29,9 +29,9 @@ function LeftChatItem(props) {
     }
 
 
-    if (lastMessagePresented.length > 20) {
-        lastMessagePresented = lastMessagePresented.substring(0, 20) + `...`
-    }
+    // if (lastMessagePresented.length > 20) {
+    //     lastMessagePresented = lastMessagePresented.substring(0, 20) + `...`
+    // }
 
     function showChat(chat) {
         props.refer.current = chat;

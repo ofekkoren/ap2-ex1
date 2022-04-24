@@ -27,12 +27,6 @@ function LogIn() {
     var alertPlaceholder = document.getElementById('liveAlertPlaceholder');
     var alertTrigger = document.getElementById('liveAlertBtn');
     var wrapper = document.createElement('div');
-    // var clicked = false;
-
-    // function alert(message, type) {
-    // wrapper.innerHTML = '<div class="alert alert-' + type + ' alert-dismissible" role="alert">' + message + '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button></div>'
-    // alertPlaceholder.append(wrapper)
-    // }
 
     if (alertTrigger && isValidUser == 0 && username != "" && password != "") {
       var invalidUser = "Wrong username or password!"
@@ -50,6 +44,11 @@ function LogIn() {
 
     isUserLoggedIn = 1;
 
+    /**
+     * The function returns the conversations of the current log-in user, according
+     * to the username (his id).
+     * @param logInUsername is the username of the logged-in user.
+     */
     function getUsersChats(logInUsername) {
       for (var i = 0; i < Object.keys(users).length; i++) {
         if (users[i].username.localeCompare(logInUsername) === 0) {
@@ -63,8 +62,6 @@ function LogIn() {
     navigate("chatScreen");
   }
 
-
-
   return (
     <div className="container">
       {/* <BrowserRouter>
@@ -72,16 +69,16 @@ function LogIn() {
           <Route path='/ChatScreen' element={<ChatScreen />}></Route>
         </Routes> */}
       <form className="text-center log-in-form" onSubmit={handleSubmit}>
-        <div className="form-group row justify-content-center center-user">
-          <label htmlFor="usernameInput" className="col-sm-2 col-form-label col-form-label-lg">Username</label>
-          <div className="col-sm-5">
+        <div className="form-group row center-user">
+          <label htmlFor="usernameInput" className="justify-content-start offset-lg-1 col-sm-4 col-lg-4  col-form-label col-form-label-lg">Username</label>
+          <div className="col-sm-8 col-lg-6 justify-content-start">
             <input type="text" name='userName' className="form-control form-control-lg" id="usernameInput"
               placeholder="Enter your username"></input>
           </div>
         </div>
         <div className="form-group row justify-content-center center-user">
-          <label htmlFor="inputPassword" className="col-sm-2 col-form-label col-form-label-lg">Password</label>
-          <div className="col-sm-5">
+          <label htmlFor="inputPassword" className="col-sm-4 col-form-label col-form-label-lg">Password</label>
+          <div className="col-sm-7">
             <input type="password" name='password' className="form-control form-control-lg" id="inputPassword" placeholder="Enter your password"></input>
           </div>
           <div id="validUser"></div>

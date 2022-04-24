@@ -38,7 +38,7 @@
 }
 
 .log-in-form {
-  background-color: rgb(148, 96, 161);
+  background-color: #C0D9FF;
   position: absolute;
     left: 25%;
     right: 25%;
@@ -47,12 +47,19 @@
     border-radius: 20px;
     border: 2px solid black;
     box-shadow: -1px 4px 20px -6px black;
-
+    width: 600px;
+    height: 300px;
 }
+
  .center-user {
   padding: 1rem!important;
 }
 
 #validUser {
  color: red; 
+}
+
+#inputPassword {
+  /* padding: 5%; */
+  /* float: right; */
 }

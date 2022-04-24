@@ -171,6 +171,8 @@ function SignIn() {
                placeholder="Enter username" required></input>
         <span className="validation-helper"></span>
     </div>
+
+    
     return (
         //The sign-up form.
         <div className="container" id="signContainer">
@@ -202,21 +204,28 @@ function SignIn() {
                     <span className="validation-helper"></span>
                 </div>
                 <div className="form-group row justify-content-center center-user ">
-                    <label htmlFor="Password" className="col-sm-2 col-form-label col-form-label-lg">Password</label>
+                    <label htmlFor="Password" className="col-sm-2 col-form-label col-form-label">Password</label>
                     <div className="col-sm-5">
-                        <input type="password" className="form-control form-control-lg" id="Password"
+                        <input type="password" className="form-control form-control" id="Password"
                                placeholder="Enter your password"></input>
                         <span className="validation-helper"></span>
                     </div>
                 </div>
                 <div className="form-group row justify-content-center center-user">
-                    <label htmlFor="validatePassword" className="col-sm-4 col-form-label col-form-label-lg">Repeat
+                    <label htmlFor="validatePassword" className="col-sm-4 col-form-label col-form-label">Repeat
                         password</label>
                     <div className="col-sm-5">
-                        <input type="password" className="form-control form-control-lg" id="validatePassword"
+                        <input type="password" className="form-control form-control" id="validatePassword"
                                placeholder="Repeat your password"></input>
                         <span className="validation-helper"></span>
                     </div>
+                </div>
+
+                <div className="form-floating mb-3 input-style">
+                    <input type="text" name='userName' className="form-control col-form-label" id="username"
+                           placeholder="Username"></input>
+                    <label className="form-label" htmlFor="username">Username</label>
+                    <span className="validation-helper"></span>
                 </div>
 
 
@@ -231,7 +240,6 @@ function SignIn() {
             </form>
         </div>
     )
-        ;
 }
 
 export default SignIn;

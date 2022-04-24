@@ -3,27 +3,35 @@ import users from '../db/UsersDataBase';
 import AddNewChat from './AddNewChat';
 import { useState } from "react";
 
+/**
+ * The function gives the option to add a new chat to the user's chats list.
+ * @param props include the username of the user currently logged-in,
+ * the list of conversations the user is having and a setter to this list.
+ */
 function ChooseNewChat(props) {
 
+    //DOTO -CHECK IF ABALE TO ERASE.
     function getNewContactUsername(event) {
         var userValue = event.target.value;
         return userValue;
     };
 
+    /**
+     * The function addNewContact creates a new conversation that the logged-in
+     * user wants to have and sets the list of conversations adding this new conversation.
+    */
     function addNewContact() {
-        var presentItems = document.getElementById("present-left-chat-items");
-
+        // Keeps the new contact's username that the user has typed.
         var newContact = document.getElementById("floatingTextarea").value;
-        // console.log(props);
-        // console.log("printing: " + newContact);
+        // 
         var newConversation = AddNewChat({ logInUsername: props.logInUsername, conversationsList: props.conversationsList, newContact: newContact, relevantInfo: props.relevantInfo, currentListOfChats: props.currentListOfChats });
 
         if (!newConversation) {
             return
         }
-        // let chatsArr = props.currentListOfChats.unshift(newConversation);
+
         let chatsArr = [...props.currentListOfChats];
-        chatsArr.unshift(newConversation)   
+        chatsArr.unshift(newConversation)
         // let chatsArr = [...props.currentListOfChats, newConversation];        
         conversations.unshift(newConversation);
         for (var i = 0; i < Object.keys(users).length; i++) {
@@ -35,16 +43,11 @@ function ChooseNewChat(props) {
             }
         }
 
-        // console.log(props.user.chats)
-        // props.user.chats=chatsArr;
-        // console.log("after")
-        // console.log(props.user.chats)
         props.setCurrentListOfChats(chatsArr);
     }
 
     function deleteInput() {
         document.getElementById("floatingTextarea").value = "";
-        // var deleteMessage = ""
         document.getElementById("validation").innerHTML = "";
     }
 
@@ -59,24 +62,22 @@ function ChooseNewChat(props) {
                         </div>
                         <div className="modal-body">
                             {/* <form> */}
-                                <label htmlFor="floatingTextarea" className="col-form-label">Please enter the contact's username:</label>
-                                <div className="form-floating">
-                                    <input type="text" className="form-control newContact" placeholder="Leave a comment here" id="floatingTextarea" onChange={getNewContactUsername}></input>
-                                    <label htmlFor="floatingTextarea">Contact's identifier</label>
-                                </div>
-                                <div id="validation"></div>
+                            <label htmlFor="floatingTextarea" className="col-form-label">Please enter the contact's username:</label>
+                            <div className="form-floating">
+                                <input type="text" className="form-control newContact" placeholder="Leave a comment here" id="floatingTextarea" onChange={getNewContactUsername}></input>
+                                <label htmlFor="floatingTextarea">Contact's identifier</label>
+                            </div>
+                            <div id="validation"></div>
                             {/* </form> */}
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={deleteInput}>Close</button>
-                            {/* <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={addNewContact}>Add</button> */}
                             <button type="button" className="btn btn-primary" onClick={addNewContact}>Add</button>
 
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
 
     );
