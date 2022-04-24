@@ -1,7 +1,7 @@
 import './LogIn.css';
 import users from '../db/UsersDataBase';
 import ChatScreen from '../chatScreen/ChatScreen';
-import '../signIn/SignIn.css'
+import '../signUp/SignIn.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Link, useNavigate, useParams } from "react-router-dom";
