@@ -1,3 +1,4 @@
+
 import conversations from '../db/Conversations';
 import users from '../db/UsersDataBase';
 import AddNewChat from './AddNewChat';
@@ -48,6 +49,7 @@ function ChooseNewChat(props) {
                 users[i].chats.unshift(conversations[0]);
             }
         }
+
         // Setting the array of conversations to present the new chat on the scree.
         props.setCurrentListOfChats(chatsArr);
     }
@@ -68,6 +70,7 @@ function ChooseNewChat(props) {
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLabel">Add new contact</h5>
+
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={deleteInput}></button>
                         </div>
                         <div className="modal-body">

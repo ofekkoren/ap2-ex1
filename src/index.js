@@ -6,7 +6,6 @@ import SignUp from "./signUp/SignUp";
 import ChatScreen from './chatScreen/ChatScreen';
 import {BrowserRouter, Routes, Route, Link, useNavigate} from 'react-router-dom';
 
-
 ReactDOM.render(
     <BrowserRouter>
         <Routes>
@@ -15,10 +14,6 @@ ReactDOM.render(
             <Route path="chatScreen" element={<ChatScreen/>}/>
         </Routes>
     </BrowserRouter>,
-
-    // <React.StrictMode>
-    //   <ChatScreen />
-    // </React.StrictMode>,
 
     document.getElementById('root')
 );

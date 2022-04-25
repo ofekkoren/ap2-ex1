@@ -1,4 +1,4 @@
-import './ChatScreen.css';
+import '../ChatScreen.css';
 import "./RightScreen.css"
 
 /**
@@ -9,7 +9,7 @@ function ChatHeader(props) {
     if (props.chatWith === "") {
         return (<div className="topLine"></div>)
     }
-else {
+    else {
         return (
             <div className="topLine">
                 <img src={props.chatWith.image}

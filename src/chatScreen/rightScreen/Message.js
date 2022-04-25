@@ -1,6 +1,6 @@
-import './ChatScreen.css';
+import '../ChatScreen.css';
 import "./Message.css"
-import {getFormattedDateString} from "./Utils";
+import {getFormattedDateString} from "../Utils";
 import React from "react";
 
 /**
@@ -13,7 +13,7 @@ function Message(props) {
         if (message.type === "text")
             return (<h6 className="text-message" key={props.index}>{props.message.content}</h6>)
         if (message.type === "image")
-            return (<div><img src={message.content} className="image-message" key={props.index}/></div>)
+            return (<div><img src={message.content} alt="img" className="image-message" key={props.index}/></div>)
         if (message.type === "audio") {
             return <div>
                 <audio controls className="audio-message">
@@ -37,7 +37,6 @@ function Message(props) {
             <span className="text-date" key={props.index}>{getFormattedDateString(props.message)}</span>
         </div>
     )
-
 }
 
 export default Message;

@@ -5,6 +5,7 @@ import LeftScreen from './LeftScreen';
 import LeftChatItem from './leftChatItem/LeftChatItem';
 import ChooseNewChat from './ChooseNewChat';
 
+
 /**
  * The function recieves new contact's username, and checks if it is a valid
  * username in the DB.
@@ -15,6 +16,7 @@ import ChooseNewChat from './ChooseNewChat';
 function AddNewChat(props) {
     var isRegisteredUser = false;
     // If the user entered his own contact's identifier username, do nothing. 
+    main
     if (props.logInUsername === props.newContact) {
         return;
     }
@@ -37,6 +39,7 @@ function AddNewChat(props) {
 
     var newConversation;
     for (var i = 0; i < Object.keys(users).length; i++) {
+
         if (props.newContact === users[i].username) {
             isRegisteredUser = true;
             // Add the new contact's username, nickname and profile image.
@@ -47,6 +50,7 @@ function AddNewChat(props) {
             }
         }
     }
+
 
 
     //If the user is not registered, announce it is invalid username.

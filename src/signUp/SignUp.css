@@ -18,22 +18,22 @@
     left: 25%;
     right: 25%;
     top: 5%;
-    padding: 1rem!important;
+    padding: 1rem !important;
     border-radius: 20px;
     border: 2px solid #21549f;
     box-shadow: -1px 4px 20px -6px black;
     font-size: 2.5vh;
 }
 
-.validation-helper{
+.validation-helper {
     position: relative;
 }
 
-#userImageInput{
+#userImageInput {
     padding-top: 2.5%;
     /*padding-left: 3.5%;*/
 }
 
-.input-box-size{
-    height: 1%!important;
+.input-box-size {
+    height: 1% !important;
 }

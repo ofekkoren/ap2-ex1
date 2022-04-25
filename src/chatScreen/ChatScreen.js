@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import './ChatScreen.css';
-import { useState, useRef } from "react";
-import LeftScreen from './LeftScreen';
-import RightScreen from "./RightScreen";
+import {useState, useRef} from "react";
+import LeftScreen from './leftScreen/LeftScreen';
+import RightScreen from "./rightScreen/RightScreen";
 import users from "../db/UsersDataBase";
 import { Link, useLocation } from "react-router-dom";
 import { user } from '../logIn/LogIn';
@@ -64,7 +64,7 @@ function ChatScreen() {
                 bottom.scrollIntoView({ block: "end" });
                 scrollWithDelay(bottom)
             }
-        }
+
     }, [currentConversation])
 
     //If there is no user connected the chat screen won't be displayed.

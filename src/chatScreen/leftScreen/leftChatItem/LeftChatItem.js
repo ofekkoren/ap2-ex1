@@ -1,6 +1,7 @@
 import './LeftChatItem.css';
 import React from 'react';
 
+
 /**
  * The function represent a left chat item including the relevant information
  * needs to be presented in the item, such as the last message in the conversation,
@@ -28,14 +29,15 @@ function LeftChatItem(props) {
         lastMessagePresented = "video";
         iconClassName = "bi bi-camera-video-fill"
     }
+
     // If the type of the message is text (the last type of message), we present the last message sent with no icon.
     else {
         lastMessagePresented = props.conversation.lastMessage;
     }
-
     // if (lastMessagePresented.length > 20) {
     //     lastMessagePresented = lastMessagePresented.substring(0, 20) + `...`
     // }
+
 
     /**
     * The function sets the current conversation as lons as it is a different

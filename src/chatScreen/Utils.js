@@ -5,7 +5,7 @@ import users from "../db/UsersDataBase";
  * @param file the file that was given as input by the user.
  * @return a promise to convert the image.
  */
-export function convertToBase64Image(file, onLoadCallback) {
+export function convertToBase64(file, onLoadCallback) {
     return new Promise(function (resolve, reject) {
         let reader = new FileReader();
         reader.onload = function () {

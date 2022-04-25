@@ -57,15 +57,17 @@
     background-color: silver;
 }
 
-.attach-btn{
+.attach-btn {
     border: thin solid black;
 
 }
+
 .attach-ul {
-    padding:0;
+    padding: 0;
     border: 0;
     background-color: transparent;
 }
+
 .message-box {
     border-radius: 10px;
     border: 2px solid #748DB3;
