@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import './ChatScreen.css';
 import {useState, useRef} from "react";
-import LeftScreen from './LeftScreen';
-import RightScreen from "./RightScreen";
+import LeftScreen from './leftScreen/LeftScreen';
+import RightScreen from "./rightScreen/RightScreen";
 import users from "../db/UsersDataBase";
 import {Link, useLocation} from "react-router-dom";
 import {user} from '../logIn/LogIn';
@@ -81,7 +81,7 @@ function ChatScreen() {
                 // let chatsArr = [...currentListOfChats, currentConversation];
                 // setConversations(chatsArr);
             }
-        }
+
     }, [currentConversation])
 
 

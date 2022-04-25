@@ -1,6 +1,6 @@
-import './ChatScreen.css';
+import '../ChatScreen.css';
 import "./RightScreen.css"
-import {convertToBase64Image} from "./Utils";
+import {convertToBase64} from "../Utils";
 import AudioRecorderModal from "./AudioRecorderModal";
 
 /**
@@ -36,7 +36,7 @@ function ChatTextBox(props) {
             input = document.getElementById("videoInput");
         file = input.files[0]
         //Convert the image to base64 string and creating the message info.
-        var convertPromise = convertToBase64Image(file);
+        var convertPromise = convertToBase64(file);
         convertPromise.then(function (result) {
             let messageInfo = {
                 type: mediaType,

@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
-import './ChatScreen.css';
+import React, {useEffect} from 'react';
+import '../ChatScreen.css';
 import './LeftScreen.css';
 import './leftChatItem/LeftChatItem.css';
-import users from '../db/UsersDataBase';
+import users from '../../db/UsersDataBase';
 import LeftChatItem from './leftChatItem/LeftChatItem';
-import conversations from '../db/Conversations';
-import { useState, useRef } from "react";
+import conversations from '../../db/Conversations';
+import {useState, useRef} from "react";
 import ChooseNewChat from './ChooseNewChat';
-import { getFormattedDateString } from "./Utils";
+import {getFormattedDateString} from "../Utils";
 
 /**
  * The left side of the chat which holds the list of chats the user is having.
@@ -53,7 +53,14 @@ function LeftScreen(props) {
             type = chats[i].messages[chats[i].messages.length - 1].type;
             message = chats[i].messages[chats[i].messages.length - 1];
         }
-        relevantInfo.push({ nicknameInChat: nicknameInChat, usernameInChat: usernameInChat, type: type, lastMessage: lastMessage, time: getFormattedDateString(message), image: image });
+        relevantInfo.push({
+            nicknameInChat: nicknameInChat,
+            usernameInChat: usernameInChat,
+            type: type,
+            lastMessage: lastMessage,
+            time: getFormattedDateString(message),
+            image: image
+        });
     }
 
     // Keeps the list of conversations that the logged-in user is having.
@@ -62,7 +69,8 @@ function LeftScreen(props) {
     // if (Object.keys(chats).length !== 0) {
     // Mapping components of LeftChatItem with the relevant information they are needed.
     conversationsList = props.currentListOfChats.map((conversation, index) => {
-        return <LeftChatItem conversation={relevantInfo[index]} key={index} chat={chats[index]} refer={props.refer} setChat={props.setChat} />
+        return <LeftChatItem conversation={relevantInfo[index]} key={index} chat={chats[index]} refer={props.refer}
+                             setChat={props.setChat}/>
     });
     return (
         <div className="col-4 leftScreen">
@@ -70,7 +78,8 @@ function LeftScreen(props) {
                 <img src={logInUserImage} className="float-start top-left-profile-image"></img>
                 {/* <img src={logInUserImage} className="top-profile-image"></img> */}
                 <h5 className='top-left-username'>{props.user.username}</h5>
-                <button className="bi bi-person-plus-fill add-conversation ms-3" data-bs-toggle="modal" data-bs-target="#add-new-contact"></button>
+                <button className="bi bi-person-plus-fill add-conversation ms-3" data-bs-toggle="modal"
+                        data-bs-target="#add-new-contact"></button>
 
             </div>
             <div className="container" id="left-chats-container">
@@ -79,8 +88,10 @@ function LeftScreen(props) {
                 </div>
             </div>
             <ChooseNewChat logInUsername={props.user.username} conversationsList={conversationsList}
-            currentListOfChats={props.currentListOfChats} setCurrentListOfChats={props.setCurrentListOfChats}/>
+                           currentListOfChats={props.currentListOfChats}
+                           setCurrentListOfChats={props.setCurrentListOfChats}/>
         </div>
     );
 }
+
 export default LeftScreen;

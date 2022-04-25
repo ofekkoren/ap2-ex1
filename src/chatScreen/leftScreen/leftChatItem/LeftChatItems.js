@@ -1,4 +1,4 @@
-import users from '../../db/UsersDataBase';
+import users from '../../../db/UsersDataBase';
 
 function LeftChatItems({ logInUsername }) {
 // var numOfConversations = 0;

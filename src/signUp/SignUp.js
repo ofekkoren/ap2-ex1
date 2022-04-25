@@ -1,9 +1,11 @@
 import '../logIn/LogIn.css';
 import './SignUp.css'
 import users from '../db/UsersDataBase';
-import {convertToBase64Image} from "../chatScreen/Utils";
+import {convertToBase64} from "../chatScreen/Utils";
 import {Link, useNavigate} from "react-router-dom";
 import React from "react";
+
+const PASSWORD_MIN_LENGTH = 6;
 
 /**
  * A sign-up form for the chat app.
@@ -20,14 +22,14 @@ function SignUp() {
         const inputParent = element.parentElement;
         element.classList.add('is-valid');
         element.classList.remove('is-invalid')
-        const validationMessgage = inputParent.getElementsByClassName("validation-helper")[0];
-        validationMessgage.classList.add('valid-feedback');
-        validationMessgage.classList.remove('invalid-feedback')
-        validationMessgage.innerText = message;
+        const validationMessage = inputParent.getElementsByClassName("validation-helper")[0];
+        validationMessage.classList.add('valid-feedback');
+        validationMessage.classList.remove('invalid-feedback')
+        validationMessage.innerText = message;
     };
 
     /**
-     * Setting an valid class and valid feedback for element.
+     * Setting a valid class and valid feedback for element.
      * @param element the element that will have a valid feedback.
      * @param message the message of the feedback.
      */
@@ -35,10 +37,10 @@ function SignUp() {
         const inputParent = element.parentElement;
         element.classList.add('is-invalid');
         element.classList.remove('is-valid')
-        const validationMessgage = inputParent.getElementsByClassName("validation-helper")[0];
-        validationMessgage.classList.add('invalid-feedback');
-        validationMessgage.classList.remove('valid-feedback')
-        validationMessgage.innerText = message;
+        const validationMessage = inputParent.getElementsByClassName("validation-helper")[0];
+        validationMessage.classList.add('invalid-feedback');
+        validationMessage.classList.remove('valid-feedback')
+        validationMessage.innerText = message;
 
     }
 
@@ -47,7 +49,7 @@ function SignUp() {
      * @param checkedUsername.
      * @returns false- if the username already exists. true- if the username is free to use.
      */
-    const checkUserername = (checkedUsername) => {
+    const checkUsername = (checkedUsername) => {
         for (let user of users) {
             if (user.username === checkedUsername)
                 return false
@@ -62,7 +64,7 @@ function SignUp() {
         let imagePath = checkedImage.value;
         let extensionIndex = imagePath.lastIndexOf(".") + 1;
         let extension = imagePath.substring(extensionIndex, imagePath.length).toLowerCase();
-        if (extension == "jpg" || extension == "jpeg" || extension == "png") {
+        if (extension === "jpg" || extension === "jpeg" || extension === "png") {
             return true
         } else
             return false;
@@ -73,21 +75,19 @@ function SignUp() {
      * @returns true if all the data is valid. Else, false is returned.
      */
     const checkValid = () => {
-        //getting the elements.
+        //getting the user input elements.
         const userName = document.getElementById('username');
         const nickName = document.getElementById('nickname');
         const picture = document.getElementById('picture');
         const password = document.getElementById('Password');
         const passwordRepeat = document.getElementById('validatePassword');
 
-        console.log(users)
-
         let isValid = true;
         //Checking the username. We want it to be unique and not an empty string.
         if (userName.value.trim() === "") {
             setInvalid(userName, 'Username is required');
             isValid = false;
-        } else if (!checkUserername(userName.value.trim())) {
+        } else if (!checkUsername(userName.value.trim())) {
             setInvalid(userName, 'Such username already exists');
             isValid = false;
         } else
@@ -102,7 +102,7 @@ function SignUp() {
 
 
         //Checking the image uploaded by the user. It must be a jpg/png/jpeg file.
-        if (picture.value != "" && !checkImage(picture)) {
+        if (picture.value !== "" && !checkImage(picture)) {
             setInvalid(picture, 'Input type must be: png, jpg or jpeg. You can also choose too not upload an image');
             picture.value = "";
             isValid = false;
@@ -113,7 +113,7 @@ function SignUp() {
          * Checking the password chosen by the user. It must be longer than 6 character and contain al least one letter
          * and one number.
          */
-        if (password.value.length < 6) {
+        if (password.value.length < PASSWORD_MIN_LENGTH) {
             setInvalid(password, 'Password must contain at least 6 characters');
             isValid = false;
         } else if (password.value.search(/\d/) == -1) {
@@ -141,7 +141,6 @@ function SignUp() {
      * @param event the submit event.
      */
     const handleSubmit = (event) => {
-        const regForm = event.currentTarget;
         event.preventDefault();
         event.stopPropagation()
         //If the information filled by the user is valid he will be added to the user database.
@@ -158,9 +157,9 @@ function SignUp() {
                     image: newPicture,
                     chats: []
                 })
-            //If the user chose to upload an image we will change it's image from the deafult user image.
-            if (document.getElementById('picture').value != "") {
-                var imagePromise = convertToBase64Image(document.getElementById('picture').files[0]);
+            //If the user chose to upload an image we will change its image from the default user image.
+            if (document.getElementById('picture').value !== "") {
+                var imagePromise = convertToBase64(document.getElementById('picture').files[0]);
                 imagePromise.then(function (result) {
                     newPicture = result;
                     users[users.length - 1].image = newPicture;

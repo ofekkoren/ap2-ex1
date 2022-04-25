@@ -21,7 +21,7 @@ function AudioRecorderModal(props) {
             navigator.mediaDevices.getUserMedia({audio: true}).then(stream => {
 
                 /*
-                 * After getting permission to use the audio of the user we create a new recorder and setting it's stop
+                 * After getting permission to use the audio of the user we create a new recorder and setting its stop
                  * and dataAvailable listeners.
                  */
                 recorder = new MediaRecorder(stream);
@@ -79,7 +79,7 @@ function AudioRecorderModal(props) {
             //Setting back the button to enable further recording.
             document.getElementById("audioRecord").innerText = "Record message";
         }
-        // Else, The audio won't be sent and the validator will return to it's default value for further recordings.
+        // Else, The audio won't be sent and the validator will return to its default value for further recordings.
         else
             audioValidator = true;
         recorder = null;
@@ -92,7 +92,7 @@ function AudioRecorderModal(props) {
         /*
          * If we didn't start recording and just clicked at the close button nothing will happen and the record modal
          * will be closed. If we did start recording, the validator will be set to false so that the record
-         * won't be sent. Then we setting back the button to enable further recording and stop the current recording.
+         * won't be sent. Then we set back the button to enable further recording and stop the current recording.
          */
         if (recorder !== null) {
             audioValidator = false;

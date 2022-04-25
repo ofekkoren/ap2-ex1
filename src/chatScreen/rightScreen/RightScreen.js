@@ -1,4 +1,4 @@
-import './ChatScreen.css';
+import '../ChatScreen.css';
 import "./RightScreen.css"
 import ChatTextBox from "./ChatTextBox";
 import ChatHeader from "./ChatHeader";
@@ -29,7 +29,7 @@ function RightScreen(props) {
                     {props.chat.messages.map((message, index) => (
                         <Message key={index} user={props.user} message={message}></Message>
                     ))}
-                    <div className="chat-body-bottom" id="lastMessage" ></div>
+                    <div className="chat-body-bottom" id="lastMessage"></div>
 
                 </div>
                 <ChatTextBox chat={props.chat} setChat={props.setChat}
