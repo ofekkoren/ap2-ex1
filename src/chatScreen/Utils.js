@@ -1,3 +1,5 @@
+import users from "../db/UsersDataBase";
+
 /**
  * Converts an image input of a user to a base64 string which represents the image.
  * @param file the file that was given as input by the user.
@@ -30,5 +32,18 @@ export function getFormattedDateString(message) {
         if (minutes < 10)
             minutes = "0" + minutes;
         return day + '.' + month + '.' + year + ", " + hour + ':' + minutes;
+    }
+}
+
+/**
+  * The function returns the conversations of the current log-in user, according
+ * to the username (his id).
+ * @param logInUsername is the username of the logged-in user.
+ */
+export function getUser(logInUsername) {
+    for (var i = 0; i < Object.keys(users).length; i++) {
+        if (users[i].username.localeCompare(logInUsername) === 0) {
+            return users[i];
+        }
     }
 }

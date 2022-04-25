@@ -1,7 +1,13 @@
 import './LeftChatItem.css';
 import React from 'react';
 
-
+/**
+ * The function represent a left chat item including the relevant information
+ * needs to be presented in the item, such as the last message in the conversation,
+ * the time it was sent, the nickname of the user in chat and his profile image.
+ * @param props include the username of the user currently logged-in,
+ * the array of conversations the user is having and a setter to this array.
+ */
 function LeftChatItem(props) {
 
     var lastMessagePresented = "";
@@ -13,7 +19,6 @@ function LeftChatItem(props) {
         iconClassName = "bi bi-image";
     }
     // If the type of the message is record, we present the string "voice recording" and a mic icon next to it as the last message.
-
     else if (props.conversation.type === "audio") {
         lastMessagePresented = "voice recording";
         iconClassName = "bi bi-mic-fill";
@@ -23,17 +28,20 @@ function LeftChatItem(props) {
         lastMessagePresented = "video";
         iconClassName = "bi bi-camera-video-fill"
     }
-
     // If the type of the message is text (the last type of message), we present the last message sent with no icon.
     else {
         lastMessagePresented = props.conversation.lastMessage;
     }
 
-
     // if (lastMessagePresented.length > 20) {
     //     lastMessagePresented = lastMessagePresented.substring(0, 20) + `...`
     // }
 
+    /**
+    * The function sets the current conversation as lons as it is a different
+    * conversation than the current chat the user is at.
+    * @param chat represent the chat the user is on right now.
+    */
     function showChat(chat) {
         if (chat !== props.refer.current) {
             props.refer.current = chat;
