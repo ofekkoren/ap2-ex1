@@ -5,20 +5,16 @@
 }
 
 .add-conversation {
-    /* position:absolute; */
-    /* right: 65%; */
     margin: 20px;
     padding: 7px;
     border: 0;
     background-color: transparent;
     float: right;
-    /* flex: 1; */
 }
 
 .add-conversation:hover {
     cursor: pointer;
     background-color: lavender;
-
 }
 
 .top-left-username {
@@ -36,7 +32,6 @@
     position: relative;
     border-radius: 100%;
     margin-right: 2%;
-    /* width: 70px; */
 }
 
 #present-left-chat-items::-webkit-scrollbar-track {
@@ -45,15 +40,12 @@
 
 #present-left-chat-items::-webkit-scrollbar {
     width: 7px;
-    /* display: none; */
-
 }
 
 #present-left-chat-items::-webkit-scrollbar-thumb {
     border-radius: 10px;
     background-color: lightgray;
 }
-
 
 .container {
     display: flex;
@@ -67,8 +59,8 @@
     background: ghostwhite;
     scrollbar-width: none; /*hide scrollbar for Firefox */
     overflow-y: scroll;
-}
+  }
 
-#left-chats-container {
-    background-color: beige !important;
-}
+  #left-chats-container {
+      background-color: beige!important;
+  }

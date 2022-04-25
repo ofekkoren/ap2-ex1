@@ -5,9 +5,15 @@ import '../signUp/SignUp.css'
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Link, useNavigate, useParams} from "react-router-dom";
+import { getUser } from '../chatScreen/Utils';
 
-export var isUserLoggedIn = 0;
-export var user = "";
+// export var isUserLoggedIn = 0;
+var user = "";
+function setUser(initializedUser) {
+  user = initializedUser;
+}
+export {user, setUser};
+// export var user = "";
 
 function LogIn() {
 
@@ -42,33 +48,13 @@ function LogIn() {
       return;
     }
 
-    isUserLoggedIn = 1;
-
-    /**
-     * The function returns the conversations of the current log-in user, according
-     * to the username (his id).
-     * @param logInUsername is the username of the logged-in user.
-     */
-    function getUsersChats(logInUsername) {
-      for (var i = 0; i < Object.keys(users).length; i++) {
-        if (users[i].username.localeCompare(logInUsername) === 0) {
-          return users[i];
-        }
-      }
-    }
-
-    user = getUsersChats(username);
+    user = getUser(username);
     // navigate("chatScreen", { state: { user: getUsersChats(username) } });
     navigate("chatScreen");
   }
   
     return (
         <div className="container" >
-
-            {/* <BrowserRouter>
-        <Routes>
-          <Route path='/ChatScreen' element={<ChatScreen />}></Route>
-        </Routes> */}
             <form className="text-center log-in-form" onSubmit={handleSubmit} >
                 <h3 className="log-in-header">Welcome friend, please log in :-)</h3>
 
@@ -113,7 +99,6 @@ function LogIn() {
                     Not registered? Please register <Link to='/signUp' className="text">here</Link>
                 </div>
             </form>
-            {/* </BrowserRouter> */}
         </div>
     );
 }

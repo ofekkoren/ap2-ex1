@@ -31,6 +31,7 @@ function RightScreen(props) {
                     ))}
                     <div className="chat-body-bottom" id="lastMessage"></div>
 
+
                 </div>
                 <ChatTextBox chat={props.chat} setChat={props.setChat}
                              sendingUser={props.user}></ChatTextBox>

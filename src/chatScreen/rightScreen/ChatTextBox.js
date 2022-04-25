@@ -37,6 +37,7 @@ function ChatTextBox(props) {
         file = input.files[0]
         //Convert the image to base64 string and creating the message info.
         var convertPromise = convertToBase64(file);
+
         convertPromise.then(function (result) {
             let messageInfo = {
                 type: mediaType,
