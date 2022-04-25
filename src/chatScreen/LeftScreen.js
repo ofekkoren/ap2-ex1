@@ -60,6 +60,7 @@ function LeftScreen(props) {
     var conversationsList;
     //TODO - CHECK THE USER SHIR BEFORE DELETING
     // if (Object.keys(chats).length !== 0) {
+        
     // Mapping components of LeftChatItem with the relevant information they are needed.
     conversationsList = props.currentListOfChats.map((conversation, index) => {
         return <LeftChatItem conversation={relevantInfo[index]} key={index} chat={chats[index]} refer={props.refer} setChat={props.setChat} />

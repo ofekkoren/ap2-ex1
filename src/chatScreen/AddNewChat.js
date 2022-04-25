@@ -5,11 +5,16 @@ import LeftScreen from './LeftScreen';
 import LeftChatItem from './leftChatItem/LeftChatItem';
 import ChooseNewChat from './ChooseNewChat';
 
+/**
+ * The function recieves new contact's username, and checks if it is a valid
+ * username in the DB.
+ * @param props include the username of the user currently logged-in, the username
+ * that the user is wishing to talk to, the array of conversations the log-in user
+ * is having and a setter to this array.
+ */
 function AddNewChat(props) {
-
     var isRegisteredUser = false;
-    
-    // If the user entered his contact's identifier username, do nothing. 
+    // If the user entered his own contact's identifier username, do nothing. 
     if (props.logInUsername === props.newContact) {
         return;
     }
@@ -32,10 +37,9 @@ function AddNewChat(props) {
 
     var newConversation;
     for (var i = 0; i < Object.keys(users).length; i++) {
-        // If the user already have a conversation with this contact, do nothing.
         if (props.newContact === users[i].username) {
             isRegisteredUser = true;
-            //add its username, nickname, image
+            // Add the new contact's username, nickname and profile image.
             newConversation = {
                 users: [{ username: user.username, nickname: user.nickname, image: user.image },
                 { username: users[i].username, nickname: users[i].nickname, image: users[i].image }],
@@ -45,10 +49,8 @@ function AddNewChat(props) {
     }
 
 
-    //If the user is not registered, do nothing.
+    //If the user is not registered, announce it is invalid username.
     if (!isRegisteredUser) {
-        // var textBox = document.getElementById("floatingTextarea");
-        // textBox.append("Some text");
         var invalidUser = "invalid user!"
         document.getElementById("validation").innerHTML = invalidUser;
         return;
@@ -57,16 +59,6 @@ function AddNewChat(props) {
         document.getElementById("validation").innerHTML = invalidUser;
         return newConversation;
     }
-    // return (
-    //     // {conversationsList}
-    //     // console.log("hellllee")
-    //     <div className="col-4 newtab">
-    //         <div>hello</div>
-    //         {/* <div>
-    //     //         {conversationsList}
-    //     //     </div> */}
-    //     </div>
-    // );
 }
 
 export default AddNewChat;

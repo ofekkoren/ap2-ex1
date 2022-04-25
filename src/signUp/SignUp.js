@@ -1,9 +1,10 @@
 import '../logIn/LogIn.css';
 import './SignUp.css'
 import users from '../db/UsersDataBase';
-import {convertToBase64Image} from "../chatScreen/Utils";
-import {Link, useNavigate} from "react-router-dom";
+import { convertToBase64Image, getUser } from "../chatScreen/Utils";
+import { Link, useNavigate } from "react-router-dom";
 import React from "react";
+import { user, setUser } from '../logIn/LogIn';
 
 /**
  * A sign-up form for the chat app.
@@ -166,50 +167,51 @@ function SignUp() {
                     users[users.length - 1].image = newPicture;
                 });
             }
-            //Indicating the user about the successful registration
-            navigate("SuccessfulSignUp");
+
+            // Redirecting the user to the chat.
+            setUser(getUser(newUserName));
+            navigate("../chatScreen");
         }
     }
 
     return (
         //The sign-up form.
         <div className="container" id="signContainer">
-
             <form className="text-center sign-up-form needs-validation" noValidate id="signUpForm"
-                  onSubmit={handleSubmit}>
+                onSubmit={handleSubmit}>
                 <h3 className="log-in-header">We need more friends, please join us ...</h3>
 
                 <div className="form-floating mb-3 input-style ">
                     <input type="text" name='userName' className="form-control input-box-size" id="username"
-                           placeholder="Username"></input>
+                        placeholder="Username"></input>
                     <label className="form-label" htmlFor="username">Username</label>
                     <span className="validation-helper"></span>
                 </div>
 
                 <div className="form-floating mb-3 input-style ">
                     <input type="text" name='userName' className="form-control " id="nickname"
-                           placeholder="nickname"></input>
+                        placeholder="nickname"></input>
                     <label className="form-label" htmlFor="nickname">nickname</label>
                     <span className="validation-helper"></span>
                 </div>
 
                 <div className="form-floating mb-3 input-style ">
                     <input type="file" accept=".jpg, .jpeg, .png" name='userName' className="form-control " id="picture"
-                           placeholder="Profile picture"></input>
+                        placeholder="Profile picture"></input>
                     <label className="form-label" htmlFor="picture" id="userImageInput">Profile picture</label>
                     <span className="validation-helper"></span>
                 </div>
 
                 <div className="form-floating mb-3 input-style ">
                     <input type="password" name='Password' className="form-control " id="Password"
-                           placeholder="Password"></input>
+                        placeholder="Password"></input>
                     <label className="form-label" htmlFor="Password">Password</label>
                     <span className="validation-helper"></span>
                 </div>
 
                 <div className="form-floating mb-3 input-style ">
                     <input type="password" name='validatePassword' className="form-control " id="validatePassword"
-                           placeholder="Repeat password"></input>
+                        placeholder="Repeat password"></input>
                     <label className="form-label" htmlFor="validatePassword">Repeat password</label>
                     <span className="validation-helper"></span>
                 </div>
@@ -221,7 +223,6 @@ function SignUp() {
 
                 <div className="text">
                     already registered? log in <Link to='/' className="text">here</Link>
-
                 </div>
             </form>
         </div>
