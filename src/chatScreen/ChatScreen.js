@@ -3,15 +3,10 @@ import './ChatScreen.css';
 import {useState, useRef} from "react";
 import LeftScreen from './leftScreen/LeftScreen';
 import RightScreen from "./rightScreen/RightScreen";
-import users from "../db/UsersDataBase";
 import { Link, useLocation } from "react-router-dom";
 import { user } from '../logIn/LogIn';
 
 function ChatScreen() {
-    // location.state.name
-    const location = useLocation();
-    // console.log(location.state.user);
-
     let [currentConversation, setCurrentConversation] = useState("");
     let conversationDBRef = useRef(""); //Reference to the original location of the conversation in the DB.
     let [currentListOfChats, setCurrentListOfChats] = useState(user.chats);
@@ -36,7 +31,7 @@ function ChatScreen() {
                 conversationDBRef.current.messages.push(currentConversation.messages[currentConversation.messages.length - 1])
                 //Scrolling down to the last message if the user sent a new message.
                 if (currentConversation.messages[currentConversation.messages.length - 1].sender === user.username) {
-                    bottom.scrollIntoView({ block: "end" });
+                    bottom.scrollIntoView({block: "end"});
                     //If the last message sent was a video, a timeout is set to let the video players to open up.
                     if (currentConversation.messages[currentConversation.messages.length - 1].type === "video")
                         scrollWithDelay(bottom)
@@ -50,7 +45,7 @@ function ChatScreen() {
                     }
                 }
 
-                // If the current conversaion is in the array, add it to the front of the array.
+                // If the current conversation is in the array, add it to the front of the array.
                 if (index !== -1) {
                     let chatsArr = [...currentListOfChats];
                     chatsArr.splice(index, 1);
@@ -61,10 +56,10 @@ function ChatScreen() {
             }
             //If we changed the chat conversation a timeout is set to let the video players to open up.
             else {
-                bottom.scrollIntoView({ block: "end" });
+                bottom.scrollIntoView({block: "end"});
                 scrollWithDelay(bottom)
             }
-
+        }
     }, [currentConversation])
 
     //If there is no user connected the chat screen won't be displayed.

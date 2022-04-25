@@ -16,7 +16,6 @@ import ChooseNewChat from './ChooseNewChat';
 function AddNewChat(props) {
     var isRegisteredUser = false;
     // If the user entered his own contact's identifier username, do nothing. 
-    main
     if (props.logInUsername === props.newContact) {
         return;
     }
