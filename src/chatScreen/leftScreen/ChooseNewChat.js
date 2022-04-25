@@ -1,6 +1,6 @@
 
-import conversations from '../db/Conversations';
-import users from '../db/UsersDataBase';
+import conversations from '../../db/Conversations';
+import users from '../../db/UsersDataBase';
 import AddNewChat from './AddNewChat';
 import { useState } from "react";
 
@@ -11,7 +11,7 @@ import { useState } from "react";
  */
 function ChooseNewChat(props) {
 
-    //DOTO -CHECK IF ABALE TO ERASE.
+    //TODO -CHECK IF ABALE TO ERASE.
     function getNewContactUsername(event) {
         var userValue = event.target.value;
         return userValue;
@@ -56,7 +56,7 @@ function ChooseNewChat(props) {
 
     /**
     * The function deletes the input text that the user has written and the messsage
-    * he has recieved. 
+    * he has received.
     */
     function deleteInput() {
         document.getElementById("floatingTextarea").value = "";

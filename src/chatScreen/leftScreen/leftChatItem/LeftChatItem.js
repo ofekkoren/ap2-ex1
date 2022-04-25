@@ -54,7 +54,7 @@ function LeftChatItem(props) {
     return (
         <div className='left-chat-item' onClick={() => showChat(props.chat)}>
             <div className='left-image'>
-                <img src={props.conversation.image} className="chat-profile-image float-start"></img>
+                <img src={props.conversation.image} className="chat-profile-image"></img>
             </div>
             <div className='mid-item'>
                 <div>

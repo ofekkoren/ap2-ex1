@@ -2,10 +2,7 @@ import React, {useEffect} from 'react';
 import '../ChatScreen.css';
 import './LeftScreen.css';
 import './leftChatItem/LeftChatItem.css';
-import users from '../../db/UsersDataBase';
 import LeftChatItem from './leftChatItem/LeftChatItem';
-import conversations from '../../db/Conversations';
-import {useState, useRef} from "react";
 import ChooseNewChat from './ChooseNewChat';
 import {getFormattedDateString} from "../Utils";
 

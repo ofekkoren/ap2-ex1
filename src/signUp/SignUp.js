@@ -164,12 +164,16 @@ function SignUp() {
                 imagePromise.then(function (result) {
                     newPicture = result;
                     users[users.length - 1].image = newPicture;
+                    // Redirecting the user to the chat.
+                    setUser(getUser(newUserName));
+                    navigate("../chatScreen");
                 });
             }
-
-            // Redirecting the user to the chat.
-            setUser(getUser(newUserName));
-            navigate("../chatScreen");
+            else {
+                // Redirecting the user to the chat.
+                setUser(getUser(newUserName));
+                navigate("../chatScreen");
+            }
         }
     }
 
