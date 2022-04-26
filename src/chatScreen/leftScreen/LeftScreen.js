@@ -68,7 +68,7 @@ function LeftScreen(props) {
             <div className="topLine">
                 <img src={logInUserImage} className="float-start top-left-profile-image"></img>
                 {/* <img src={logInUserImage} className="top-profile-image"></img> */}
-                <h5 className='top-left-username'>{props.user.username}</h5>
+                <h5 className='top-left-username'>{props.user.nickname}</h5>
                 <button className="bi bi-person-plus-fill add-conversation ms-3" data-bs-toggle="modal" data-bs-target="#add-new-contact"></button>
 
             </div>
@@ -78,7 +78,6 @@ function LeftScreen(props) {
                 </div>
             </div>
             <ChooseNewChat logInUsername={props.user.username} conversationsList={conversationsList}
-
             currentListOfChats={props.currentListOfChats} setCurrentListOfChats={props.setCurrentListOfChats}/>
         </div>
     );
