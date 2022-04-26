@@ -149,7 +149,7 @@ function SignUp() {
             const newUserName = document.getElementById("username").value.trim();
             const newNickName = document.getElementById('nickname').value.trim();
             const newPassword = document.getElementById('Password').value;
-            let newPicture = process.env.PUBLIC_URL + "/images/userImages/default-image.jpg";
+            let newPicture = process.env.PUBLIC_URL + "/images/userImages/defaultImage.png";
             users.push(
                 {
                     username: newUserName,

@@ -34,10 +34,6 @@ function LeftChatItem(props) {
     else {
         lastMessagePresented = props.conversation.lastMessage;
     }
-    // if (lastMessagePresented.length > 20) {
-    //     lastMessagePresented = lastMessagePresented.substring(0, 20) + `...`
-    // }
-
 
     /**
     * The function sets the current conversation as lons as it is a different
