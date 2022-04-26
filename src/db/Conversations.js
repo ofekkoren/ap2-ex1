@@ -28,6 +28,19 @@ let conversations = [
             {type:"video", content: "/mediaMessages/avisCatVideo.mp4", createdAt: '2020-10-10T12:48:00.000Z', sender: "Avi Cohen"},
             {type:"text", content: "He is a scaredy cat :)", createdAt: '2020-10-10T12:48:00.000Z', sender: "Avi Cohen"},
             {type:"text", content: "Excuse me but who are you??", createdAt: '2020-10-10T12:48:00.000Z', sender: "Tomer Eligayev"}
+        ]},
+    {users: [{username: 'Moti Luhim', nickname: 'Moti Luhim', image: "/images/userImages/boy-image.png"},
+            {username: 'Shir Levi', nickname: 'Shirus', image: "/images/userImages/girl-image.jpg"}],
+        messages:[{type:"text", content: "Have you heard the news about Simha Tzil?", createdAt: '2022-04-10T12:48:00.000Z', sender: "Moti Luhim"},
+            {type:"text", content: "No, what happened?", createdAt: '2022-04-10T12:48:00.000Z', sender: "Shir Levi"},
+            {type:"text", content: "Elon Musk bought his eggplant fuel company for 44 billion dollars!", createdAt: '2022-04-10T12:48:00.000Z', sender: "Moti Luhim"},
+            {type:"text", content: "what ???", createdAt: '2022-04-10T12:48:00.000Z', sender: "Shir Levi"},
+            {type:"text", content: "Yess , apparently fuel made of eggplants makes a great spaceships fuel", createdAt: '2022-04-10T12:48:00.000Z', sender: "Moti Luhim"},
+            {type:"text", content: "wowww this is unbelievable!", createdAt: '2022-04-10T12:48:00.000Z', sender: "Shir Levi"},
+            {type:"image", content: "/mediaMessages//spaceEggplantImage.png", createdAt: '2022-04-10T12:48:00.000Z', sender: "Moti Luhim"},
+
+
+
         ]}
 ]
 
