@@ -1,6 +1,8 @@
 ﻿# Advanced Programming exercise 1:
 Submitting:
+
 Tomer Eligayev, id: 208668129
+
 Ofek Koren, id: 207105933
 
 ## **Running the project**	
