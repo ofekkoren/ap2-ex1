@@ -10,13 +10,7 @@ import { useState } from "react";
  * the array of conversations the user is having and a setter to this array.
  */
 function ChooseNewChat(props) {
-
-    //TODO -CHECK IF ABALE TO ERASE.
-    function getNewContactUsername(event) {
-        var userValue = event.target.value;
-        return userValue;
-    };
-
+    
     /**
      * The function addNewContact creates a new conversation that the logged-in
      * user wants to have and sets the array of conversations adding this new conversation.
@@ -76,7 +70,7 @@ function ChooseNewChat(props) {
                         <div className="modal-body">
                             <label htmlFor="floatingTextarea" className="col-form-label">Please enter the contact's username:</label>
                             <div className="form-floating">
-                                <input type="text" className="form-control newContact" placeholder="Leave a comment here" id="floatingTextarea" onChange={getNewContactUsername} required></input>
+                                <input type="text" className="form-control newContact" placeholder="Leave a comment here" id="floatingTextarea" required></input>
                                 <label htmlFor="floatingTextarea">Contact's username</label>
                             </div>
                             <div id="validation"></div>

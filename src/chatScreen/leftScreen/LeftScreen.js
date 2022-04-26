@@ -55,10 +55,7 @@ function LeftScreen(props) {
     }
 
     // Keeps the list of conversations that the logged-in user is having.
-    var conversationsList;
-    //TODO - CHECK THE USER SHIR BEFORE DELETING
-    // if (Object.keys(chats).length !== 0) {
-        
+    var conversationsList;        
     // Mapping components of LeftChatItem with the relevant information they are needed.
     conversationsList = props.currentListOfChats.map((conversation, index) => {
         return <LeftChatItem conversation={relevantInfo[index]} key={index} chat={chats[index]} refer={props.refer} setChat={props.setChat} />
@@ -67,10 +64,8 @@ function LeftScreen(props) {
         <div className="col-4 leftScreen">
             <div className="topLine">
                 <img src={logInUserImage} className="float-start top-left-profile-image"></img>
-                {/* <img src={logInUserImage} className="top-profile-image"></img> */}
                 <h5 className='top-left-username'>{props.user.nickname}</h5>
                 <button className="bi bi-person-plus-fill add-conversation ms-3" data-bs-toggle="modal" data-bs-target="#add-new-contact"></button>
-
             </div>
             <div className="container" id="left-chats-container">
                 <div className="center-col" id="present-left-chat-items">

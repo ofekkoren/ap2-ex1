@@ -50,8 +50,6 @@ function AddNewChat(props) {
         }
     }
 
-
-
     //If the user is not registered, announce it is invalid username.
     if (!isRegisteredUser) {
         var invalidUser = "invalid user!"
