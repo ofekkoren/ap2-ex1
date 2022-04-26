@@ -10,7 +10,7 @@ Ofek Koren, id: 207105933
 The only npm library which was installed in this project was React-Router-v6.
 - You can download the project using the commang `git clone https://github.com/ofekkoren/ap2-ex1.git`
 - To run the project you can run the `npm start` command. This will open the chat application on http://localhost:3000
-- - **To view a conversation with all the posible masseges (text,video,image,audio) you can look at the conversation between Avi cohen (Avi) and Tomer Eligayev (Tomer-77).**		 to view in your browser.				
+- **To view a conversation with all the posible masseges (text,video,image,audio) you can look at the conversation between Avi cohen (Avi) and Tomer Eligayev (Tomer-77).**		 to view in your browser.				
 
 ## **Explanation**
 Our program is a chat website, called "Best Web Chat!" which allows registered users to communicate with each other on our website.
