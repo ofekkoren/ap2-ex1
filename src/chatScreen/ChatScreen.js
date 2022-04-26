@@ -11,7 +11,6 @@ function ChatScreen() {
     let conversationDBRef = useRef(""); //Reference to the original location of the conversation in the DB.
     let [currentListOfChats, setCurrentListOfChats] = useState(user.chats);
 
-
     /**
      * Scrolls to the bottom element after a timeout of 600 ms.
      * @param bottom an element that the page will scroll to.
@@ -36,7 +35,6 @@ function ChatScreen() {
                     if (currentConversation.messages[currentConversation.messages.length - 1].type === "video")
                         scrollWithDelay(bottom)
                 }
-
                 // Finding the index of the current conversation in the array of conversations the user is having.
                 var index = -1;
                 for (var i = 0; i < Object.keys(currentListOfChats).length; i++) {
@@ -44,7 +42,6 @@ function ChatScreen() {
                         index = i;
                     }
                 }
-
                 // If the current conversation is in the array, add it to the front of the array.
                 if (index !== -1) {
                     let chatsArr = [...currentListOfChats];
@@ -71,7 +68,6 @@ function ChatScreen() {
                 </h4>
             </div>
         )
-
     } else {
         return (
             <div className="container-chat-screen justify-content-center">
