@@ -111,7 +111,6 @@ function ChatTextBox(props) {
                     onClick={handleSendTextClick}>
                 <i className="bi bi-send"></i>
             </button>
-
         </div>
     )
 }

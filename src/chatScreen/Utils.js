@@ -36,7 +36,7 @@ export function getFormattedDateString(message) {
 }
 
 /**
-  * The function returns the conversations of the current log-in user, according
+ * The function returns the conversations of the current log-in user, according
  * to the username (his id).
  * @param logInUsername is the username of the logged-in user.
  */
