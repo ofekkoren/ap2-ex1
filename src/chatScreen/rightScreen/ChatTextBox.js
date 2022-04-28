@@ -20,7 +20,8 @@ function ChatTextBox(props) {
                 sender: props.sendingUser.username
             }
             //Appending the message to the end of the messages array.
-            let messagesArr = [...props.chat.messages, messageInfo]
+            let messagesArr = props.chat.messages;
+            messagesArr.push(messageInfo);
             props.setChat({users: props.chat.users, messages: messagesArr})
             //Clearing the chat message box.
             document.getElementById("textBox").value = "";

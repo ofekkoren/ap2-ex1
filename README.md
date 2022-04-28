@@ -10,6 +10,8 @@ Ofek Koren, id: 207105933
 The only npm library which was installed in this project was React-Router-v6.
 - You can download the project using the commang `git clone https://github.com/ofekkoren/ap2-ex1.git`
 - To run the project you can run the `npm start` command. This will open the chat application on http://localhost:3000
+- **There are 5 initial users signed-up to the chat. Their user names are: Ofek Koren, Tomer Eligayev, Avi Cohen, Shir Levi, Moti Luhim. The password of each one of them is "123456" followed by the first letter of their last name (in upper case).** 
+- For example: the password of the user "Avi Cohen" is "123456C" .
 - **To view a conversation with all the posible masseges (text,video,image,audio) you can look at the conversation between Avi cohen (Avi) and Tomer Eligayev (Tomer-77).**		 to view in your browser.				
 
 ## **Explanation**
