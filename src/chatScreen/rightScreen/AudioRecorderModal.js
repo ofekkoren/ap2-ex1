@@ -74,7 +74,8 @@ function AudioRecorderModal(props) {
                 sender: props.sendingUser.username
             }
             //Appending the message to the end of the messages array.
-            let messagesArr = [...props.chat.messages, messageInfo]
+            let messagesArr = props.chat.messages;
+            messagesArr.push(messageInfo);
             props.setChat({users: props.chat.users, messages: messagesArr})
             //Setting back the button to enable further recording.
             document.getElementById("audioRecord").innerText = "Record message";
