@@ -28,7 +28,7 @@ function ChatTextBox(props) {
         }
     }
 
-    const handleSendImageAndAudio = (mediaType) => {
+    const handleSendImageAndVideo = (mediaType) => {
         let input;
         let file = ""
         if (mediaType === "image")
@@ -47,7 +47,8 @@ function ChatTextBox(props) {
                 sender: props.sendingUser.username
             }
             //Appending the message to the end of the messages array.
-            let messagesArr = [...props.chat.messages, messageInfo]
+            let messagesArr = props.chat.messages;
+            messagesArr.push(messageInfo);
             props.setChat({users: props.chat.users, messages: messagesArr})
         })
         input.value = ""
@@ -74,7 +75,7 @@ function ChatTextBox(props) {
                                 <i className="bi bi-image"></i>
                             </button>
                             <input style={{display: "none"}} type="file" accept="image/*"
-                                   id="imageInput" onChange={() => handleSendImageAndAudio("image")}></input>
+                                   id="imageInput" onChange={() => handleSendImageAndVideo("image")}></input>
 
                         </li>
                         {/*send video button*/}
@@ -85,7 +86,7 @@ function ChatTextBox(props) {
                                 <i className="bi bi-film"></i>
                             </button>
                             <input style={{display: "none"}} type="file" accept="video/*"
-                                   id="videoInput" onChange={() => handleSendImageAndAudio("video")}></input>
+                                   id="videoInput" onChange={() => handleSendImageAndVideo("video")}></input>
                         </li>
                         {/*send audio record button*/}
                         <li>
